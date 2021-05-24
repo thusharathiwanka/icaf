@@ -1,0 +1,48 @@
+.text-content {
+	min-height: 50vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+}
+
+.text-content h1 {
+	font-size: var(--title-font-size);
+	max-width: 35ch;
+	margin: 0 auto;
+	padding: 0.8rem 0;
+}
+
+.text-content p {
+	max-width: 85ch;
+}
+
+.text-content a {
+	display: inline-block;
+	padding: 1rem 3rem;
+	background: linear-gradient(
+		90deg,
+		var(--primary-accent-color),
+		var(--secondary-accent-color)
+	);
+	border-radius: 5px;
+	color: white;
+	margin-top: 2rem;
+}
+
+.landing-img-container {
+	text-align: center;
+}
+
+.landing-img-container img {
+	max-width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+@media screen and (max-width: 700px) {
+	body {
+		font-size: 90%;
+	}
+}

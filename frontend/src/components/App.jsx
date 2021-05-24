@@ -12,6 +12,24 @@ const App = () => {
 				<Route exact path="/">
 					<Home />
 				</Route>
+				<Route exact path="/workshops">
+					<Home />
+				</Route>
+				<Route exact path="/presentations">
+					<Home />
+				</Route>
+				<Route exact path="/publications">
+					<Home />
+				</Route>
+				<Route exact path="/about">
+					<Home />
+				</Route>
+				<Route exact path="/login">
+					<Home />
+				</Route>
+				<Route exact path="/register">
+					<Home />
+				</Route>
 			</Switch>
 		</Router>
 	);
