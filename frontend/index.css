@@ -23,12 +23,14 @@ body {
 	max-width: 1440px;
 	padding: 0 2rem;
 	margin: 0 auto;
+	overflow-x: hidden;
 }
 
 a {
 	color: black;
 	text-decoration: none;
 	font-weight: var(--title-font-weight);
+	display: inline-block;
 }
 
 /* Navbar styles */
@@ -39,6 +41,7 @@ header {
 	align-items: center;
 	flex-wrap: wrap;
 	font-size: 0.95rem;
+	padding: 1rem 0;
 }
 
 nav a {
@@ -50,6 +53,7 @@ nav a {
 	padding: 0.6rem 1.5rem;
 	border-radius: 4px;
 	border: 1px solid #e5e5e5;
+	transition: all 0.3s ease-in-out;
 }
 
 .nav-cta a:not(:nth-child(1)) {
@@ -57,4 +61,72 @@ nav a {
 	color: white;
 	margin-left: 1rem;
 	border: 1px solid var(--primary-accent-color);
+}
+
+.mobile-menu {
+	display: none;
+	background: none;
+	border: none;
+	font-size: 2.4rem;
+	color: black;
+	z-index: 10;
+}
+
+#menu-open {
+	transform: translateX(0rem);
+}
+
+.nav-logo {
+	z-index: 10;
+}
+
+@media screen and (max-width: 1100px) {
+	header {
+		flex-direction: column;
+	}
+
+	nav {
+		padding: 1rem 0;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.mobile-menu {
+		display: block;
+		position: absolute;
+		right: 5px;
+		top: 25px;
+	}
+
+	header {
+		align-items: flex-start;
+		justify-content: flex-start;
+		position: relative;
+		height: 100vh;
+	}
+
+	nav,
+	.nav-cta {
+		transform: translateX(-20rem);
+	}
+
+	.nav-cta {
+		padding-top: 4rem;
+	}
+
+	nav {
+		display: flex;
+		justify-content: space-between;
+		height: 60vh;
+		flex-direction: column;
+		width: 100%;
+		font-size: 1.4rem;
+		padding-top: 5rem;
+		transition: all 0.3s ease-in-out;
+	}
+
+	nav a {
+		padding-left: 0;
+		margin-left: 0;
+	}
 }

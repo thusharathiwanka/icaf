@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from "../components/nav/Navbar";
-import Home from "../pages/home/Home";
+import Home from "../pages/Home";
 
 const App = () => {
 	return (
