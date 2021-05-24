@@ -16,7 +16,7 @@ const Navbar = () => {
 				<Link to="/workshops">Workshops</Link>
 				<Link to="/presentations">Presentations</Link>
 				<Link to="/publications">Publications</Link>
-				<Link to="/about">About</Link>
+				<Link to="/blogs">Blogs</Link>
 			</nav>
 			<div className="nav-cta" id={isMobile && "menu-open"}>
 				<Link to="/login">Login</Link>

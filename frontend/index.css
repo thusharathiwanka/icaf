@@ -44,6 +44,7 @@ header {
 	font-size: 0.95rem;
 	padding: 1rem 0;
 	transition: all 0.5s ease-in-out;
+	background: white;
 }
 
 nav a {
@@ -128,5 +129,9 @@ nav a {
 	nav a {
 		padding-left: 0;
 		margin-left: 0;
+	}
+
+	body {
+		font-size: 90%;
 	}
 }
