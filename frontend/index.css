@@ -4,7 +4,7 @@
 	--secondary-accent-color: #1d72d8;
 	--title-font-weight: 700;
 	--subtitle-font-weight: 500;
-	--standard-font-weight: 400;
+	--standard-font-weight: 500;
 	--title-font-size: 3rem;
 	--subtitle-font-size: 2rem;
 	--standard-font-size: 1rem;
@@ -79,6 +79,7 @@ nav a {
 	display: flex;
 }
 
+/* Media queries */
 @media screen and (max-width: 1100px) {
 	header {
 		flex-direction: column;
@@ -133,5 +134,10 @@ nav a {
 
 	body {
 		font-size: 90%;
+	}
+
+	.nav-logo {
+		width: 50%;
+		padding-top: 0.3rem;
 	}
 }
