@@ -11,7 +11,7 @@ const TitleContent = () => {
 				since the 1500s, when an unknown printer took a galley of type and
 				scrambled it to make a type specimen book.
 			</p>
-			<Link>Explore</Link>
+			<Link to="/about">Explore</Link>
 		</section>
 	);
 };
