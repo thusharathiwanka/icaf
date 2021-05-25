@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import TitleContent from "../components/home/TitleContent";
 import SpeakerContent from "../components/home/SpeakerContent";
@@ -10,15 +11,22 @@ import LandingImg from "url:../../src/assets/images/landing-img.png";
 
 const Home = () => {
 	return (
-		<div className="home-content">
-			<TitleContent />
-			<div className="landing-img-container">
-				<img src={LandingImg} alt="landing-image" />
-			</div>
-			<SpeakerContent />
-			<Countdown />
+		<>
+			<motion.div
+				className="home-content"
+				initial={{ transform: "translateY(10%)", opacity: 0 }}
+				animate={{ transform: "translateY(0%)", opacity: 1 }}
+				transition={{ type: "tween", duration: 1 }}
+			>
+				<TitleContent />
+				<div className="landing-img-container">
+					<img src={LandingImg} alt="landing-image" />
+				</div>
+				<SpeakerContent />
+				<Countdown />
+			</motion.div>
 			<Footer />
-		</div>
+		</>
 	);
 };
 

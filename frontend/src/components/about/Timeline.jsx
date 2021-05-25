@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import TimelineItem from "./TimelineItem";
 
@@ -6,7 +7,13 @@ const Timeline = () => {
 	return (
 		<div className="timeline-content-container">
 			<h1>International Conference on Application Frameworks 2021</h1>
-			<div className="timeline">
+
+			<motion.div
+				className="timeline"
+				initial={{ transform: "translateY(50%)", opacity: 0 }}
+				animate={{ transform: "translateY(0%)", opacity: 1 }}
+				transition={{ type: "tween", duration: 1 }}
+			>
 				<ul>
 					<TimelineItem />
 					<TimelineItem />
@@ -14,7 +21,7 @@ const Timeline = () => {
 					<TimelineItem />
 					<TimelineItem />
 				</ul>
-			</div>
+			</motion.div>
 		</div>
 	);
 };
