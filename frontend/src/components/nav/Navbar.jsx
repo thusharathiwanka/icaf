@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { CgMenuRight } from "react-icons/cg";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import logo from "url:../../assets/images/logo-blue.svg";
 
@@ -9,7 +10,11 @@ const Navbar = () => {
 	const [isMobile, setIsMobile] = useState(false);
 
 	return (
-		<header>
+		<motion.header
+			initial={{ transform: "translateY(-20%)", opacity: 0 }}
+			animate={{ transform: "translateY(0%)", opacity: 1 }}
+			transition={{ type: "tween", duration: 0.5 }}
+		>
 			<Link to="/">
 				<img src={logo} alt="nav-logo" className="nav-logo" />
 			</Link>
@@ -31,7 +36,7 @@ const Navbar = () => {
 			<button className="mobile-menu" onClick={() => setIsMobile(!isMobile)}>
 				{isMobile ? <IoMdClose /> : <CgMenuRight />}
 			</button>
-		</header>
+		</motion.header>
 	);
 };
 

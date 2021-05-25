@@ -1,6 +1,6 @@
 /* Title content styles */
 .text-content {
-	min-height: 50vh;
+	min-height: 45vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -10,6 +10,8 @@
 
 .text-content p {
 	max-width: 85ch;
+	color: #909090;
+	font-weight: 500;
 }
 
 .gradient-cta {
@@ -85,6 +87,7 @@
 	font-size: 0.9rem;
 	font-weight: 500;
 	line-height: 1.2rem;
+	color: #909090;
 }
 
 .speaker-card img {

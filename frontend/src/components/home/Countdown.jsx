@@ -43,10 +43,10 @@ const Countdown = () => {
 	});
 
 	return (
-		<Fragment>
+		<>
 			{isShow && (
 				<section className="countdown-content">
-					<h1>Countdown</h1>
+					<h1>Happening In,</h1>
 					<div className="countdown">
 						<div className="days">
 							<h1>{timerDays}</h1>
@@ -67,7 +67,7 @@ const Countdown = () => {
 					</div>
 				</section>
 			)}
-		</Fragment>
+		</>
 	);
 };
 
