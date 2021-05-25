@@ -251,11 +251,18 @@ footer {
 	.social-links a {
 		margin: 0 1rem;
 	}
+	.details-links,
+	.social-links {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
 }
 
 @media screen and (max-width: 435px) {
 	.footer-main-content {
-		justify-content: center;
+		justify-content: space-around;
 	}
 
 	.footer-content-left,
@@ -264,11 +271,16 @@ footer {
 	}
 
 	.footer-content-right {
-		margin-top: 5rem;
+		margin-top: 2rem;
+		padding-bottom: 2rem;
 	}
 
 	.social-links a {
-		margin: 0 1rem;
+		margin: 1rem 1rem;
+	}
+
+	.social-links {
+		margin-top: 2rem;
 	}
 
 	.details-links a {

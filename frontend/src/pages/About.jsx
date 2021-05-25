@@ -6,6 +6,8 @@ import Footer from "../components/footer/Footer";
 import "./styles/About.css";
 
 const About = () => {
+	document.title = "ICAF | Explore";
+
 	return (
 		<div className="about-content">
 			<Timeline />

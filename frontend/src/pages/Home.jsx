@@ -10,13 +10,15 @@ import "./styles/Home.css";
 import LandingImg from "url:../../src/assets/images/landing-img.png";
 
 const Home = () => {
+	document.title = "ICAF | 2021";
+
 	return (
 		<>
 			<motion.div
 				className="home-content"
 				initial={{ transform: "translateY(10%)", opacity: 0 }}
 				animate={{ transform: "translateY(0%)", opacity: 1 }}
-				transition={{ type: "tween", duration: 1 }}
+				transition={{ type: "tween", duration: 0.8 }}
 			>
 				<TitleContent />
 				<div className="landing-img-container">

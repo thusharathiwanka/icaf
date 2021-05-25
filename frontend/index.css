@@ -75,13 +75,6 @@ nav a {
 	transition: all 0.3s ease-in-out;
 }
 
-.nav-cta a:not(:nth-child(1)) {
-	background: var(--primary-accent-color);
-	color: white;
-	margin-left: 1rem;
-	border: 1px solid var(--primary-accent-color);
-}
-
 .mobile-menu {
 	display: none;
 	background: none;
@@ -93,6 +86,14 @@ nav a {
 #menu-open {
 	transform: translateX(0rem);
 	display: flex;
+}
+
+/* Pseudo styles */
+.nav-cta a:not(:nth-child(1)) {
+	background: var(--primary-accent-color);
+	color: white;
+	margin-left: 1rem;
+	border: 1px solid var(--primary-accent-color);
 }
 
 /* Media queries */
@@ -124,30 +125,31 @@ nav a {
 
 	nav,
 	.nav-cta {
-		transform: translateY(-50rem);
+		transform: translateY(-60rem);
 		position: fixed;
 		background: white;
 	}
 
 	.nav-cta {
 		padding-top: 4rem;
-		bottom: 20%;
+		bottom: -420%;
 		width: 100%;
 		padding-bottom: 2rem;
 		padding-left: 2rem;
 		transition: all 0.3s ease-in-out;
 		left: 0;
-		box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 	}
 
 	nav {
+		display: flex;
 		justify-content: space-between;
 		height: 65vh;
 		flex-direction: column;
 		width: 100%;
 		font-size: 1.4rem;
-		padding-top: 2rem;
+		padding-top: 4rem;
 		transition: all 0.3s ease-in-out;
+		top: 0;
 		left: 0;
 	}
 

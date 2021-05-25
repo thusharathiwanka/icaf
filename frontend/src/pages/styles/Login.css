@@ -1,3 +1,4 @@
+/* Login form styles */
 .login-content {
 	min-height: 60vh;
 	display: flex;
@@ -57,7 +58,7 @@
 }
 
 .user-type-selection label {
-	padding: 0 1rem 0.5rem;
+	padding: 0 1.5rem 0rem 0.5rem;
 }
 
 .user-credentials input {
@@ -76,10 +77,12 @@
 	padding: 1rem 0.8rem;
 }
 
+/* Pseudo style */
 .user-credentials input:focus {
 	border: 1px solid var(--secondary-accent-color);
 }
 
+/* Media queries */
 @media screen and (max-width: 500px) {
 	.login-form {
 		padding: 2rem;
