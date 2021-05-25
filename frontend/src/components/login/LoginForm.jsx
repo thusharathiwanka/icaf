@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
 	return (
@@ -43,6 +44,12 @@ const LoginForm = () => {
 						<label htmlFor="attendee">Attendee</label>
 					</div>
 				</div>
+				<p>
+					Haven't registered yet?
+					<Link to="/register" className="register-now">
+						Register
+					</Link>
+				</p>
 				<button type="submit" className="gradient-cta">
 					Login
 				</button>
