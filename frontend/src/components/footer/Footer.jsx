@@ -20,16 +20,16 @@ const Footer = () => {
 				</div>
 				<div className="footer-content-right">
 					<div className="social-links">
-						<Link to="https://facebook.com" target="blank">
+						<Link>
 							<SiFacebook />
 						</Link>
-						<Link to="https://instagram.com">
+						<Link>
 							<SiInstagram />
 						</Link>
-						<Link to="https://twitter.com">
+						<Link>
 							<SiTwitter />
 						</Link>
-						<Link to="https://youtube.com">
+						<Link>
 							<SiYoutube />
 						</Link>
 					</div>
