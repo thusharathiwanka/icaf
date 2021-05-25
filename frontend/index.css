@@ -19,12 +19,15 @@
 	box-sizing: border-box;
 }
 
+html {
+	font-size: 100%;
+}
+
 body {
 	max-width: 1440px;
 	padding: 0 2rem;
 	margin: 0 auto;
 	overflow-x: hidden;
-	font-size: 100%;
 }
 
 a {
@@ -41,6 +44,10 @@ button {
 	font-weight: 700;
 }
 
+ul {
+	list-style: none;
+}
+
 /* Navbar styles */
 header {
 	min-height: 15vh;
@@ -53,6 +60,7 @@ header {
 	transition: all 0.5s ease-in-out;
 	background: white;
 	z-index: 20;
+	margin-bottom: 2rem;
 }
 
 nav a {
@@ -92,6 +100,7 @@ nav a {
 	header {
 		flex-direction: column;
 		z-index: 10;
+		margin-bottom: 3rem;
 	}
 
 	nav {
@@ -132,15 +141,13 @@ nav a {
 	}
 
 	nav {
-		display: flex;
 		justify-content: space-between;
 		height: 65vh;
 		flex-direction: column;
 		width: 100%;
 		font-size: 1.4rem;
-		padding-top: 8rem;
+		padding-top: 2rem;
 		transition: all 0.3s ease-in-out;
-		top: 0;
 		left: 0;
 	}
 
@@ -148,7 +155,7 @@ nav a {
 		padding-left: 1.5rem;
 	}
 
-	body {
+	html {
 		font-size: 90%;
 	}
 
