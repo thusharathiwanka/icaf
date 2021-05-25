@@ -12,8 +12,7 @@
 	max-width: 85ch;
 }
 
-.text-content a {
-	display: inline-block;
+.gradient-cta {
 	padding: 1rem 3rem;
 	background: linear-gradient(
 		90deg,
@@ -23,6 +22,7 @@
 	border-radius: 5px;
 	color: white;
 	margin-top: 2rem;
+	cursor: pointer;
 }
 
 /* Landing images styles */
@@ -54,6 +54,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	position: relative;
 }
 
 .speaker-card-content {
@@ -93,6 +94,17 @@
 
 .speaker-card .img-container {
 	text-align: center;
+}
+
+.quote-icon {
+	font-size: 15rem;
+	position: absolute;
+	transform: rotate(180deg);
+	top: 22%;
+	z-index: -1;
+	left: -4%;
+	color: var(--secondary-accent-color);
+	opacity: 0.4;
 }
 
 /* Countdown styles */
@@ -197,11 +209,28 @@ footer {
 	.speaker-content h1 {
 		padding: 8rem 0 4rem 0;
 	}
+
+	.quote-icon {
+		left: 6%;
+		top: 12%;
+	}
+}
+
+@media screen and (max-width: 863px) {
+	.quote-icon {
+		left: 10%;
+		top: 9%;
+	}
 }
 
 @media screen and (max-width: 700px) {
 	.home-content h1 {
 		font-size: 2.5rem;
+	}
+
+	.quote-icon {
+		display: none;
+		pointer-events: none;
 	}
 }
 
