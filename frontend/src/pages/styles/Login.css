@@ -20,6 +20,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	margin-bottom: 4rem;
 }
 
 .user-credentials {
@@ -63,8 +64,23 @@
 	border: 1px #e5e5e5 solid;
 	border-radius: 5px;
 	font-weight: 500;
+	transition: all 0.3s ease-in-out;
 }
 
 .user-credentials input:focus {
 	border: 1px solid var(--secondary-accent-color);
+}
+
+@media screen and (max-width: 500px) {
+	.login-form {
+		padding: 2rem;
+	}
+
+	.login-form label {
+		font-size: 1rem;
+	}
+
+	.login-content h1 {
+		padding: 1rem 1rem 2rem 1rem;
+	}
 }

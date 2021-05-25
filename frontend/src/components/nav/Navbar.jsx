@@ -10,7 +10,9 @@ const Navbar = () => {
 
 	return (
 		<header>
-			<img src={logo} alt="nav-logo" className="nav-logo" />
+			<Link to="/">
+				<img src={logo} alt="nav-logo" className="nav-logo" />
+			</Link>
 			<nav id={isMobile && "menu-open"} onClick={() => setIsMobile(false)}>
 				<Link to="/">Home</Link>
 				<Link to="/workshops">Workshops</Link>
@@ -18,7 +20,11 @@ const Navbar = () => {
 				<Link to="/publications">Publications</Link>
 				<Link to="/blogs">Blogs</Link>
 			</nav>
-			<div className="nav-cta" id={isMobile && "menu-open"}>
+			<div
+				className="nav-cta"
+				id={isMobile && "menu-open"}
+				onClick={() => setIsMobile(false)}
+			>
 				<Link to="/login">Login</Link>
 				<Link to="/register">Register</Link>
 			</div>
