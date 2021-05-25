@@ -10,8 +10,8 @@ const Timeline = () => {
 
 			<motion.div
 				className="timeline"
-				initial={{ transform: "translateY(50%)", opacity: 0 }}
-				animate={{ transform: "translateY(0%)", opacity: 1 }}
+				initial={{ y: 200, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
 				transition={{ type: "tween", duration: 1 }}
 			>
 				<ul>

@@ -81,6 +81,7 @@ nav a {
 	border: none;
 	font-size: 2.4rem;
 	color: black;
+	position: absolute;
 }
 
 #menu-open {
@@ -132,22 +133,23 @@ nav a {
 
 	.nav-cta {
 		padding-top: 4rem;
-		bottom: -420%;
+		bottom: 18%;
 		width: 100%;
 		padding-bottom: 2rem;
 		padding-left: 2rem;
 		transition: all 0.3s ease-in-out;
 		left: 0;
+		box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 	}
 
 	nav {
 		display: flex;
 		justify-content: space-between;
-		height: 65vh;
+		height: 65%;
 		flex-direction: column;
 		width: 100%;
 		font-size: 1.4rem;
-		padding-top: 4rem;
+		padding-top: 2rem;
 		transition: all 0.3s ease-in-out;
 		top: 0;
 		left: 0;

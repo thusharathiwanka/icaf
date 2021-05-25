@@ -11,8 +11,8 @@ const Navbar = () => {
 
 	return (
 		<motion.header
-			initial={{ transform: "translateY(-20%)", opacity: 0 }}
-			animate={{ transform: "translateY(0%)", opacity: 1 }}
+			initial={{ y: -30, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
 			transition={{ type: "tween", duration: 0.5, delay: 0.1 }}
 		>
 			<Link to="/">

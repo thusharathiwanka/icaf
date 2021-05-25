@@ -16,8 +16,8 @@ const Home = () => {
 		<>
 			<motion.div
 				className="home-content"
-				initial={{ transform: "translateY(10%)", opacity: 0 }}
-				animate={{ transform: "translateY(0%)", opacity: 1 }}
+				initial={{ y: 200, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
 				transition={{ type: "tween", duration: 0.8 }}
 			>
 				<TitleContent />
