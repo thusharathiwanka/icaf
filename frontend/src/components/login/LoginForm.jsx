@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const LoginForm = () => {
 	const [loginUser, setLoginUser] = useState({
@@ -16,8 +17,19 @@ const LoginForm = () => {
 	return (
 		<div className="login-content">
 			<h1>Login</h1>
-			<form className="login-form" onSubmit={handleLogin}>
-				<div className="user-credentials">
+			<motion.form
+				className="login-form"
+				onSubmit={handleLogin}
+				initial={{ y: 100, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
+				transition={{ type: "tween", duration: 0.8 }}
+			>
+				<motion.div
+					className="user-credentials"
+					initial={{ y: 50, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{ type: "tween", duration: 0.8, delay: 0.2 }}
+				>
 					<label htmlFor="username">Username</label>
 					<input
 						type="username"
@@ -40,8 +52,13 @@ const LoginForm = () => {
 							setLoginUser({ ...loginUser, password: e.target.value })
 						}
 					/>
-				</div>
-				<div className="user-type-selection">
+				</motion.div>
+				<motion.div
+					className="user-type-selection"
+					initial={{ y: 50, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{ type: "tween", duration: 0.8, delay: 0.3 }}
+				>
 					<div className="researcher">
 						<input
 							type="radio"
@@ -81,17 +98,27 @@ const LoginForm = () => {
 						/>
 						<label htmlFor="attendee">Attendee</label>
 					</div>
-				</div>
-				<p>
+				</motion.div>
+				<motion.p
+					initial={{ y: 50, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{ type: "tween", duration: 0.8, delay: 0.4 }}
+				>
 					Haven't registered yet ?
 					<Link to="/register" className="register-now">
 						Register
 					</Link>
-				</p>
-				<button type="submit" className="gradient-cta">
+				</motion.p>
+				<motion.button
+					type="submit"
+					className="gradient-cta"
+					initial={{ y: 10, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
+				>
 					Login
-				</button>
-			</form>
+				</motion.button>
+			</motion.form>
 		</div>
 	);
 };
