@@ -36,6 +36,7 @@ const LoginForm = () => {
 						name="username"
 						id="username"
 						required
+						autoComplete="off"
 						value={loginUser.username}
 						onChange={(e) =>
 							setLoginUser({ ...loginUser, username: e.target.value })
@@ -48,6 +49,7 @@ const LoginForm = () => {
 						id="password"
 						value={loginUser.password}
 						required
+						autoComplete="off"
 						onChange={(e) =>
 							setLoginUser({ ...loginUser, password: e.target.value })
 						}

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, Fragment } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const Countdown = () => {
 	const [timerDays, setTimerDays] = useState("00");
