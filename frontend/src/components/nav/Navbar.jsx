@@ -30,8 +30,8 @@ const Navbar = () => {
 				id={isMobile ? "menu-open" : ""}
 				onClick={() => setIsMobile(false)}
 			>
-				<Link to="/login">Login</Link>
-				<Link to="/register">Register</Link>
+				<Link to="/auth/login">Login</Link>
+				<Link to="/auth/register">Register</Link>
 			</div>
 			<button className="mobile-menu" onClick={() => setIsMobile(!isMobile)}>
 				{isMobile ? <IoMdClose /> : <CgMenuRight />}

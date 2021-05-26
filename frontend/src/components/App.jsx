@@ -26,10 +26,10 @@ const App = () => {
 				<Route exact path="/about">
 					<About />
 				</Route>
-				<Route exact path="/login">
+				<Route exact path="/auth/login">
 					<Login />
 				</Route>
-				<Route exact path="/register">
+				<Route exact path="/auth/register">
 					<Home />
 				</Route>
 			</Switch>
