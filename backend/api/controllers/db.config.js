@@ -1,7 +1,7 @@
-const MongoClient = require("mongodb").MongoClient;
-
+const { MongoClient } = require("mongodb");
 const CONNECTION_URL =
 	"mongodb+srv://admin:admin@123@cluster0.jwjjo.azure.mongodb.net/conference?retryWrites=true&w=majority";
+const database = "conference";
 
 const client = new MongoClient(CONNECTION_URL, {
 	useNewUrlParser: true,
@@ -10,10 +10,11 @@ const client = new MongoClient(CONNECTION_URL, {
 
 client.connect((error) => {
 	if (error) {
-		console.log(error.message);
+		console.log(error);
 		process.exit(-1);
 	}
-	console.log("Connected to Mongodb");
+
+	console.log("connected to mongodb");
 });
 
 module.exports = client;

@@ -1,7 +1,16 @@
-const users = require("../config/db.config")
-	.db("conference")
-	.collection("users");
+const users = require("./db.config");
+const database = "conference";
+const collection = "users";
 
-console.log(users);
+const saveUser = async ({}) => {};
 
-module.exports = users;
+const getAllUsers = async () => {
+	try {
+		const cursor = await users.db(database).collection(collection).find();
+		return cursor.toArray();
+	} catch {
+		return error.message;
+	}
+};
+
+module.exports = { saveUser, getAllUsers };
