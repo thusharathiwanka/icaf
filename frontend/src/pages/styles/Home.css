@@ -148,10 +148,10 @@ footer {
 		var(--primary-accent-color),
 		var(--secondary-accent-color)
 	);
+	min-height: 20vh;
 	width: 100%;
 	position: absolute;
-	left: 0;
-	right: 0;
+	right: 0%;
 	margin-top: 5rem;
 }
 
@@ -164,7 +164,6 @@ footer {
 	margin: 0 auto;
 	padding: 2rem;
 	color: white;
-	min-height: 20vh;
 	position: relative;
 }
 

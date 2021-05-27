@@ -8,7 +8,7 @@ const PORT = require("./api/config/server.config");
 app.use("/users", userRoutes);
 
 app.get("/", (request, response) => {
-	response.send("Hello");
+	response.send("Home");
 });
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
