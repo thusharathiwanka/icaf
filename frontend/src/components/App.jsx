@@ -5,6 +5,7 @@ import Navbar from "../components/nav/Navbar";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 const App = () => {
 	return (
@@ -17,10 +18,10 @@ const App = () => {
 				<Route exact path="/workshops">
 					<Home />
 				</Route>
-				<Route exact path="/presentations">
+				<Route exact path="/publications">
 					<Home />
 				</Route>
-				<Route exact path="/publications">
+				<Route exact path="/downloads">
 					<Home />
 				</Route>
 				<Route exact path="/about">
@@ -30,7 +31,7 @@ const App = () => {
 					<Login />
 				</Route>
 				<Route exact path="/auth/register">
-					<Home />
+					<Register />
 				</Route>
 			</Switch>
 		</Router>

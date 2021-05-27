@@ -1,16 +1,14 @@
-const users = require("../config/db.config");
-const database = "conference";
-const collection = "users";
+const { getAll, save } = require("../services/user.services");
 
-const saveUser = async ({}) => {};
-
-const getAllUsers = async () => {
+const getAllUsers = async (request, response) => {
 	try {
-		const cursor = await users.db(database).collection(collection).find();
-		return cursor.toArray();
-	} catch {
-		return error.message;
+		const allUsers = await getAll();
+		response.status(200).json(allUsers);
+	} catch (error) {
+		response.status(404).json({ message: error.message });
 	}
 };
 
-module.exports = { saveUser, getAllUsers };
+const saveUser = async () => {};
+
+module.exports = { getAllUsers, saveUser };

@@ -21,9 +21,9 @@ const Navbar = () => {
 			<nav id={isMobile ? "menu-open" : ""} onClick={() => setIsMobile(false)}>
 				<Link to="/">Home</Link>
 				<Link to="/workshops">Workshops</Link>
-				<Link to="/presentations">Presentations</Link>
 				<Link to="/publications">Publications</Link>
 				<Link to="/blogs">Blogs</Link>
+				<Link to="/downloads">Downloads</Link>
 			</nav>
 			<div
 				className="nav-cta"

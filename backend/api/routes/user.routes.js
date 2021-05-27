@@ -1,22 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const { getAllUsers, saveUser } = require("../controllers/user.controller");
 
-const { getAllUsers } = require("../controllers/user.controller");
-
-const user = {
-	name: { firstName: "John", lastName: "Doe" },
-	email: "john@gmail.com",
-	password: "john@123",
-};
-
-router.get("/", async (request, response) => {
-	// response.send(user);
-	try {
-		const allUsers = await getAllUsers();
-		response.status(200).json(allUsers);
-	} catch (error) {
-		response.status(404).json(error.message);
-	}
-});
+router.get("/", getAllUsers);
+router.post("/", saveUser);
 
 module.exports = router;
