@@ -1,4 +1,4 @@
-const users = require("./db.config");
+const users = require("../config/db.config");
 const database = "conference";
 const collection = "users";
 
