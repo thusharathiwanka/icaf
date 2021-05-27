@@ -107,7 +107,7 @@ const LoginForm = () => {
 					transition={{ type: "tween", duration: 0.8, delay: 0.4 }}
 				>
 					Haven't registered yet ?
-					<Link to="/register" className="register-now">
+					<Link to="/auth/register" className="register-now">
 						Register
 					</Link>
 				</motion.p>

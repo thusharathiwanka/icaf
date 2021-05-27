@@ -9,6 +9,15 @@ const getAllUsers = async (request, response) => {
 	}
 };
 
-const saveUser = async () => {};
+const saveUser = async (request, response) => {
+	const newUser = request.body;
+
+	try {
+		await save(newUser);
+		response.status(201).json(newUser);
+	} catch (error) {
+		response.status(406).json({ message: error.message });
+	}
+};
 
 module.exports = { getAllUsers, saveUser };

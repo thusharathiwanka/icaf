@@ -6,18 +6,17 @@ const getAll = async () => {
 	try {
 		const cursor = await users.db(database).collection(collection).find();
 		return cursor.toArray();
-	} catch {
+	} catch (error) {
 		return error;
 	}
 };
 
 const save = async (newUser) => {
 	try {
-		const cursor = await users.db(database).collection(collection).find();
-		return cursor.toArray();
-	} catch {
+		return await users.db(database).collection(collection).save(newUser);
+	} catch (error) {
 		return error;
 	}
 };
 
-module.exports = { save, getAll };
+module.exports = { getAll, save };
