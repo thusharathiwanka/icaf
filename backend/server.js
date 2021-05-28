@@ -5,6 +5,7 @@ const attendeeRoutes = require("./api/routes/attendee.routes");
 const blogRoutes = require("./api/routes/blog.routes");
 
 const app = express();
+
 // Middleware
 app.use(cors());
 app.use(express.json());
