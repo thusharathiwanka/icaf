@@ -1,5 +1,3 @@
-const { getAll } = require("../services/blog.services");
-
 const getAllBlogs = async (request, response) => {
 	try {
 		const allBlogs = await getAll();
