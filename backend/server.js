@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const attendeeRoutes = require("./api/routes/attendee.routes");
 const blogRoutes = require("./api/routes/blog.routes");
+const researcherRoutes = require("./api/routes/researcher.routes");
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/attendee", attendeeRoutes);
+app.use("/researcher", researcherRoutes);
 app.use("/blog", blogRoutes);
 
 const CONNECTION_URL =
