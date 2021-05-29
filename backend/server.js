@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+
 const attendeeRoutes = require("./api/routes/attendee.routes");
 const researcherRoutes = require("./api/routes/researcher.routes");
 const presenterRoutes = require("./api/routes/presenter.routes");
+const publicationRoutes = require("./api/routes/publication.routes");
 const blogRoutes = require("./api/routes/blog.routes");
 
 const app = express();
@@ -16,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/attendee", attendeeRoutes);
 app.use("/researcher", researcherRoutes);
 app.use("/presenter", presenterRoutes);
+app.use("/publication", publicationRoutes);
 app.use("/blog", blogRoutes);
 
 const CONNECTION_URL =
