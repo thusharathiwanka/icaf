@@ -66,6 +66,40 @@ const getUnpaidPublications = async (request, response) => {
 	}
 };
 
+const payPublications = async (request, response) => {
+	try {
+		const updatedPublication = await Publication.findByIdAndUpdate(
+			request.params.id,
+			{
+				isPaid: true,
+			},
+			{
+				new: true,
+			}
+		);
+		response.status(200).json(updatedPublication);
+	} catch (error) {
+		response.status(404).json({ message: error.message });
+	}
+};
+
+const approvePublications = async (request, response) => {
+	try {
+		const approvedPublication = await Publication.findByIdAndUpdate(
+			request.params.id,
+			{
+				isApproved: true,
+			},
+			{
+				new: true,
+			}
+		);
+		response.status(200).json(approvedPublication);
+	} catch (error) {
+		response.status(404).json({ message: error.message });
+	}
+};
+
 module.exports = {
 	getAllPublications,
 	savePublication,
@@ -73,4 +107,6 @@ module.exports = {
 	getRejectedPublications,
 	getPaidPublications,
 	getUnpaidPublications,
+	payPublications,
+	approvePublications,
 };

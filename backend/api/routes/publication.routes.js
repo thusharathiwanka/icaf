@@ -1,5 +1,5 @@
 const express = require("express");
-const route = express.Router();
+const router = express.Router();
 const {
 	getAllPublications,
 	savePublication,
@@ -7,13 +7,17 @@ const {
 	getRejectedPublications,
 	getPaidPublications,
 	getUnpaidPublications,
+	payPublications,
+	approvePublications,
 } = require("../controllers/publication.controller");
 
-route.get("/", getAllPublications);
-route.post("/create", savePublication);
-route.get("/approved", getApprovedPublications);
-route.get("/rejected", getRejectedPublications);
-route.get("/paid", getPaidPublications);
-route.get("/unpaid", getUnpaidPublications);
+router.get("/", getAllPublications);
+router.post("/create", savePublication);
+router.get("/approved", getApprovedPublications);
+router.get("/rejected", getRejectedPublications);
+router.get("/paid", getPaidPublications);
+router.get("/unpaid", getUnpaidPublications);
+router.patch("/pay/:id", payPublications);
+router.patch("/approve/:id", approvePublications);
 
-module.exports = route;
+module.exports = router;
