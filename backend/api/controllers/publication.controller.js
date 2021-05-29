@@ -1,4 +1,3 @@
-const { response } = require("express");
 const Publication = require("../models/publication.model");
 
 const getAllPublications = async (request, response) => {
@@ -19,6 +18,8 @@ const savePublication = async (request, response) => {
 		} catch (error) {
 			response.status(406).json({ message: error.message });
 		}
+	} else {
+		response.status(406).json({ message: "request body is empty" });
 	}
 };
 
@@ -67,36 +68,44 @@ const getUnpaidPublications = async (request, response) => {
 };
 
 const payPublications = async (request, response) => {
-	try {
-		const updatedPublication = await Publication.findByIdAndUpdate(
-			request.params.id,
-			{
-				isPaid: true,
-			},
-			{
-				new: true,
-			}
-		);
-		response.status(200).json(updatedPublication);
-	} catch (error) {
-		response.status(404).json({ message: error.message });
+	if (request.params.id) {
+		try {
+			const updatedPublication = await Publication.findByIdAndUpdate(
+				request.params.id,
+				{
+					isPaid: true,
+				},
+				{
+					new: true,
+				}
+			);
+			response.status(200).json(updatedPublication);
+		} catch (error) {
+			response.status(404).json({ message: error.message });
+		}
+	} else {
+		response.status(406).json({ message: "request parameters are empty" });
 	}
 };
 
 const approvePublications = async (request, response) => {
-	try {
-		const approvedPublication = await Publication.findByIdAndUpdate(
-			request.params.id,
-			{
-				isApproved: true,
-			},
-			{
-				new: true,
-			}
-		);
-		response.status(200).json(approvedPublication);
-	} catch (error) {
-		response.status(404).json({ message: error.message });
+	if (request.params.id) {
+		try {
+			const approvedPublication = await Publication.findByIdAndUpdate(
+				request.params.id,
+				{
+					isApproved: true,
+				},
+				{
+					new: true,
+				}
+			);
+			response.status(200).json(approvedPublication);
+		} catch (error) {
+			response.status(404).json({ message: error.message });
+		}
+	} else {
+		response.status(406).json({ message: "request parameters are empty" });
 	}
 };
 
