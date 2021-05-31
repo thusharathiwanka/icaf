@@ -1,13 +1,13 @@
 {
 	"name": "icaf-frontend",
 	"version": "1.0.0",
-	"description": "",
+	"description": "af",
 	"main": "index.js",
 	"scripts": {
 		"start": "parcel index.html"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "jaysith",
 	"license": "ISC",
 	"devDependencies": {
 		"@parcel/transformer-image": "^2.0.0-beta.3.1",
