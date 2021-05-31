@@ -26,7 +26,7 @@ const savePublication = async (request, response) => {
 const getApprovedPublications = async (request, response) => {
 	try {
 		const allApprovedPublications = await Publication.find({
-			isApproved: true,
+			isApproved: "approved",
 		});
 		response.status(200).json(allApprovedPublications);
 	} catch (error) {
@@ -37,7 +37,7 @@ const getApprovedPublications = async (request, response) => {
 const getRejectedPublications = async (request, response) => {
 	try {
 		const allRejectedPublications = await Publication.find({
-			isApproved: false,
+			isApproved: "rejected",
 		});
 		response.status(200).json(allRejectedPublications);
 	} catch (error) {
@@ -94,7 +94,28 @@ const approvePublications = async (request, response) => {
 			const approvedPublication = await Publication.findByIdAndUpdate(
 				request.params.id,
 				{
-					isApproved: true,
+					isApproved: "approved",
+				},
+				{
+					new: true,
+				}
+			);
+			response.status(200).json(approvedPublication);
+		} catch (error) {
+			response.status(404).json({ message: error.message });
+		}
+	} else {
+		response.status(406).json({ message: "request parameters are empty" });
+	}
+};
+
+const rejectPublications = async (request, response) => {
+	if (request.params.id) {
+		try {
+			const rejectPublication = await Publication.findByIdAndUpdate(
+				request.params.id,
+				{
+					isApproved: "rejected",
 				},
 				{
 					new: true,
@@ -118,4 +139,5 @@ module.exports = {
 	getUnpaidPublications,
 	payPublications,
 	approvePublications,
+	rejectPublications,
 };

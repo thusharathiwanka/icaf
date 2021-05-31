@@ -26,7 +26,7 @@ const saveWorkshop = async (request, response) => {
 const getApprovedWorkshops = async (request, response) => {
 	try {
 		const allApprovedWorkshops = await Workshop.find({
-			isApproved: true,
+			isApproved: "approved",
 		});
 		response.status(200).json(allApprovedWorkshops);
 	} catch (error) {
@@ -37,7 +37,7 @@ const getApprovedWorkshops = async (request, response) => {
 const getRejectedWorkshops = async (request, response) => {
 	try {
 		const allRejectedWorkshops = await Workshop.find({
-			isApproved: false,
+			isApproved: "rejected",
 		});
 		response.status(200).json(allRejectedWorkshops);
 	} catch (error) {
