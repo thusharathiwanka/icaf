@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const supertest = require('supertest')
 
 const attendeeRoutes = require("./api/routes/attendee.routes");
 const researcherRoutes = require("./api/routes/researcher.routes");
@@ -9,6 +10,7 @@ const publicationRoutes = require("./api/routes/publication.routes");
 const blogRoutes = require("./api/routes/blog.routes");
 
 const app = express();
+
 
 // Middleware
 app.use(cors());
