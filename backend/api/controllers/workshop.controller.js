@@ -45,9 +45,67 @@ const getRejectedWorkshops = async (request, response) => {
 	}
 };
 
+const approveWorkshops = async (request, response) => {
+	if (request.params.id) {
+		try {
+			const approvedWorkshop = await Workshop.findByIdAndUpdate(
+				request.params.id,
+				{
+					isApproved: "approved",
+				},
+				{
+					new: true,
+				}
+			);
+			response.status(200).json(approvedWorkshop);
+		} catch (error) {
+			response.status(404).json({ message: error.message });
+		}
+	} else {
+		response.status(406).json({ message: "request parameters are empty" });
+	}
+};
+
+const rejectWorkshops = async (request, response) => {
+	if (request.params.id) {
+		try {
+			const rejectedWorkshop = await Workshop.findByIdAndUpdate(
+				request.params.id,
+				{
+					isApproved: "rejected",
+				},
+				{
+					new: true,
+				}
+			);
+			response.status(200).json(rejectedWorkshop);
+		} catch (error) {
+			response.status(404).json({ message: error.message });
+		}
+	} else {
+		response.status(406).json({ message: "request parameters are empty" });
+	}
+};
+
+const getWorkshopsByPresenter = async (request, response) => {
+	if (request.params.id) {
+		try {
+			const workshopsByPresenter = await Workshop.findById(request.params.id);
+			response.status(200).json(workshopsByPresenter);
+		} catch (error) {
+			response.status(404).json({ message: error.message });
+		}
+	} else {
+		response.status(406).json({ message: "request parameters are empty" });
+	}
+};
+
 module.exports = {
 	getAllWorkshops,
 	saveWorkshop,
 	getApprovedWorkshops,
 	getRejectedWorkshops,
+	approveWorkshops,
+	rejectWorkshops,
+	getWorkshopsByPresenter,
 };

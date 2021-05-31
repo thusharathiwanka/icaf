@@ -9,6 +9,7 @@ const {
 	getUnpaidPublications,
 	payPublications,
 	approvePublications,
+	rejectPublications,
 } = require("../controllers/publication.controller");
 
 router.get("/", getAllPublications);
@@ -19,5 +20,6 @@ router.get("/paid", getPaidPublications);
 router.get("/unpaid", getUnpaidPublications);
 router.patch("/pay/:id", payPublications);
 router.patch("/approve/:id", approvePublications);
+router.patch("/reject/:id", rejectPublications);
 
 module.exports = router;

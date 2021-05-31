@@ -112,7 +112,7 @@ const approvePublications = async (request, response) => {
 const rejectPublications = async (request, response) => {
 	if (request.params.id) {
 		try {
-			const rejectPublication = await Publication.findByIdAndUpdate(
+			const rejectedPublication = await Publication.findByIdAndUpdate(
 				request.params.id,
 				{
 					isApproved: "rejected",
@@ -121,7 +121,7 @@ const rejectPublications = async (request, response) => {
 					new: true,
 				}
 			);
-			response.status(200).json(approvedPublication);
+			response.status(200).json(rejectedPublication);
 		} catch (error) {
 			response.status(404).json({ message: error.message });
 		}
