@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const WorkshopSchema = new mongoose.Schema({
 	topic: { type: String, required: true, trim: true },
-	dueDate: { type: Date, required: true, trim: true },
+	dueDate: { type: Date, required: true },
 	conductor: {
 		type: mongoose.Schema.Types.ObjectId,
 		required: true,
@@ -10,7 +10,7 @@ const WorkshopSchema = new mongoose.Schema({
 		ref: "presenter",
 	},
 	src: { type: String, required: true, trim: true },
-	createdAt: { type: Date, required: true, trim: true, default: Date.now() },
+	createdAt: { type: Date, required: true, default: Date.now() },
 	isApproved: { type: String, required: true, trim: true, default: "pending" },
 });
 

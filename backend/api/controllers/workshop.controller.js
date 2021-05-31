@@ -24,10 +24,13 @@ const saveWorkshop = async (request, response) => {
 };
 
 const getApprovedWorkshops = async (request, response) => {
+	console.log("CALLED");
 	try {
 		const allApprovedWorkshops = await Workshop.find({
 			isApproved: "approved",
 		});
+		console.log("CALLED");
+		console.log(allApprovedWorkshops);
 		response.status(200).json(allApprovedWorkshops);
 	} catch (error) {
 		response.status(404).json({ message: error.message });
@@ -90,7 +93,9 @@ const rejectWorkshops = async (request, response) => {
 const getWorkshopsByPresenter = async (request, response) => {
 	if (request.params.id) {
 		try {
-			const workshopsByPresenter = await Workshop.findById(request.params.id);
+			const workshopsByPresenter = await Workshop.find({
+				conductor: request.params.id,
+			});
 			response.status(200).json(workshopsByPresenter);
 		} catch (error) {
 			response.status(404).json({ message: error.message });
