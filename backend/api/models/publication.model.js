@@ -8,8 +8,10 @@ const PublicationSchema = new mongoose.Schema({
 		required: true,
 		ref: "researchers",
 	},
-	isApproved: { type: Boolean, required: true },
-	isPaid: { type: Boolean, required: true },
+	src: { type: String, required: true, trim: true },
+	createdAt: { type: Date, required: true, default: Date.now() },
+	isApproved: { type: Boolean, required: true, default: false },
+	isPaid: { type: Boolean, required: true, default: false },
 });
 
 const Publication = mongoose.model("publications", PublicationSchema);
