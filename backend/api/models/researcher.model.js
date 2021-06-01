@@ -14,6 +14,6 @@ const ResearcherSchema = new mongoose.Schema({
 	interest: { type: String, required: true, trim: true },
 });
 
-const Researcher = mongoose.model("researcher", ResearcherSchema);
+const Researcher = mongoose.model("researchers", ResearcherSchema);
 
 module.exports = Researcher;

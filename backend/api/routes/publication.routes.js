@@ -5,6 +5,7 @@ const {
 	savePublication,
 	getApprovedPublications,
 	getRejectedPublications,
+	getPendingPublications,
 	getPaidPublications,
 	getUnpaidPublications,
 	payPublications,
@@ -16,6 +17,7 @@ router.get("/", getAllPublications);
 router.post("/create", savePublication);
 router.get("/approved", getApprovedPublications);
 router.get("/rejected", getRejectedPublications);
+router.get("/pending", getPendingPublications);
 router.get("/paid", getPaidPublications);
 router.get("/unpaid", getUnpaidPublications);
 router.patch("/pay/:id", payPublications);

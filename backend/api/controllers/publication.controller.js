@@ -2,7 +2,10 @@ const Publication = require("../models/publication.model");
 
 const getAllPublications = async (request, response) => {
 	try {
-		const allPublications = await Publication.find();
+		const allPublications = await Publication.find().populate(
+			"createdBy",
+			"firstName lastName"
+		);
 		response.status(200).json(allPublications);
 	} catch (error) {
 		response.status(404).json({ message: error.message });
@@ -27,7 +30,7 @@ const getApprovedPublications = async (request, response) => {
 	try {
 		const allApprovedPublications = await Publication.find({
 			isApproved: "approved",
-		});
+		}).populate("createdBy", "firstName lastName");
 		response.status(200).json(allApprovedPublications);
 	} catch (error) {
 		response.status(404).json({ message: error.message });
@@ -38,8 +41,19 @@ const getRejectedPublications = async (request, response) => {
 	try {
 		const allRejectedPublications = await Publication.find({
 			isApproved: "rejected",
-		});
+		}).populate("createdBy", "firstName lastName");
 		response.status(200).json(allRejectedPublications);
+	} catch (error) {
+		response.status(404).json({ message: error.message });
+	}
+};
+
+const getPendingPublications = async (request, response) => {
+	try {
+		const allPendingPublications = await Publication.find({
+			isApproved: "pending",
+		}).populate("createdBy", "firstName lastName");
+		response.status(200).json(allPendingPublications);
 	} catch (error) {
 		response.status(404).json({ message: error.message });
 	}
@@ -49,7 +63,7 @@ const getPaidPublications = async (request, response) => {
 	try {
 		const allPaidPublications = await Publication.find({
 			isPaid: true,
-		});
+		}).populate("createdBy", "firstName lastName");
 		response.status(200).json(allPaidPublications);
 	} catch (error) {
 		response.status(404).json({ message: error.message });
@@ -60,7 +74,7 @@ const getUnpaidPublications = async (request, response) => {
 	try {
 		const allUnpaidPublications = await Publication.find({
 			isPaid: false,
-		});
+		}).populate("createdBy", "firstName lastName");
 		response.status(200).json(allUnpaidPublications);
 	} catch (error) {
 		response.status(404).json({ message: error.message });
@@ -135,6 +149,7 @@ module.exports = {
 	savePublication,
 	getApprovedPublications,
 	getRejectedPublications,
+	getPendingPublications,
 	getPaidPublications,
 	getUnpaidPublications,
 	payPublications,
