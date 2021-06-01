@@ -7,7 +7,7 @@ const WorkshopSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		required: true,
 		trim: true,
-		ref: "presenter",
+		ref: "presenters",
 	},
 	src: { type: String, required: true, trim: true },
 	createdAt: { type: Date, required: true, default: Date.now() },

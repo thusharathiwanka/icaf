@@ -2,7 +2,10 @@ const Workshop = require("../models/workshop.model");
 
 const getAllWorkshops = async (request, response) => {
 	try {
-		const allWorkshops = await Workshop.find();
+		const allWorkshops = await Workshop.find().populate(
+			"conductor",
+			"firstName lastName"
+		);
 		response.status(200).json(allWorkshops);
 	} catch (error) {
 		response.status(404), json({ message: error.message });
@@ -24,16 +27,13 @@ const saveWorkshop = async (request, response) => {
 };
 
 const getApprovedWorkshops = async (request, response) => {
-	console.log("CALLED");
 	try {
 		const allApprovedWorkshops = await Workshop.find({
 			isApproved: "approved",
-		});
-		console.log("CALLED");
-		console.log(allApprovedWorkshops);
+		}).populate("conductor", "firstName lastName");
 		response.status(200).json(allApprovedWorkshops);
 	} catch (error) {
-		response.status(404).json({ message: error.message });
+		response.status(406).json({ message: error.message });
 	}
 };
 
@@ -41,8 +41,19 @@ const getRejectedWorkshops = async (request, response) => {
 	try {
 		const allRejectedWorkshops = await Workshop.find({
 			isApproved: "rejected",
-		});
+		}).populate("conductor", "firstName lastName");
 		response.status(200).json(allRejectedWorkshops);
+	} catch (error) {
+		response.status(404).json({ message: error.message });
+	}
+};
+
+const getPendingWorkshops = async (request, response) => {
+	try {
+		const allPendingWorkshops = await Workshop.find({
+			isApproved: "pending",
+		}).populate("conductor", "firstName lastName");
+		response.status(200).json(allPendingWorkshops);
 	} catch (error) {
 		response.status(404).json({ message: error.message });
 	}
@@ -112,5 +123,6 @@ module.exports = {
 	getRejectedWorkshops,
 	approveWorkshops,
 	rejectWorkshops,
+	getPendingWorkshops,
 	getWorkshopsByPresenter,
 };

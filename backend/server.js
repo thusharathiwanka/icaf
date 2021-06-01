@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const supertest = require("supertest");
 
 const attendeeRoutes = require("./api/routes/attendee.routes");
 const researcherRoutes = require("./api/routes/researcher.routes");

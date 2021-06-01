@@ -5,18 +5,18 @@ const {
 	saveWorkshop,
 	getApprovedWorkshops,
 	getRejectedWorkshops,
+	getPendingWorkshops,
 	getWorkshopsByPresenter,
 	approveWorkshops,
 	rejectWorkshops,
 } = require("../controllers/workshop.controller");
 
-router.post("/create", saveWorkshop);
-
 router.get("/", getAllWorkshops);
-router.get("/:id", getWorkshopsByPresenter);
+router.post("/create", saveWorkshop);
 router.get("/approved", getApprovedWorkshops);
 router.get("/rejected", getRejectedWorkshops);
-
+router.get("/pending", getPendingWorkshops);
+router.get("/:id", getWorkshopsByPresenter);
 router.patch("/approve/:id", approveWorkshops);
 router.patch("/reject/:id", rejectWorkshops);
 
