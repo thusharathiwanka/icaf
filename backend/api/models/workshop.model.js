@@ -1,18 +1,19 @@
 const mongoose = require("mongoose");
 
-const workshopSchema = new mongoose.Schema({
+const WorkshopSchema = new mongoose.Schema({
 	topic: { type: String, required: true, trim: true },
-	dueDate: { type: Date, required: true, trim: true },
+	dueDate: { type: Date, required: true },
 	conductor: {
 		type: mongoose.Schema.Types.ObjectId,
 		required: true,
 		trim: true,
+		ref: "presenters",
 	},
 	src: { type: String, required: true, trim: true },
-	createdAt: { type: Date, required: true, trim: true, default: Date.now() },
-	isApproved: { type: Boolean, required: true, trim: true, default: false },
+	createdAt: { type: Date, required: true, default: Date.now() },
+	isApproved: { type: String, required: true, trim: true, default: "pending" },
 });
 
-const Workshop = mongoose.model("workshops", workshopSchema);
+const Workshop = mongoose.model("workshops", WorkshopSchema);
 
 module.exports = Workshop;

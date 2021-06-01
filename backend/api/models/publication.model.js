@@ -6,11 +6,12 @@ const PublicationSchema = new mongoose.Schema({
 	createdBy: {
 		type: mongoose.Schema.Types.ObjectId,
 		required: true,
+		trim: true,
 		ref: "researchers",
 	},
 	src: { type: String, required: true, trim: true },
 	createdAt: { type: Date, required: true, default: Date.now() },
-	isApproved: { type: Boolean, required: true, default: false },
+	isApproved: { type: String, required: true, default: "pending" },
 	isPaid: { type: Boolean, required: true, default: false },
 });
 
