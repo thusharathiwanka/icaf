@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const dotenv = require("dotenv").config();
 
 const attendeeRoutes = require("./api/routes/attendee.routes");
 const researcherRoutes = require("./api/routes/researcher.routes");
@@ -23,12 +24,10 @@ app.use("/publication", publicationRoutes);
 app.use("/workshop", workshopRoutes);
 app.use("/blog", blogRoutes);
 
-const CONNECTION_URL =
-	"mongodb+srv://admin:admin@123@cluster0.jwjjo.azure.mongodb.net/conference?retryWrites=true&w=majority";
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 mongoose
-	.connect(CONNECTION_URL, {
+	.connect(process.env.CONNECTION_URL, {
 		useCreateIndex: true,
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
