@@ -5,6 +5,11 @@
 	flex-direction: column;
 }
 
+.register-content .button-container {
+	width: 100%;
+	text-align: center;
+}
+
 .name-info {
 	display: flex;
 	flex-wrap: wrap;
@@ -23,10 +28,20 @@
 .first-name,
 .last-name {
 	text-align: left;
+	width: 40%;
 }
 
 #no-left-padding {
 	padding-left: 0;
+}
+
+.transparent {
+	background: white;
+	color: black;
+	border: 1px solid var(--secondary-accent-color);
+	padding-top: 0.9rem;
+	padding-bottom: 1rem;
+	margin-right: 2rem;
 }
 
 @media screen and (max-width: 870px) {

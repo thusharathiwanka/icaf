@@ -7,6 +7,7 @@ export const RegisterDataContext = createContext();
 const RegisterFormContext = () => {
 	const [currentStep, setCurrentStep] = useState(1);
 	const [userData, setUserData] = useState({});
+	const [userType, setUserType] = useState("");
 	const [finalUserData, setFinalUserData] = useState({});
 
 	return (
@@ -17,6 +18,8 @@ const RegisterFormContext = () => {
 					setCurrentStep,
 					userData,
 					setUserData,
+					userType,
+					setUserType,
 					finalUserData,
 					setFinalUserData,
 				}}

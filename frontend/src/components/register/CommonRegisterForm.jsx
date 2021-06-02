@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+import { RegisterDataContext } from "../../context/RegisterFormContext";
+
 const RegisterForm = () => {
+	const { setCurrentStep, userData, setUserData, setUserType } =
+		useContext(RegisterDataContext);
+	const [tempUserType, setTempUserType] = useState("");
+
 	return (
 		<div className="register-content">
 			<h1>Register</h1>
@@ -42,7 +48,7 @@ const RegisterForm = () => {
 					</div>
 					<label htmlFor="username">Username</label>
 					<input
-						type="username"
+						type="text"
 						name="username"
 						id="username"
 						required
@@ -71,6 +77,7 @@ const RegisterForm = () => {
 							id="researcher"
 							value="researcher"
 							required
+							onChange={() => setTempUserType("researcher")}
 						/>
 						<label htmlFor="researcher">Researcher</label>
 					</div>
@@ -81,6 +88,7 @@ const RegisterForm = () => {
 							id="presenter"
 							value="presenter"
 							required
+							onChange={() => setTempUserType("presenter")}
 						/>
 						<label htmlFor="presenter">Presenter</label>
 					</div>
@@ -91,6 +99,7 @@ const RegisterForm = () => {
 							id="attendee"
 							value="attendee"
 							required
+							onChange={() => setTempUserType("attendee")}
 						/>
 						<label htmlFor="attendee">Attendee</label>
 					</div>
@@ -111,6 +120,11 @@ const RegisterForm = () => {
 					initial={{ y: 10, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
+					onClick={() => {
+						setCurrentStep(2);
+						setUserType(tempUserType);
+						console.log(tempUserType);
+					}}
 				>
 					Next
 				</motion.button>
