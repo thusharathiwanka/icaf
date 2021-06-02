@@ -1,10 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const PresenterForm = ({ title }) => {
 	const { setCurrentStep, userData, setUserData } =
 		useContext(RegisterDataContext);
+	const allowedTypes = [
+		"application/pdf",
+		"application/x-zip-compressed",
+		"application/vnd.openxmlformats-officedocument.presentationml.presentation",
+		"application/vnd.ms-powerpoint",
+	];
+	const [file, setFile] = useState(null);
+	const [error, setError] = useState(null);
+
+	const uploadHandler = (e) => {
+		const selectedFile = e.target.files[0];
+		console.log(selectedFile);
+
+		if (selectedFile && allowedTypes.includes(selectedFile.type)) {
+			setFile(selectedFile);
+			setError("");
+		} else {
+			setFile(null);
+			setError(
+				"Select valid type. (only pdf, presentation and zip files are allowed)"
+			);
+		}
+	};
+
 	return (
 		<div className="register-content">
 			<h1>{title} Registration</h1>
@@ -61,17 +85,19 @@ const PresenterForm = ({ title }) => {
 						</div>
 					</div>
 					<div className="last-name">
-						<label htmlFor="department">Upload your content (pdf or zip)</label>
+						<label htmlFor="department">Upload your materials</label>
 						<input
 							type="file"
-							accept=".pdf, .zip, .rar"
+							accept=".pdf, .zip, .rar, .ppt, .pptx"
 							name="department"
 							id="department"
 							required
 							autoComplete="off"
 							maxLength="3"
+							onChange={uploadHandler}
 						/>
 					</div>
+					<div>{error && <div className="error">{error}</div>}</div>
 				</motion.div>
 				<div className="button-container">
 					<motion.button

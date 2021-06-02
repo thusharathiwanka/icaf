@@ -44,6 +44,13 @@
 	margin-right: 2rem;
 }
 
+.error {
+	padding-top: 0.5rem;
+	font-weight: 500;
+	font-size: 0.9rem;
+	color: crimson;
+}
+
 @media screen and (max-width: 870px) {
 	.first-name,
 	.last-name {

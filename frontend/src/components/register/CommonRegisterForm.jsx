@@ -120,7 +120,6 @@ const RegisterForm = () => {
 							defaultChecked={userData.userType === "attendee" && true}
 							onChange={() => setTempUserType("attendee")}
 						/>
-						{console.log(userData)}
 						<label htmlFor="attendee">Attendee</label>
 					</div>
 				</motion.div>
@@ -148,7 +147,6 @@ const RegisterForm = () => {
 					Next
 				</motion.button>
 			</motion.form>
-			{console.log(tempUserType)}
 		</div>
 	);
 };
