@@ -8,8 +8,10 @@ const Loading = ({ file, setFile }) => {
 	const { url, progress } = useStorage(file);
 
 	useEffect(() => {
-		setFile(null);
-	}, [url]);
+		if (url) {
+			setFile(null);
+		}
+	}, [url, setFile]);
 
 	return (
 		<div className="loading-container">
