@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
+
 import { RegisterDataContext } from "../../context/RegisterFormContext";
+import Loading from "../../helpers/Loading";
 
 const PresenterForm = ({ title }) => {
-	const { setCurrentStep, userData, setUserData } =
-		useContext(RegisterDataContext);
+	const { setCurrentStep } = useContext(RegisterDataContext);
 	const allowedTypes = [
 		"application/pdf",
 		"application/x-zip-compressed",
@@ -14,9 +15,8 @@ const PresenterForm = ({ title }) => {
 	const [file, setFile] = useState(null);
 	const [error, setError] = useState(null);
 
-	const uploadHandler = (e) => {
+	const fileChangeHandler = (e) => {
 		const selectedFile = e.target.files[0];
-		console.log(selectedFile);
 
 		if (selectedFile && allowedTypes.includes(selectedFile.type)) {
 			setFile(selectedFile);
@@ -28,9 +28,9 @@ const PresenterForm = ({ title }) => {
 			);
 		}
 	};
-
 	return (
 		<div className="register-content">
+			{file && <Loading file={file} setFile={setFile} />}
 			<h1>{title} Registration</h1>
 			<motion.form
 				className="login-form"
@@ -94,7 +94,7 @@ const PresenterForm = ({ title }) => {
 							required
 							autoComplete="off"
 							maxLength="3"
-							onChange={uploadHandler}
+							onChange={fileChangeHandler}
 						/>
 					</div>
 					<div>{error && <div className="error">{error}</div>}</div>
