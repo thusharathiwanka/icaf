@@ -10,7 +10,7 @@ const RegisterForm = () => {
 		useContext(RegisterDataContext);
 
 	const changeForms = (currentStep, userType) => {
-		if (!userType) {
+		if (!userType || currentStep === 1) {
 			return <CommonRegisterForm />;
 		} else {
 			if (currentStep === 2 && userType === "attendee") {

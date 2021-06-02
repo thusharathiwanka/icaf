@@ -33,6 +33,10 @@ const RegisterForm = () => {
 								id="first-name"
 								required
 								autoComplete="off"
+								value={userData.firstName}
+								onChange={(e) =>
+									setUserData({ ...userData, firstName: e.target.value })
+								}
 							/>
 						</div>
 						<div className="last-name">
@@ -43,6 +47,10 @@ const RegisterForm = () => {
 								id="last-name"
 								required
 								autoComplete="off"
+								value={userData.lastName}
+								onChange={(e) =>
+									setUserData({ ...userData, lastName: e.target.value })
+								}
 							/>
 						</div>
 					</div>
@@ -53,6 +61,10 @@ const RegisterForm = () => {
 						id="username"
 						required
 						autoComplete="off"
+						value={userData.username}
+						onChange={(e) =>
+							setUserData({ ...userData, username: e.target.value })
+						}
 					/>
 					<label htmlFor="password">Password</label>
 					<input
@@ -61,6 +73,10 @@ const RegisterForm = () => {
 						id="password"
 						required
 						autoComplete="off"
+						value={userData.password}
+						onChange={(e) =>
+							setUserData({ ...userData, password: e.target.value })
+						}
 					/>
 				</motion.div>
 				<motion.div
@@ -77,6 +93,7 @@ const RegisterForm = () => {
 							id="researcher"
 							value="researcher"
 							required
+							defaultChecked={userData.userType === "researcher" && true}
 							onChange={() => setTempUserType("researcher")}
 						/>
 						<label htmlFor="researcher">Researcher</label>
@@ -88,6 +105,7 @@ const RegisterForm = () => {
 							id="presenter"
 							value="presenter"
 							required
+							defaultChecked={userData.userType === "presenter" && true}
 							onChange={() => setTempUserType("presenter")}
 						/>
 						<label htmlFor="presenter">Presenter</label>
@@ -99,8 +117,10 @@ const RegisterForm = () => {
 							id="attendee"
 							value="attendee"
 							required
+							defaultChecked={userData.userType === "attendee" && true}
 							onChange={() => setTempUserType("attendee")}
 						/>
+						{console.log(userData)}
 						<label htmlFor="attendee">Attendee</label>
 					</div>
 				</motion.div>
@@ -115,20 +135,20 @@ const RegisterForm = () => {
 					</Link>
 				</motion.p>
 				<motion.button
-					type="submit"
 					className="gradient-cta"
 					initial={{ y: 10, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
 					onClick={() => {
-						setCurrentStep(2);
+						setUserData({ ...userData, userType: tempUserType });
 						setUserType(tempUserType);
-						console.log(tempUserType);
+						setCurrentStep(2);
 					}}
 				>
 					Next
 				</motion.button>
 			</motion.form>
+			{console.log(tempUserType)}
 		</div>
 	);
 };

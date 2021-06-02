@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
+import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const PresenterForm = ({ title }) => {
+	const { setCurrentStep, userData, setUserData } =
+		useContext(RegisterDataContext);
 	return (
 		<div className="register-content">
 			<h1>{title} Registration</h1>
@@ -78,6 +81,7 @@ const PresenterForm = ({ title }) => {
 						initial={{ x: 10, opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
+						onClick={() => setCurrentStep(1)}
 					>
 						Back
 					</motion.button>

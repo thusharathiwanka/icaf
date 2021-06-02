@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 
+import { RegisterDataContext } from "../../context/RegisterFormContext";
+
 const AttendeeForm = () => {
+	const { setCurrentStep, setUserData, userData } =
+		useContext(RegisterDataContext);
+
 	return (
 		<div className="register-content">
 			<h1>Attendee Registration</h1>
@@ -24,6 +29,10 @@ const AttendeeForm = () => {
 						id="email"
 						required
 						autoComplete="off"
+						value={userData.email}
+						onChange={(e) =>
+							setUserData({ ...userData, email: e.target.value })
+						}
 					/>
 					<label htmlFor="mobile-number">Contact Number</label>
 					<input
@@ -33,6 +42,10 @@ const AttendeeForm = () => {
 						required
 						maxLength="10"
 						autoComplete="off"
+						value={userData.contactNumber}
+						onChange={(e) =>
+							setUserData({ ...userData, contactNumber: e.target.value })
+						}
 					/>
 					<div className="name-info">
 						<div className="first-name">
@@ -43,6 +56,10 @@ const AttendeeForm = () => {
 								id="card-number"
 								required
 								autoComplete="off"
+								value={userData.cardNumber}
+								onChange={(e) =>
+									setUserData({ ...userData, cardNumber: e.target.value })
+								}
 							/>
 						</div>
 						<div className="last-name">
@@ -54,6 +71,10 @@ const AttendeeForm = () => {
 								required
 								autoComplete="off"
 								maxLength="3"
+								value={userData.cvc}
+								onChange={(e) =>
+									setUserData({ ...userData, cvc: e.target.value })
+								}
 							/>
 						</div>
 					</div>
@@ -67,6 +88,10 @@ const AttendeeForm = () => {
 								required
 								autoComplete="off"
 								placeholder="12-2024"
+								value={userData.expireDate}
+								onChange={(e) =>
+									setUserData({ ...userData, expireDate: e.target.value })
+								}
 							/>
 						</div>
 						<div className="last-name">
@@ -80,6 +105,7 @@ const AttendeeForm = () => {
 								maxLength="3"
 								value="Rs. 1000"
 								disabled
+								onChange={(e) => setUserData({ ...userData, amount: 1000 })}
 							/>
 						</div>
 					</div>
@@ -90,6 +116,7 @@ const AttendeeForm = () => {
 						initial={{ x: 10, opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
+						onClick={() => setCurrentStep(1)}
 					>
 						Back
 					</motion.button>
