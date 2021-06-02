@@ -6,8 +6,7 @@ import ResearcherPresenterForm from "./ResearcherPresenterForm";
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const RegisterForm = () => {
-	const { currentStep, finalUserData, userType } =
-		useContext(RegisterDataContext);
+	const { currentStep, userType } = useContext(RegisterDataContext);
 
 	const changeForms = (currentStep, userType) => {
 		if (!userType || currentStep === 1) {

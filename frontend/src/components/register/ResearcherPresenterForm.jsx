@@ -5,7 +5,8 @@ import { RegisterDataContext } from "../../context/RegisterFormContext";
 import Loading from "../../helpers/Loading";
 
 const PresenterForm = ({ title }) => {
-	const { setCurrentStep } = useContext(RegisterDataContext);
+	const { setCurrentStep, material, setMaterial } =
+		useContext(RegisterDataContext);
 	const allowedTypes = [
 		"application/pdf",
 		"application/x-zip-compressed",
@@ -84,19 +85,36 @@ const PresenterForm = ({ title }) => {
 							/>
 						</div>
 					</div>
-					<div className="last-name">
-						<label htmlFor="department">Upload your materials</label>
-						<input
-							type="file"
-							accept=".pdf, .zip, .rar, .ppt, .pptx"
-							name="department"
-							id="department"
-							required
-							autoComplete="off"
-							maxLength="3"
-							onChange={fileChangeHandler}
-						/>
+					<div className="name-info">
+						<div className="first-name">
+							<label htmlFor="topic">Your Topic</label>
+							<input
+								type="text"
+								name="topic"
+								id="topic"
+								required
+								autoComplete="off"
+								value={material.topic}
+								onChange={(e) =>
+									setMaterial({ ...material, topic: e.target.value })
+								}
+							/>
+						</div>
+						<div className="last-name">
+							<label htmlFor="department">Upload your materials</label>
+							<input
+								type="file"
+								accept=".pdf, .zip, .rar, .ppt, .pptx"
+								name="department"
+								id="department"
+								required
+								autoComplete="off"
+								maxLength="3"
+								onChange={fileChangeHandler}
+							/>
+						</div>
 					</div>
+
 					<div>{error && <div className="error">{error}</div>}</div>
 				</motion.div>
 				<div className="button-container">

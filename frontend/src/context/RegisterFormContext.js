@@ -8,7 +8,7 @@ const RegisterFormContext = () => {
 	const [currentStep, setCurrentStep] = useState(1);
 	const [userData, setUserData] = useState({});
 	const [userType, setUserType] = useState("");
-	const [finalUserData, setFinalUserData] = useState({});
+	const [material, setMaterial] = useState({});
 
 	return (
 		<div>
@@ -20,8 +20,8 @@ const RegisterFormContext = () => {
 					setUserData,
 					userType,
 					setUserType,
-					finalUserData,
-					setFinalUserData,
+					material,
+					setMaterial,
 				}}
 			>
 				<RegisterFrom />
