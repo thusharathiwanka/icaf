@@ -6,9 +6,11 @@
 	align-items: center;
 }
 
-.login-content h1 {
+.login-content h1,
+.register-content h1 {
 	font-size: var(--title-font-size);
 	padding-bottom: 3rem;
+	margin-top: -0.5rem;
 }
 
 .login-form {
