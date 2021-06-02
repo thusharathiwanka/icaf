@@ -28,7 +28,7 @@
 .first-name,
 .last-name {
 	text-align: left;
-	width: 40%;
+	width: 20rem;
 }
 
 #no-left-padding {

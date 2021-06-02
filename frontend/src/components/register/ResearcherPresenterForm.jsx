@@ -59,20 +59,18 @@ const PresenterForm = ({ title }) => {
 								maxLength="3"
 							/>
 						</div>
-						<div className="last-name">
-							<label htmlFor="department">
-								Upload your content (pdf or zip files)
-							</label>
-							<input
-								type="file"
-								accept=".pdf, .zip, .rar"
-								name="department"
-								id="department"
-								required
-								autoComplete="off"
-								maxLength="3"
-							/>
-						</div>
+					</div>
+					<div className="last-name">
+						<label htmlFor="department">Upload your content (pdf or zip)</label>
+						<input
+							type="file"
+							accept=".pdf, .zip, .rar"
+							name="department"
+							id="department"
+							required
+							autoComplete="off"
+							maxLength="3"
+						/>
 					</div>
 				</motion.div>
 				<div className="button-container">
