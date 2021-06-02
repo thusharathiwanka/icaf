@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const AttendeeForm = () => {
+const PresenterForm = ({ title }) => {
 	return (
 		<div className="register-content">
-			<h1>Attendee Registration</h1>
+			<h1>{title} Registration</h1>
 			<motion.form
 				className="login-form"
 				initial={{ x: 300, opacity: 0 }}
@@ -36,50 +36,38 @@ const AttendeeForm = () => {
 					/>
 					<div className="name-info">
 						<div className="first-name">
-							<label htmlFor="card-number">Card Number</label>
+							<label htmlFor="university">University</label>
 							<input
 								type="text"
-								name="card-number"
-								id="card-number"
+								name="university"
+								id="university"
 								required
 								autoComplete="off"
 							/>
 						</div>
 						<div className="last-name">
-							<label htmlFor="cvc">CVC</label>
+							<label htmlFor="department">Department</label>
 							<input
 								type="text"
-								name="last-name"
-								id="last-name"
+								name="department"
+								id="department"
 								required
 								autoComplete="off"
 								maxLength="3"
-							/>
-						</div>
-					</div>
-					<div className="name-info">
-						<div className="first-name">
-							<label htmlFor="exp-date">Expiration Date</label>
-							<input
-								type="text"
-								name="exp-date"
-								id="exp-date"
-								required
-								autoComplete="off"
-								placeholder="12-2024"
 							/>
 						</div>
 						<div className="last-name">
-							<label htmlFor="amount">Amount</label>
+							<label htmlFor="department">
+								Upload your content (pdf or zip files)
+							</label>
 							<input
-								type="text"
-								name="amount"
-								id="amount"
+								type="file"
+								accept=".pdf, .zip, .rar"
+								name="department"
+								id="department"
 								required
 								autoComplete="off"
 								maxLength="3"
-								value="Rs. 1000"
-								disabled
 							/>
 						</div>
 					</div>
@@ -108,4 +96,4 @@ const AttendeeForm = () => {
 	);
 };
 
-export default AttendeeForm;
+export default PresenterForm;

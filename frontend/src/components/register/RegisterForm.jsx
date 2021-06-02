@@ -2,8 +2,7 @@ import React, { useContext, useState } from "react";
 
 import CommonRegisterForm from "./CommonRegisterForm";
 import AttendeeForm from "./AttendeeForm";
-import PresenterForm from "./PresenterForm";
-import ResearcherForm from "./ResearcherForm";
+import ResearcherPresenterForm from "./ResearcherPresenterForm";
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const RegisterForm = () => {
@@ -17,9 +16,9 @@ const RegisterForm = () => {
 			if (currentStep === 2 && userType === "attendee") {
 				return <AttendeeForm />;
 			} else if (currentStep === 2 && userType === "researcher") {
-				return <ResearcherForm />;
+				return <ResearcherPresenterForm title="Researcher" />;
 			} else if (currentStep === 2 && userType === "presenter") {
-				return <PresenterForm />;
+				return <ResearcherPresenterForm title="Presenter" />;
 			}
 		}
 	};
