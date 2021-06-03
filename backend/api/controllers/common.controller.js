@@ -3,6 +3,7 @@ const Presenter = require("../models/presenter.model");
 const Researcher = require("../models/researcher.model");
 const Moderator = require("../models/moderator.model");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const loginUser = async (request, response) => {
 	let authUser;
@@ -60,7 +61,12 @@ const loginUser = async (request, response) => {
 				.json({ message: "Username or password invalid" });
 		}
 
-		response.status(200).json({ auth: true, userType: userType });
+		const authToken = jwt.sign(
+			{ id: authUser.id, userType: userType },
+			process.env.JWT_SECRET
+		);
+		// userType could be removed
+		response.status(200).json({ auth: true, userType: userType, authToken });
 	}
 };
 
