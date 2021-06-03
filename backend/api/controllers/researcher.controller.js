@@ -1,5 +1,5 @@
-const { response } = require("express");
 const Researcher = require("../models/researcher.model");
+const { hashPassword } = require("../helpers/passwordHash");
 
 const getAllResearchers = async (request, response) => {
 	try {
@@ -12,6 +12,7 @@ const getAllResearchers = async (request, response) => {
 
 const saveResearcher = async (request, response) => {
 	if (request.body) {
+		request.body.password = await hashPassword(request.body.password);
 		const newResearcher = new Researcher(request.body);
 		try {
 			await newResearcher.save();

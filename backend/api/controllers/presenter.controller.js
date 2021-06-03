@@ -1,4 +1,5 @@
 const Presenter = require("../models/presenter.model");
+const { hashPassword } = require("../helpers/passwordHash");
 
 const getAllPresenters = async (request, response) => {
 	try {
@@ -11,6 +12,7 @@ const getAllPresenters = async (request, response) => {
 
 const savePresenter = async (request, response) => {
 	if (request.body) {
+		request.body.password = await hashPassword(request.body.password);
 		const newPresenter = new Presenter(request.body);
 		try {
 			await newPresenter.save();

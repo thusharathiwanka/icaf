@@ -1,5 +1,5 @@
 const Attendee = require("../models/attendee.model");
-const bcrypt = require("bcryptjs");
+const { hashPassword } = require("../helpers/passwordHash");
 
 const getAllAttendees = async (request, response) => {
 	try {
@@ -12,9 +12,7 @@ const getAllAttendees = async (request, response) => {
 
 const saveAttendee = async (request, response) => {
 	if (request.body) {
-		const salt = await bcrypt.genSalt(10);
-		const hashedPassword = await bcrypt.hash(request.body.password, salt);
-		request.body.password = hashedPassword;
+		request.body.password = await hashPassword(request.body.password);
 		const newAttendee = new Attendee(request.body);
 		try {
 			await newAttendee.save();
