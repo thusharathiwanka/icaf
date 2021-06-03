@@ -1,13 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const RegisterForm = () => {
-	const { setCurrentStep, userData, setUserData, setUserType } =
+	const { setCurrentStep, userData, setUserData } =
 		useContext(RegisterDataContext);
-	const [tempUserType, setTempUserType] = useState("");
 
 	return (
 		<div className="register-content">
@@ -94,7 +93,9 @@ const RegisterForm = () => {
 							value="researcher"
 							required
 							defaultChecked={userData.userType === "researcher" && true}
-							onChange={() => setTempUserType("researcher")}
+							onChange={() =>
+								setUserData({ ...userData, userType: "researcher" })
+							}
 						/>
 						<label htmlFor="researcher">Researcher</label>
 					</div>
@@ -106,7 +107,9 @@ const RegisterForm = () => {
 							value="presenter"
 							required
 							defaultChecked={userData.userType === "presenter" && true}
-							onChange={() => setTempUserType("presenter")}
+							onChange={() =>
+								setUserData({ ...userData, userType: "presenter" })
+							}
 						/>
 						<label htmlFor="presenter">Presenter</label>
 					</div>
@@ -118,7 +121,9 @@ const RegisterForm = () => {
 							value="attendee"
 							required
 							defaultChecked={userData.userType === "attendee" && true}
-							onChange={() => setTempUserType("attendee")}
+							onChange={() =>
+								setUserData({ ...userData, userType: "attendee" })
+							}
 						/>
 						<label htmlFor="attendee">Attendee</label>
 					</div>
@@ -139,8 +144,6 @@ const RegisterForm = () => {
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
 					onClick={() => {
-						setUserData({ ...userData, userType: tempUserType });
-						setUserType(tempUserType);
 						setCurrentStep(2);
 					}}
 				>

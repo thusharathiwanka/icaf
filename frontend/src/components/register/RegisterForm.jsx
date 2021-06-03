@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import CommonRegisterForm from "./CommonRegisterForm";
 import AttendeeForm from "./AttendeeForm";
@@ -6,7 +6,7 @@ import ResearcherPresenterForm from "./ResearcherPresenterForm";
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const RegisterForm = () => {
-	const { currentStep, userType } = useContext(RegisterDataContext);
+	const { currentStep, userData } = useContext(RegisterDataContext);
 
 	const changeForms = (currentStep, userType) => {
 		if (!userType || currentStep === 1) {
@@ -22,7 +22,7 @@ const RegisterForm = () => {
 		}
 	};
 
-	return <div>{changeForms(currentStep, userType)}</div>;
+	return <div>{changeForms(currentStep, userData.userType)}</div>;
 };
 
 export default RegisterForm;

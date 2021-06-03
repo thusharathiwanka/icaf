@@ -4,8 +4,27 @@ import { motion } from "framer-motion";
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const AttendeeForm = () => {
-	const { setCurrentStep, setUserData, userData } =
+	const { setCurrentStep, setUserData, userData, payment, setPayment } =
 		useContext(RegisterDataContext);
+
+	const handleRegister = async (e) => {
+		e.preventDefault();
+		delete userData.userType;
+
+		try {
+			const response = await fetch("http://localhost:5000/attendee/create", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(userData),
+			});
+
+			const userId = await response.json();
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<div className="register-content">
@@ -56,9 +75,9 @@ const AttendeeForm = () => {
 								id="card-number"
 								required
 								autoComplete="off"
-								value={userData.cardNumber}
+								value={payment.cardNumber}
 								onChange={(e) =>
-									setUserData({ ...userData, cardNumber: e.target.value })
+									setPayment({ ...payment, cardNumber: e.target.value })
 								}
 							/>
 						</div>
@@ -71,9 +90,9 @@ const AttendeeForm = () => {
 								required
 								autoComplete="off"
 								maxLength="3"
-								value={userData.cvc}
+								value={payment.cvc}
 								onChange={(e) =>
-									setUserData({ ...userData, cvc: e.target.value })
+									setPayment({ ...payment, cvc: e.target.value })
 								}
 							/>
 						</div>
@@ -88,9 +107,9 @@ const AttendeeForm = () => {
 								required
 								autoComplete="off"
 								placeholder="12-2024"
-								value={userData.expireDate}
+								value={payment.expireDate}
 								onChange={(e) =>
-									setUserData({ ...userData, expireDate: e.target.value })
+									setPayment({ ...payment, expireDate: e.target.value })
 								}
 							/>
 						</div>
@@ -105,7 +124,7 @@ const AttendeeForm = () => {
 								maxLength="3"
 								value="Rs. 1000"
 								disabled
-								onChange={(e) => setUserData({ ...userData, amount: 1000 })}
+								onChange={() => setPayment({ ...payment, amount: 1000 })}
 							/>
 						</div>
 					</div>
@@ -126,6 +145,7 @@ const AttendeeForm = () => {
 						initial={{ x: 10, opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
+						onClick={handleRegister}
 					>
 						Register
 					</motion.button>

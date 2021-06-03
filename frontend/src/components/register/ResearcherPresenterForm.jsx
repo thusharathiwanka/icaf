@@ -21,6 +21,7 @@ const PresenterForm = ({ title }) => {
 
 		if (selectedFile && allowedTypes.includes(selectedFile.type)) {
 			setFile(selectedFile);
+			setMaterial({ ...material, name: selectedFile.name });
 			setError("");
 		} else {
 			setFile(null);
