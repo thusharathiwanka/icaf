@@ -4,8 +4,9 @@ const {
 	getAllAttendees,
 	saveAttendee,
 } = require("../controllers/attendee.controller");
+const verifyAdminAuth = require("../auth/verifyAdminAuth");
 
-router.get("/", getAllAttendees);
+router.get("/", verifyAdminAuth, getAllAttendees);
 router.post("/create", saveAttendee);
 
 module.exports = router;
