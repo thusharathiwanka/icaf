@@ -44,6 +44,11 @@
 	margin-right: 2rem;
 }
 
+#material {
+	padding-top: 0.4rem;
+	padding-bottom: 0.4rem;
+}
+
 .error {
 	padding-top: 0.5rem;
 	font-weight: 500;

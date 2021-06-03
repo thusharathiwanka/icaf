@@ -101,12 +101,12 @@ const PresenterForm = ({ title }) => {
 							/>
 						</div>
 						<div className="last-name">
-							<label htmlFor="department">Upload your materials</label>
+							<label htmlFor="material">Upload your materials</label>
 							<input
 								type="file"
 								accept=".pdf, .zip, .rar, .ppt, .pptx"
-								name="department"
-								id="department"
+								name="material"
+								id="material"
 								required
 								autoComplete="off"
 								maxLength="3"
