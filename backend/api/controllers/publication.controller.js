@@ -6,7 +6,7 @@ const getAllPublications = async (request, response) => {
 			"createdBy",
 			"firstName lastName"
 		);
-		response.status(200).json(allPublications);
+		response.status(200).json({ publications: allPublications });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
 	}
@@ -31,7 +31,9 @@ const getApprovedPublications = async (request, response) => {
 		const allApprovedPublications = await Publication.find({
 			isApproved: "approved",
 		}).populate("createdBy", "firstName lastName");
-		response.status(200).json(allApprovedPublications);
+		response
+			.status(200)
+			.json({ approvedPublications: allApprovedPublications });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
 	}
@@ -42,7 +44,9 @@ const getRejectedPublications = async (request, response) => {
 		const allRejectedPublications = await Publication.find({
 			isApproved: "rejected",
 		}).populate("createdBy", "firstName lastName");
-		response.status(200).json(allRejectedPublications);
+		response
+			.status(200)
+			.json({ rejectedPublications: allRejectedPublications });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
 	}
@@ -53,7 +57,7 @@ const getPendingPublications = async (request, response) => {
 		const allPendingPublications = await Publication.find({
 			isApproved: "pending",
 		}).populate("createdBy", "firstName lastName");
-		response.status(200).json(allPendingPublications);
+		response.status(200).json({ pendingPublications: allPendingPublications });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
 	}
@@ -64,7 +68,7 @@ const getPaidPublications = async (request, response) => {
 		const allPaidPublications = await Publication.find({
 			isPaid: true,
 		}).populate("createdBy", "firstName lastName");
-		response.status(200).json(allPaidPublications);
+		response.status(200).json({ paidPublications: allPaidPublications });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
 	}
@@ -75,7 +79,7 @@ const getUnpaidPublications = async (request, response) => {
 		const allUnpaidPublications = await Publication.find({
 			isPaid: false,
 		}).populate("createdBy", "firstName lastName");
-		response.status(200).json(allUnpaidPublications);
+		response.status(200).json({ unpaidPublications: allUnpaidPublications });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
 	}

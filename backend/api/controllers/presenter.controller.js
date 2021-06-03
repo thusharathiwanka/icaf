@@ -3,7 +3,7 @@ const Presenter = require("../models/presenter.model");
 const getAllPresenters = async (request, response) => {
 	try {
 		const allPresenters = await Presenter.find();
-		response.status(200).json(allPresenters);
+		response.status(200).json({ presenters: allPresenters });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
 	}
@@ -14,7 +14,7 @@ const savePresenter = async (request, response) => {
 		const newPresenter = new Presenter(request.body);
 		try {
 			await newPresenter.save();
-			response.status(201).json(newPresenter);
+			response.status(201).json({ id: newPresenter.id });
 		} catch (error) {
 			response.status(406).json({ message: error.message });
 		}
