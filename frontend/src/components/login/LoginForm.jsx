@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { BASE_URL } from "../../api/config";
 
 const LoginForm = () => {
 	const [loginUser, setLoginUser] = useState({
@@ -10,10 +12,26 @@ const LoginForm = () => {
 		password: "",
 		userType: "",
 	});
+	const history = useHistory();
 
-	const handleLogin = (e) => {
+	const handleLogin = async (e) => {
 		e.preventDefault();
-		console.warn(loginUser);
+
+		const response = await fetch(`${BASE_URL}/auth/login`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(loginUser),
+		});
+		const userAuth = await response.json();
+
+		if (userAuth.authToken) {
+			localStorage.setItem("token", userAuth.authToken);
+			history.push("/profile/attendee");
+		} else {
+			toast.error("Your username or password is invalid");
+		}
 	};
 
 	return (
