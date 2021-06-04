@@ -1,16 +1,22 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const AttendeeForm = () => {
 	const { setCurrentStep, setUserData, userData, payment, setPayment } =
 		useContext(RegisterDataContext);
+	const history = useHistory();
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
-		delete userData.userType;
-
+		if (payment) {
+			delete userData.userType;
+			userData.isPaid = true;
+		}
 		try {
 			const response = await fetch("http://localhost:5000/attendee/create", {
 				method: "POST",
@@ -20,7 +26,28 @@ const AttendeeForm = () => {
 				body: JSON.stringify(userData),
 			});
 
-			const userId = await response.json();
+			if (response.ok) {
+				toast.success("Your account has been created", {
+					position: "top-center",
+					autoClose: 3000,
+					hideProgressBar: true,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+				history.push("./auth/login");
+			} else {
+				toast.error("Sorry, something went wrong", {
+					position: "top-center",
+					autoClose: 3000,
+					hideProgressBar: true,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+			}
 		} catch (error) {
 			console.log(error);
 		}
@@ -28,6 +55,17 @@ const AttendeeForm = () => {
 
 	return (
 		<div className="register-content">
+			<ToastContainer
+				position="top-center"
+				autoClose={3000}
+				hideProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 			<h1>Attendee Registration</h1>
 			<motion.form
 				className="login-form"

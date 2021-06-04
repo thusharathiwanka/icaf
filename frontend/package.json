@@ -1,13 +1,13 @@
 {
 	"name": "icaf-frontend",
 	"version": "1.0.0",
-	"description": "af",
+	"description": "",
 	"main": "index.js",
 	"scripts": {
 		"start": "parcel index.html"
 	},
 	"keywords": [],
-	"author": "jaysith",
+	"author": "",
 	"license": "ISC",
 	"devDependencies": {
 		"@parcel/transformer-image": "^2.0.0-beta.3.1",
@@ -20,6 +20,6 @@
 		"react-dom": "^17.0.2",
 		"react-icons": "^4.2.0",
 		"react-router-dom": "^5.2.0",
-		"toastify": "^2.0.1"
+		"react-toastify": "^7.0.4"
 	}
 }
