@@ -1,11 +1,15 @@
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 import Loading from "../../helpers/Loading";
+import { BASE_URL } from "../../api/config";
 
 const PresenterForm = ({ title }) => {
-	const { setCurrentStep, material, setMaterial } =
+	const { setCurrentStep, material, setMaterial, userData, setUserData } =
 		useContext(RegisterDataContext);
 	const allowedTypes = [
 		"application/pdf",
@@ -15,6 +19,7 @@ const PresenterForm = ({ title }) => {
 	];
 	const [file, setFile] = useState(null);
 	const [error, setError] = useState(null);
+	const history = useHistory();
 
 	const fileChangeHandler = (e) => {
 		const selectedFile = e.target.files[0];
@@ -30,8 +35,71 @@ const PresenterForm = ({ title }) => {
 			);
 		}
 	};
+
+	const handleMaterial = async () => {
+		let materialType;
+
+		if (userData.userType === "researcher") {
+			materialType = "publication";
+		} else if (userData.userType === "presenter") {
+			materialType = "workshop";
+		}
+
+		const response = await fetch(`${BASE_URL}/${materialType}/create`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(material),
+		});
+
+		if (response.ok) {
+			toast.success("Your account has been created.");
+			history.push("/auth/login");
+		} else {
+			toast.success("Sorry, something went wrong.");
+		}
+	};
+
+	const handleRegister = async (e) => {
+		e.preventDefault();
+		console.log(userData);
+		try {
+			const response = await fetch(`${BASE_URL}/${userData.userType}/create`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(userData),
+			});
+
+			const userId = await response.json();
+			material.createdBy = userId.id;
+			console.log(userId);
+			console.log(material);
+
+			if (response.ok) {
+				handleMaterial();
+			} else {
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<div className="register-content">
+			<ToastContainer
+				position="top-center"
+				autoClose={3000}
+				hideProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 			{file && <Loading file={file} setFile={setFile} />}
 			<h1>{title} Registration</h1>
 			<motion.form
@@ -53,6 +121,10 @@ const PresenterForm = ({ title }) => {
 						id="email"
 						required
 						autoComplete="off"
+						value={userData.email}
+						onChange={(e) =>
+							setUserData({ ...userData, email: e.target.value })
+						}
 					/>
 					<label htmlFor="mobile-number">Contact Number</label>
 					<input
@@ -62,6 +134,10 @@ const PresenterForm = ({ title }) => {
 						required
 						maxLength="10"
 						autoComplete="off"
+						value={userData.contactNumber}
+						onChange={(e) =>
+							setUserData({ ...userData, contactNumber: e.target.value })
+						}
 					/>
 					<div className="name-info">
 						<div className="first-name">
@@ -72,6 +148,10 @@ const PresenterForm = ({ title }) => {
 								id="university"
 								required
 								autoComplete="off"
+								value={userData.university}
+								onChange={(e) =>
+									setUserData({ ...userData, university: e.target.value })
+								}
 							/>
 						</div>
 						<div className="last-name">
@@ -83,6 +163,10 @@ const PresenterForm = ({ title }) => {
 								required
 								autoComplete="off"
 								maxLength="3"
+								value={userData.department}
+								onChange={(e) =>
+									setUserData({ ...userData, department: e.target.value })
+								}
 							/>
 						</div>
 					</div>
@@ -114,8 +198,23 @@ const PresenterForm = ({ title }) => {
 								onChange={fileChangeHandler}
 							/>
 						</div>
+						{userData.userType === "presenter" && (
+							<div className="last-name">
+								<label htmlFor="date">Workshop Date and Time</label>
+								<input
+									type="datetime-local"
+									name="date"
+									id="date"
+									required
+									autoComplete="off"
+									value={material.dueDate}
+									onChange={(e) => {
+										setMaterial({ ...material, dueDate: e.target.value });
+									}}
+								/>
+							</div>
+						)}
 					</div>
-
 					<div>{error && <div className="error">{error}</div>}</div>
 				</motion.div>
 				<div className="button-container">
@@ -134,6 +233,7 @@ const PresenterForm = ({ title }) => {
 						initial={{ x: 10, opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
+						onClick={handleRegister}
 					>
 						Register
 					</motion.button>

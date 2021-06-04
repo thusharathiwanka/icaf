@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { RegisterDataContext } from "../../context/RegisterFormContext";
+import { BASE_URL } from "../../api/config";
 
 const AttendeeForm = () => {
 	const { setCurrentStep, setUserData, userData, payment, setPayment } =
@@ -18,7 +19,7 @@ const AttendeeForm = () => {
 			userData.isPaid = true;
 		}
 		try {
-			const response = await fetch("http://localhost:5000/attendee/create", {
+			const response = await fetch(`${BASE_URL}/attendee/create`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -27,26 +28,10 @@ const AttendeeForm = () => {
 			});
 
 			if (response.ok) {
-				toast.success("Your account has been created", {
-					position: "top-center",
-					autoClose: 3000,
-					hideProgressBar: true,
-					closeOnClick: true,
-					pauseOnHover: true,
-					draggable: true,
-					progress: undefined,
-				});
-				history.push("./auth/login");
+				toast.success("Your account has been created");
+				history.push("/auth/login");
 			} else {
-				toast.error("Sorry, something went wrong", {
-					position: "top-center",
-					autoClose: 3000,
-					hideProgressBar: true,
-					closeOnClick: true,
-					pauseOnHover: true,
-					draggable: true,
-					progress: undefined,
-				});
+				toast.error("Sorry, something went wrong");
 			}
 		} catch (error) {
 			console.log(error);

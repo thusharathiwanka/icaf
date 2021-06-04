@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginForm = () => {
 	const [loginUser, setLoginUser] = useState({
@@ -16,6 +18,17 @@ const LoginForm = () => {
 
 	return (
 		<div className="login-content">
+			<ToastContainer
+				position="top-center"
+				autoClose={3000}
+				hideProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 			<h1>Login</h1>
 			<motion.form
 				className="login-form"
