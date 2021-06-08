@@ -63,7 +63,6 @@ const PresenterForm = ({ title }) => {
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
-		console.log(userData);
 		try {
 			const response = await fetch(`${BASE_URL}/${userData.userType}/create`, {
 				method: "POST",
@@ -75,12 +74,9 @@ const PresenterForm = ({ title }) => {
 
 			const userId = await response.json();
 			material.createdBy = userId.id;
-			console.log(userId);
-			console.log(material);
 
 			if (response.ok) {
 				handleMaterial();
-			} else {
 			}
 		} catch (error) {
 			console.log(error);
