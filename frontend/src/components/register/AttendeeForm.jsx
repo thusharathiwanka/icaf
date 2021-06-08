@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { RegisterDataContext } from "../../context/RegisterFormContext";
-import { BASE_URL } from "../../api/config";
+import { BASE_URL } from "../../config/config";
 
 const AttendeeForm = () => {
 	const { setCurrentStep, setUserData, userData, payment, setPayment } =

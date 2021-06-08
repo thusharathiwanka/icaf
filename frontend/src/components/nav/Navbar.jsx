@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { IoMdClose } from "react-icons/io";
 import { CgMenuRight } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import logo from "url:../../assets/images/logo-blue.svg";
+import { deleteUserAuth } from "../../auth/userAuth";
+import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const Navbar = () => {
 	const [isMobile, setIsMobile] = useState(false);
+	const { isLogin, setIsLogin } = useContext(RegisterDataContext);
 
 	return (
 		<motion.header
@@ -30,10 +33,27 @@ const Navbar = () => {
 				id={isMobile ? "menu-open" : ""}
 				onClick={() => setIsMobile(false)}
 			>
-				<Link to="/auth/login">Login</Link>
-				<Link to="/auth/register">Register</Link>
+				{!isLogin ? (
+					<div className="nav-cta">
+						<Link to="/auth/login">Login</Link>
+						<Link to="/auth/register" className="active">
+							Register
+						</Link>
+					</div>
+				) : (
+					<Link
+						className="active"
+						to="/"
+						onClick={() => {
+							deleteUserAuth();
+							setIsLogin(false);
+						}}
+					>
+						Logout
+					</Link>
+				)}
 			</div>
-			<button className="mobile-menu" onClick={() => setIsMobile(!isMobile)}>
+			<button className="mobile-menu">
 				{isMobile ? <IoMdClose /> : <CgMenuRight />}
 			</button>
 		</motion.header>

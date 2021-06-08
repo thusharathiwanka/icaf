@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 import Loading from "../../helpers/Loading";
-import { BASE_URL } from "../../api/config";
+import { BASE_URL } from "../../config/config";
 
 const PresenterForm = ({ title }) => {
 	const { setCurrentStep, material, setMaterial, userData, setUserData } =

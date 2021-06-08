@@ -1,6 +1,6 @@
 import React, { useState, createContext } from "react";
 
-import RegisterFrom from "../components/register/RegisterForm";
+import App from "../components/App";
 
 export const RegisterDataContext = createContext();
 
@@ -10,6 +10,7 @@ const RegisterFormContext = () => {
 	const [userType, setUserType] = useState("");
 	const [material, setMaterial] = useState({});
 	const [payment, setPayment] = useState({});
+	const [isLogin, setIsLogin] = useState(localStorage.getItem("isLogin"));
 
 	return (
 		<div>
@@ -25,9 +26,11 @@ const RegisterFormContext = () => {
 					setMaterial,
 					payment,
 					setPayment,
+					isLogin,
+					setIsLogin,
 				}}
 			>
-				<RegisterFrom />
+				<App />
 			</RegisterDataContext.Provider>
 		</div>
 	);
