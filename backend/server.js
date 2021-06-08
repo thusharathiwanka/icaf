@@ -10,6 +10,8 @@ const publicationRoutes = require("./api/routes/publication.routes");
 const workshopRoutes = require("./api/routes/workshop.routes");
 const blogRoutes = require("./api/routes/blog.routes");
 const commonRoutes = require("./api/routes/common.routes");
+const adminRoutes = require("./api/routes/admin.routes");
+const paymentRoutes = require("./api/routes/payment.routes") 
 
 const app = express();
 
@@ -25,6 +27,8 @@ app.use("/publication", publicationRoutes);
 app.use("/workshop", workshopRoutes);
 app.use("/blog", blogRoutes);
 app.use("/auth", commonRoutes);
+app.use("/admin", adminRoutes);
+app.use("/payment", paymentRoutes);
 
 const PORT = process.env.PORT || 3000;
 
