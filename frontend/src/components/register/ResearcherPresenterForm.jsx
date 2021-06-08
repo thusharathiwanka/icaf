@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 import Loading from "../../helpers/Loading";
-import { BASE_URL } from "../../api/config";
+import { BASE_URL } from "../../config/config";
 
 const PresenterForm = ({ title }) => {
 	const { setCurrentStep, material, setMaterial, userData, setUserData } =
@@ -63,7 +63,6 @@ const PresenterForm = ({ title }) => {
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
-		console.log(userData);
 		try {
 			const response = await fetch(`${BASE_URL}/${userData.userType}/create`, {
 				method: "POST",
@@ -75,12 +74,9 @@ const PresenterForm = ({ title }) => {
 
 			const userId = await response.json();
 			material.createdBy = userId.id;
-			console.log(userId);
-			console.log(material);
 
 			if (response.ok) {
 				handleMaterial();
-			} else {
 			}
 		} catch (error) {
 			console.log(error);
