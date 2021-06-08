@@ -6,7 +6,7 @@ const getAllWorkshops = async (request, response) => {
 			"conductor",
 			"firstName lastName"
 		);
-		response.status(200).json(allWorkshops);
+		response.status(200).json({ workshops: allWorkshops });
 	} catch (error) {
 		response.status(404), json({ message: error.message });
 	}
@@ -31,7 +31,7 @@ const getApprovedWorkshops = async (request, response) => {
 		const allApprovedWorkshops = await Workshop.find({
 			isApproved: "approved",
 		}).populate("conductor", "firstName lastName");
-		response.status(200).json(allApprovedWorkshops);
+		response.status(200).json({ approvedWorkshops: allApprovedWorkshops });
 	} catch (error) {
 		response.status(406).json({ message: error.message });
 	}
@@ -42,7 +42,7 @@ const getRejectedWorkshops = async (request, response) => {
 		const allRejectedWorkshops = await Workshop.find({
 			isApproved: "rejected",
 		}).populate("conductor", "firstName lastName");
-		response.status(200).json(allRejectedWorkshops);
+		response.status(200).json({ rejectedWorkshops: allRejectedWorkshops });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
 	}
@@ -53,7 +53,7 @@ const getPendingWorkshops = async (request, response) => {
 		const allPendingWorkshops = await Workshop.find({
 			isApproved: "pending",
 		}).populate("conductor", "firstName lastName");
-		response.status(200).json(allPendingWorkshops);
+		response.status(200).json({ pendingWorkshops: allPendingWorkshops });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
 	}
@@ -107,7 +107,7 @@ const getWorkshopsByPresenter = async (request, response) => {
 			const workshopsByPresenter = await Workshop.find({
 				conductor: request.params.id,
 			});
-			response.status(200).json(workshopsByPresenter);
+			response.status(200).json({ workshopsByPresenter: workshopsByPresenter });
 		} catch (error) {
 			response.status(404).json({ message: error.message });
 		}

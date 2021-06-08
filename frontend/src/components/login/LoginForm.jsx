@@ -1,21 +1,72 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { BASE_URL } from "../../config/config";
 
 const LoginForm = () => {
-	const [loginUser, setLoginUser] = useState({
-		username: "",
-		password: "",
-		userType: "",
-	});
+	const [loginUser, setLoginUser] = useState({});
+	const history = useHistory();
 
-	const handleLogin = (e) => {
+	const handleLogin = async (e) => {
 		e.preventDefault();
-		console.warn(loginUser);
+
+		const response = await fetch(`${BASE_URL}/auth/login`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(loginUser),
+		});
+		const userAuth = await response.json();
+		console.log(userAuth);
+
+		if (userAuth) {
+			let location;
+
+			switch (userAuth.userType) {
+				case "admin":
+					location = "user/admin/dashboard";
+					break;
+				case "editor":
+					location = "user/editor/dashboard";
+					break;
+				case "reviewer":
+					location = "user/reviewer/dashboard";
+					break;
+				case "attendee":
+					location = "user/attendee/dashboard";
+					break;
+				case "researcher":
+					location = "user/researcher/dashboard";
+					break;
+				case "presenter":
+					location = "user/presenter/dashboard";
+					break;
+			}
+
+			localStorage.setItem("token", userAuth.authToken);
+			history.push(location);
+		} else {
+			toast.error("Your username or password is invalid");
+		}
 	};
 
 	return (
 		<div className="login-content">
+			<ToastContainer
+				position="top-center"
+				autoClose={3000}
+				hideProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 			<h1>Login</h1>
 			<motion.form
 				className="login-form"
@@ -67,7 +118,6 @@ const LoginForm = () => {
 							name="user-type"
 							id="researcher"
 							value="researcher"
-							required
 							onClick={() =>
 								setLoginUser({ ...loginUser, userType: "researcher" })
 							}
@@ -80,7 +130,6 @@ const LoginForm = () => {
 							name="user-type"
 							id="presenter"
 							value="presenter"
-							required
 							onClick={() =>
 								setLoginUser({ ...loginUser, userType: "presenter" })
 							}
@@ -93,7 +142,6 @@ const LoginForm = () => {
 							name="user-type"
 							id="attendee"
 							value="attendee"
-							required
 							onClick={() =>
 								setLoginUser({ ...loginUser, userType: "attendee" })
 							}

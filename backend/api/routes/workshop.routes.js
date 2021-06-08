@@ -10,14 +10,16 @@ const {
 	approveWorkshops,
 	rejectWorkshops,
 } = require("../controllers/workshop.controller");
+const verifyModeratorAuth = require("../auth/verifyModeratorAuth");
+const verifyPresenterAuth = require("../auth/verifyPresenterAuth");
 
-router.get("/", getAllWorkshops);
+router.get("/", verifyModeratorAuth, getAllWorkshops);
 router.post("/create", saveWorkshop);
-router.get("/approved", getApprovedWorkshops);
-router.get("/rejected", getRejectedWorkshops);
-router.get("/pending", getPendingWorkshops);
-router.get("/:id", getWorkshopsByPresenter);
-router.patch("/approve/:id", approveWorkshops);
-router.patch("/reject/:id", rejectWorkshops);
+router.get("/approved", verifyModeratorAuth, getApprovedWorkshops);
+router.get("/rejected", verifyModeratorAuth, getRejectedWorkshops);
+router.get("/pending", verifyModeratorAuth, getPendingWorkshops);
+router.get("/:id", verifyPresenterAuth, getWorkshopsByPresenter);
+router.patch("/approve/:id", verifyModeratorAuth, approveWorkshops);
+router.patch("/reject/:id", verifyModeratorAuth, rejectWorkshops);
 
 module.exports = router;
