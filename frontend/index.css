@@ -90,7 +90,7 @@ nav a {
 }
 
 /* Pseudo styles */
-.nav-cta a:not(:nth-child(1)) {
+.nav-cta .active {
 	background: var(--primary-accent-color);
 	color: white;
 	margin-left: 1rem;

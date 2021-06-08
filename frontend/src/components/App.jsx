@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PrivateRoute from "./private/PrivateRoute";
 
 const App = () => {
 	return (
@@ -15,18 +16,21 @@ const App = () => {
 				<Route exact path="/">
 					<Home />
 				</Route>
-				<Route exact path="/workshops">
+				<PrivateRoute exact path="/workshops">
 					<Home />
-				</Route>
-				<Route exact path="/publications">
+				</PrivateRoute>
+				<PrivateRoute exact path="/publications">
 					<Home />
-				</Route>
-				<Route exact path="/downloads">
+				</PrivateRoute>
+				<PrivateRoute exact path="/downloads">
 					<Home />
-				</Route>
+				</PrivateRoute>
 				<Route exact path="/about">
 					<About />
 				</Route>
+				<PrivateRoute exact path="/blogs">
+					<About />
+				</PrivateRoute>
 				<Route exact path="/auth/login">
 					<Login />
 				</Route>

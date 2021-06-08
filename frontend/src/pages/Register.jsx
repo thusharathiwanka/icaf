@@ -10,9 +10,7 @@ const Register = () => {
 
 	return (
 		<div>
-			<RegisterFormContext>
-				<RegisterForm />
-			</RegisterFormContext>
+			<RegisterForm />
 		</div>
 	);
 };
