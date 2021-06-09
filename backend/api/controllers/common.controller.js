@@ -65,7 +65,6 @@ const loginUser = async (request, response) => {
 			{ id: authUser.id, userType: userType },
 			process.env.JWT_SECRET
 		);
-		// userType could be removed
 		response.status(200).json({ auth: true, userType: userType, authToken });
 	}
 };
