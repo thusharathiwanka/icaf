@@ -58,7 +58,6 @@ header {
 	font-size: 0.95rem;
 	padding: 1rem 0;
 	transition: all 0.5s ease-in-out;
-	background: white;
 	z-index: 20;
 	margin-bottom: 2rem;
 }
@@ -75,6 +74,18 @@ nav a {
 	transition: all 0.3s ease-in-out;
 }
 
+.notification {
+	font-size: 1.5rem;
+	cursor: pointer;
+	margin: 0 2rem;
+}
+
+.login-cta {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .mobile-menu {
 	display: none;
 	background: none;
@@ -85,7 +96,12 @@ nav a {
 }
 
 #menu-open {
-	transform: translateX(0rem);
+	transform: translateY(0rem);
+	display: flex;
+}
+
+#menu-open-cta {
+	transform: translateY(2rem);
 	display: flex;
 }
 
@@ -111,6 +127,9 @@ nav a {
 }
 
 @media screen and (max-width: 700px) {
+	.pattern {
+		display: none;
+	}
 	.mobile-menu {
 		display: block;
 		position: absolute;

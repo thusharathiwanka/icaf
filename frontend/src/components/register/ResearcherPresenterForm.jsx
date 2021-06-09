@@ -158,7 +158,6 @@ const PresenterForm = ({ title }) => {
 								id="department"
 								required
 								autoComplete="off"
-								maxLength="3"
 								value={userData.department}
 								onChange={(e) =>
 									setUserData({ ...userData, department: e.target.value })
