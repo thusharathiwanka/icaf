@@ -33,19 +33,19 @@ counthadeler()
     return (
         <div>
             <div className ="squire">
-                <h1>Attendee</h1>
-                <label>{aCount}</label>
+                <h1 className = "h1_c">Attendee</h1>
+                <label className = "labele_c">{aCount}</label>
                 <img className="atendeeImg" src={attendeeImg} alt="img" />
                 
             </div>
             <div className ="squire">
-                <h1>Resercher</h1>
-                <label>{rCount}</label>
+                <h1 className = "h1_c">Resercher</h1>
+                <label className = "labele_c">{rCount}</label>
                 <img className="researcherImg" src={researcherImg} alt="img" />
             </div>
             <div className ="squire">
-                <h1>Presernter</h1>
-                <label>{pCount}</label>
+                <h1 className = "h1_c">Presernter</h1>
+                <label className = "labele_c">{pCount}</label>
                 <img className="presenterImg" src={presenterImg} alt="img" />
             </div>
         </div>

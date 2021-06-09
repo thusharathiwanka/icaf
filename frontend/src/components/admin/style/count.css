@@ -10,7 +10,7 @@
 
 }
 
-label{
+.labele_c{
     font-size: 90px;
     font-family: Roboto, Helvetica, Arial, sans-serif;
     font-weight: 500;
@@ -19,8 +19,8 @@ label{
     color: rgb(23, 43, 77);
 }
 
-h1{
-     margin: 0px 0px 0.35em;
+.h1_c{
+    margin: 0px 0px 0.35em;
     font-family: Roboto, Helvetica, Arial, sans-serif;
     font-weight: 500;
     line-height: 1.6;
