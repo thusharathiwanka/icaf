@@ -25,7 +25,7 @@ const LoginForm = () => {
 		});
 		const userAuth = await response.json();
 
-		if (userAuth) {
+		if (userAuth.authToken) {
 			let location;
 
 			switch (userAuth.userType) {
