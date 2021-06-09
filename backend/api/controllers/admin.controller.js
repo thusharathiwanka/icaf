@@ -5,9 +5,10 @@ const Presenter = require('../models/presenter.model')
 
 const approveNotice = async (req,res) => {
     try{
-        const firstNotice = await Notice.findById(req.params.id)
-        firstNotice.isApproved = req.body.isApproved 
-        await firstNotice.save()
+        const firstNotice = await Notice.findByIdAndUpdate(req.params.id,
+            {
+                isApproved : "Approved",
+            })
         res.status(200).json({message: 'notice successfully approved'})
     }catch(err){
         res.status(400).json({message: err.message })
@@ -49,6 +50,7 @@ const presentersCount = async(req,res) => {
         res.status(500).json({message: err.message})
     }
 }
+
 
 
 
