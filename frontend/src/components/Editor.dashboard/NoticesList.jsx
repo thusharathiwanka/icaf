@@ -2,7 +2,7 @@ import React from 'react';
 
 const AllNotices = () => {
     return (
-        <div className="orderList">
+        <div className="NoticesList">
 			<table className="table">
 				<thead>
 					<tr className="head">
@@ -14,8 +14,7 @@ const AllNotices = () => {
 					</tr>
 				</thead>
 				<tbody>
-					{posts.map((post) => {
-						return (
+					
 							<tr className="rw" >
 								<td></td>
 								<td></td>
@@ -23,8 +22,7 @@ const AllNotices = () => {
                                 <td></td>
                                 <td></td>
 							</tr>
-						);
-					})}
+					
 				</tbody>
 			</table>
 		</div>
