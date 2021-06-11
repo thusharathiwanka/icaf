@@ -13,8 +13,18 @@ const saveUserAuth = (userAuth, userType) => {
 	localStorage.setItem("userType", userType);
 };
 
-const getUserAuth = () => {
-	localStorage.getItem("token");
+const getUserToken = () => {
+	return localStorage.getItem("token");
 };
 
-export { saveUserAuth, checkUserAuth, getUserAuth, deleteUserAuth };
+const getUserType = () => {
+	return localStorage.getItem("userType");
+};
+
+export {
+	saveUserAuth,
+	checkUserAuth,
+	getUserAuth,
+	deleteUserAuth,
+	getUserType,
+};

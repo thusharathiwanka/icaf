@@ -43,10 +43,14 @@ const loginUser = async (request, response) => {
 					username: request.body.username,
 					type: "reviewer",
 				});
+			} else if (!authUser) {
+				return response
+					.status(404)
+					.json({ message: "Username or password invalid" });
 			}
 		} else if (!authUser) {
 			return response
-				.status(400)
+				.status(404)
 				.json({ message: "Username or password invalid" });
 		}
 
@@ -57,7 +61,7 @@ const loginUser = async (request, response) => {
 
 		if (!authPassword) {
 			return response
-				.status(400)
+				.status(404)
 				.json({ message: "Username or password invalid" });
 		}
 
@@ -65,7 +69,6 @@ const loginUser = async (request, response) => {
 			{ id: authUser.id, userType: userType },
 			process.env.JWT_SECRET
 		);
-		// userType could be removed
 		response.status(200).json({ auth: true, userType: userType, authToken });
 	}
 };

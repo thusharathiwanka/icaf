@@ -8,6 +8,7 @@ import Footer from "../components/footer/Footer";
 
 import "./styles/Home.css";
 import LandingImg from "url:../../src/assets/images/landing-img.png";
+import PatternImg from "url:../../src/assets/images/pattern.png";
 
 const Home = () => {
 	document.title = "ICAF | 2021";
@@ -24,7 +25,23 @@ const Home = () => {
 				<div className="landing-img-container">
 					<img src={LandingImg} alt="landing-image" />
 				</div>
+				<motion.img
+					src={PatternImg}
+					className="pattern pattern-top"
+					alt="pattern"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ type: "tween", duration: 1, delay: 1 }}
+				/>
 				<SpeakerContent />
+				<motion.img
+					src={PatternImg}
+					className="pattern pattern-bottom"
+					alt="pattern"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ type: "tween", duration: 1, delay: 1 }}
+				/>
 				<Countdown />
 			</motion.div>
 			<Footer />

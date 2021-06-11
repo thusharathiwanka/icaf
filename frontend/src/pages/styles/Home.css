@@ -32,6 +32,24 @@
 	text-align: center;
 }
 
+.pattern {
+	position: absolute;
+	right: 0;
+	height: auto;
+	max-width: 100%;
+	width: 100%;
+	z-index: -10;
+}
+
+.pattern-top {
+	top: 2%;
+}
+
+.pattern-bottom {
+	bottom: -200%;
+	transform: rotateX(180deg);
+}
+
 .landing-img-container img {
 	max-width: 100%;
 	height: auto;
