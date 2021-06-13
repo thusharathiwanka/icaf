@@ -1,27 +1,20 @@
-const request = require("supertest");
-const Route = require("../routes/attendee.routes");
+const axios = require("axios");
 
-describe("POST/attendee", () => {
-	test("test save attendee", async () => {
-		const data = {
-			firstName: "Onella",
-			lastName: "Natalie",
-			username: "onella123",
-			password: "onella123",
-			nic: "963264334V",
-			email: "onella24@gmail.com",
-			contactNumber: "0777777777",
-		};
-		const respons = await request(Route).post("/create").send(data);
-		expect(respons.statusCode).toBe(200);
-	});
-});
+describe("POST @ /attendees endpoint", () => {
+	it("should create a attendee and return an id", async () => {
+		try {
+			const res = axios.post("http://localhost:5000/attendees", {
+				firstName: "Thushara",
+				lastName: "Thiwanka",
+				username: "thushara123",
+				password: "thiwanka123",
+				email: "thiwanka123@gmail.com",
+				contactNumber: "0764343434",
+			});
 
-describe("get/attendee", () => {
-	test("test get all attendee", async () => {
-		const respons = await request(Route).get("/");
-		expect(respons.headers["content-type"]).toEqual(
-			expect.stringContaining("json")
-		);
+			expect(res.status).toEqual(200);
+		} catch (error) {
+			console.log(error);
+		}
 	});
 });
