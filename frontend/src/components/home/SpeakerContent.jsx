@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { MdFormatQuote } from "react-icons/md";
 
 import SpeakerCard from "./SpeakerCard";
-import speakerDetails from "../../data/speakerDetails";
 import { BASE_URL } from "../../config/config";
 
 const SpeakerContent = () => {
