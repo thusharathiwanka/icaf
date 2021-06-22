@@ -24,7 +24,7 @@ const loginUser = async (request, response) => {
 			authUser = await Attendee.findOne({
 				username: request.body.username,
 			});
-		} else if (request.body.userType === undefined) {
+		} else if (request.body.userType === "") {
 			if (request.body.username.includes("admin")) {
 				userType = "admin";
 				authUser = await Moderator.findOne({
@@ -43,7 +43,7 @@ const loginUser = async (request, response) => {
 					username: request.body.username,
 					type: "reviewer",
 				});
-			} else if (!authUser) {
+			} else if (authUser) {
 				return response
 					.status(404)
 					.json({ message: "Username or password invalid" });
@@ -54,10 +54,14 @@ const loginUser = async (request, response) => {
 				.json({ message: "Username or password invalid" });
 		}
 
-		const authPassword = await bcrypt.compare(
-			request.body.password,
-			authUser.password
-		);
+		let authPassword;
+
+		if (authUser !== null) {
+			authPassword = await bcrypt.compare(
+				request.body.password,
+				authUser.password
+			);
+		}
 
 		if (!authPassword) {
 			return response

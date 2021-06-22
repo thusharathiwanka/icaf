@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,13 +9,27 @@ import { saveUserAuth } from "../../auth/userAuth";
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const LoginForm = () => {
-	const [loginUser, setLoginUser] = useState({});
-	const { isLogin, setIsLogin } = useContext(RegisterDataContext);
+	const [loginUser, setLoginUser] = useState({
+		username: "",
+		password: "",
+		userType: "",
+	});
+	const [disabled, setDisabled] = useState(false);
+	const { setIsLogin } = useContext(RegisterDataContext);
 	const history = useHistory();
+
+	useEffect(() => {
+		if (
+			loginUser.username.includes("@admin") ||
+			loginUser.username.includes("@reviewer") ||
+			loginUser.username.includes("@editor")
+		) {
+			setDisabled(true);
+		}
+	}, [loginUser.username]);
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-
 		const response = await fetch(`${BASE_URL}/auth/login`, {
 			method: "POST",
 			headers: {
@@ -93,9 +107,9 @@ const LoginForm = () => {
 						required
 						autoComplete="off"
 						value={loginUser.username}
-						onChange={(e) =>
-							setLoginUser({ ...loginUser, username: e.target.value })
-						}
+						onChange={(e) => {
+							setLoginUser({ ...loginUser, username: e.target.value });
+						}}
 					/>
 					<label htmlFor="password">Password</label>
 					<input
@@ -125,6 +139,7 @@ const LoginForm = () => {
 							onClick={() =>
 								setLoginUser({ ...loginUser, userType: "researcher" })
 							}
+							disabled={disabled}
 						/>
 						<label htmlFor="researcher">Researcher</label>
 					</div>
@@ -137,6 +152,7 @@ const LoginForm = () => {
 							onClick={() =>
 								setLoginUser({ ...loginUser, userType: "presenter" })
 							}
+							disabled={disabled}
 						/>
 						<label htmlFor="presenter">Presenter</label>
 					</div>
@@ -149,6 +165,7 @@ const LoginForm = () => {
 							onClick={() =>
 								setLoginUser({ ...loginUser, userType: "attendee" })
 							}
+							disabled={disabled}
 						/>
 						<label htmlFor="attendee">Attendee</label>
 					</div>
