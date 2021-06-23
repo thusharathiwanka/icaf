@@ -11,7 +11,8 @@ const workshopRoutes = require("./api/routes/workshop.routes");
 const blogRoutes = require("./api/routes/blog.routes");
 const commonRoutes = require("./api/routes/common.routes");
 const adminRoutes = require("./api/routes/admin.routes");
-const paymentRoutes = require("./api/routes/payment.routes") 
+const paymentRoutes = require("./api/routes/payment.routes");
+const conferenceRoutes = require("./api/routes/conference.routes");
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use("/blog", blogRoutes);
 app.use("/auth", commonRoutes);
 app.use("/admin", adminRoutes);
 app.use("/payment", paymentRoutes);
+app.use("/conference", conferenceRoutes);
 
 const PORT = process.env.PORT || 3000;
 

@@ -54,6 +54,8 @@ const PresenterForm = ({ title }) => {
 		});
 
 		if (response.ok) {
+			setUserData({});
+			setMaterial({});
 			toast.success("Your account has been created.");
 			history.push("/auth/login");
 		} else {
@@ -193,23 +195,23 @@ const PresenterForm = ({ title }) => {
 								onChange={fileChangeHandler}
 							/>
 						</div>
-						{userData.userType === "presenter" && (
-							<div className="last-name">
-								<label htmlFor="date">Workshop Date and Time</label>
-								<input
-									type="datetime-local"
-									name="date"
-									id="date"
-									required
-									autoComplete="off"
-									value={material.dueDate}
-									onChange={(e) => {
-										setMaterial({ ...material, dueDate: e.target.value });
-									}}
-								/>
-							</div>
-						)}
 					</div>
+					{userData.userType === "presenter" && (
+						<div className="last-name">
+							<label htmlFor="date">Workshop Date and Time</label>
+							<input
+								type="datetime-local"
+								name="date"
+								id="date"
+								required
+								autoComplete="off"
+								value={material.dueDate}
+								onChange={(e) => {
+									setMaterial({ ...material, dueDate: e.target.value });
+								}}
+							/>
+						</div>
+					)}
 					<div>{error && <div className="error">{error}</div>}</div>
 				</motion.div>
 				<div className="button-container">
