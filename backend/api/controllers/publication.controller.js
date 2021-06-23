@@ -148,6 +148,17 @@ const rejectPublications = async (request, response) => {
 	}
 };
 
+const getResearcherPublications = async (request, response) => {
+	try {
+		const researcherPublications = await Publication.find({
+			createdBy: request.userId,
+		});
+		response.status(200).json(researcherPublications);
+	} catch (error) {
+		response.status(404).json({ message: error.message });
+	}
+};
+
 module.exports = {
 	getAllPublications,
 	savePublication,
@@ -159,4 +170,5 @@ module.exports = {
 	payPublications,
 	approvePublications,
 	rejectPublications,
+	getResearcherPublications,
 };

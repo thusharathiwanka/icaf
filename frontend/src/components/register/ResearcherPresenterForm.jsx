@@ -60,6 +60,7 @@ const PresenterForm = ({ title }) => {
 			history.push("/auth/login");
 		} else {
 			toast.success("Sorry, something went wrong.");
+			console.log("something went wrong");
 		}
 	};
 

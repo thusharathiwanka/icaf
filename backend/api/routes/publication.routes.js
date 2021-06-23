@@ -11,6 +11,7 @@ const {
 	payPublications,
 	approvePublications,
 	rejectPublications,
+	getResearcherPublications,
 } = require("../controllers/publication.controller");
 const verifyModeratorAuth = require("../auth/verifyModeratorAuth");
 const verifyResearcherAuth = require("../auth/verifyResearcherAuth");
@@ -22,6 +23,7 @@ router.get("/rejected", verifyModeratorAuth, getRejectedPublications);
 router.get("/pending", verifyModeratorAuth, getPendingPublications);
 router.get("/paid", verifyModeratorAuth, getPaidPublications);
 router.get("/unpaid", verifyModeratorAuth, getUnpaidPublications);
+router.get("/my", verifyResearcherAuth, getResearcherPublications);
 router.patch("/pay/:id", verifyResearcherAuth, payPublications);
 router.patch("/approve/:id", verifyModeratorAuth, approvePublications);
 router.patch("/reject/:id", verifyModeratorAuth, rejectPublications);

@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./private/PrivateRoute";
 import Admin from "./admin/admin";
+import Researcher from "../pages/Researcher";
 
 const App = () => {
 	return (
@@ -37,6 +38,9 @@ const App = () => {
 				</Route>
 				<PrivateRoute exact path="/auth/user/admin/dashboard">
 					<Admin />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/researcher/dashboard">
+					<Researcher />
 				</PrivateRoute>
 				<Route exact path="/auth/register">
 					<Register />
