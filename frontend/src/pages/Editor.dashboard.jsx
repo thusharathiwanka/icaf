@@ -1,10 +1,17 @@
 import React from "react";
-import dashboard from "../components/Editor.dashboard/dashboard";
+import AddNotice from "../components/Editor.dashboard/AddNotice";
+import NoticeList from "../components/Editor.dashboard/NoticesList";
 
 const Editor_dash = () => {
 	return (
 		<div>
-			<Editor_dash />
+			<div>
+			<AddNotice />
+		
+			
+			<NoticeList/>
+			</div>
+			
 		</div>
 	);
 };

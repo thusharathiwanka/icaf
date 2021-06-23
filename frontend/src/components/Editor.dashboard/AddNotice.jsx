@@ -1,5 +1,5 @@
 import React from 'react';
-import { } from '';
+
 const AddNotice = () => {
     return (<div>
         <form>

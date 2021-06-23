@@ -29,4 +29,4 @@ const AllNotices = () => {
     );
 }
  
-export default ALlNotices;
+export default AllNotices;
