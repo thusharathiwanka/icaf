@@ -35,8 +35,8 @@ const App = () => {
 				<Route exact path="/auth/login">
 					<Login />
 				</Route>
-				<Route exact path ="/adminprofile">
-					<Admin/>
+				<Route exact path="/auth/user/admin/dashboard">
+					<Admin />
 				</Route>
 				<Route exact path="/auth/register">
 					<Register />
