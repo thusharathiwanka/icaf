@@ -35,9 +35,9 @@ const App = () => {
 				<Route exact path="/auth/login">
 					<Login />
 				</Route>
-				<Route exact path="/auth/user/admin/dashboard">
+				<PrivateRoute exact path="/auth/user/admin/dashboard">
 					<Admin />
-				</Route>
+				</PrivateRoute>
 				<Route exact path="/auth/register">
 					<Register />
 				</Route>
