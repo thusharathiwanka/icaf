@@ -4,49 +4,46 @@ import { Link } from "react-router-dom";
 import { BASE_URL } from "../../config/config";
 import { getUserToken } from "../../auth/userAuth";
 import "../../pages/Researcher";
-import PublicationCard from "./UserItemCard";
 import ProfileCard from "./ProfileCard";
+import PublicationCard from "./UserItemCard";
 
-const ResearcherProfile = () => {
-	const [publications, setPublications] = useState([]);
+const PresenterProfile = () => {
+	const [workshops, setWorkshops] = useState([]);
 	const [profile, setProfile] = useState({});
 
 	useEffect(async () => {
-		const res = await fetch(`${BASE_URL}/publication/my`, {
+		const res = await fetch(`${BASE_URL}/workshop/my`, {
 			headers: {
 				"Content-Type": "application/json",
 				authToken: getUserToken(),
 			},
 		});
 		const data = await res.json();
-		setPublications(data);
+		setWorkshops(data);
 
-		const result = await fetch(`${BASE_URL}/researcher/my`, {
+		const result = await fetch(`${BASE_URL}/presenter/my`, {
 			headers: {
 				"Content-Type": "application/json",
 				authToken: getUserToken(),
 			},
 		});
 		const profile = await result.json();
-		setProfile(profile.researcher);
+		setProfile(profile.presenter);
 	}, []);
-
 	return (
 		<div className="researcher-profile">
 			<div className="profile-container">
 				<ProfileCard profile={profile} />
-				<Link className="add-new">Add new Publication</Link>
+				<Link className="add-new">Add new Workshop</Link>
 			</div>
-			<h1>Your Publications</h1>
+			<h1>Your Workshops</h1>
 			<div className="publications">
-				{publications.map((publication) => {
-					return (
-						<PublicationCard publication={publication} key={publication._id} />
-					);
+				{workshops.map((workshop) => {
+					return <PublicationCard publication={workshop} key={workshop._id} />;
 				})}
 			</div>
 		</div>
 	);
 };
 
-export default ResearcherProfile;
+export default PresenterProfile;

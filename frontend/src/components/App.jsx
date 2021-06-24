@@ -8,11 +8,10 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./private/PrivateRoute";
 import Admin from "./admin/admin";
-
 import Editor from "../pages/Editor.dashboard";
-
 import Researcher from "../pages/Researcher";
 import Attendee from "../pages/Attendee";
+import Presenter from "../pages/Presenter";
 import Download from "../pages/Download";
 
 const App = () => {
@@ -52,6 +51,9 @@ const App = () => {
 				</PrivateRoute>
 				<PrivateRoute exact path="/auth/user/attendee/dashboard">
 					<Attendee />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/presenter/dashboard">
+					<Presenter />
 				</PrivateRoute>
 				<Route exact path="/auth/register">
 					<Register />
