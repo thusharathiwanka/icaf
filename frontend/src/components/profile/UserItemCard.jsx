@@ -8,7 +8,11 @@ const UserItemCard = ({ publication }) => {
 				<h2>{publication.topic}</h2>
 				<p>
 					{publication.dueDate
-						? `Due Time - ${new Date(publication.dueDate).toUTCString()}`
+						? `Due Time - ${new Date(
+								publication.dueDate
+						  ).toDateString()} - ${new Date(
+								publication.dueDate
+						  ).toLocaleTimeString()}`
 						: `Payment Status - ${!publication.isPaid ? "Not Paid" : "Paid"}`}
 				</p>
 				<p>
