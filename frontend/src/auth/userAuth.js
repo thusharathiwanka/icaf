@@ -24,7 +24,7 @@ const getUserType = () => {
 export {
 	saveUserAuth,
 	checkUserAuth,
-	getUserAuth,
+	getUserToken,
 	deleteUserAuth,
 	getUserType,
 };

@@ -12,6 +12,7 @@ const verifyPresenterAuth = async (request, response, next) => {
 
 		if (verified.userType === "presenter") {
 			request.user = verified;
+			request.userId = verified.id;
 			next();
 		} else {
 			response.status(401).json({ message: "Access denied" });
