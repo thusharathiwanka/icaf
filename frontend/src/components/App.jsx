@@ -8,6 +8,9 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./private/PrivateRoute";
 import Admin from "./admin/admin";
+
+import Editor from "../pages/Editor.dashboard";
+
 import Researcher from "../pages/Researcher";
 import Attendee from "../pages/Attendee";
 import Download from "../pages/Download";
@@ -29,6 +32,9 @@ const App = () => {
 				<Route exact path="/downloads">
 					<Download />
 				</Route>
+				<PrivateRoute exact path="/auth/user/editor/dashboard">
+					<Editor />
+				</PrivateRoute>
 				<Route exact path="/about">
 					<About />
 				</Route>
