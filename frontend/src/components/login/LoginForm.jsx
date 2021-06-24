@@ -136,6 +136,7 @@ const LoginForm = () => {
 							name="user-type"
 							id="researcher"
 							value="researcher"
+							required
 							onClick={() =>
 								setLoginUser({ ...loginUser, userType: "researcher" })
 							}
@@ -149,6 +150,7 @@ const LoginForm = () => {
 							name="user-type"
 							id="presenter"
 							value="presenter"
+							required
 							onClick={() =>
 								setLoginUser({ ...loginUser, userType: "presenter" })
 							}
@@ -162,6 +164,7 @@ const LoginForm = () => {
 							name="user-type"
 							id="attendee"
 							value="attendee"
+							required
 							onClick={() =>
 								setLoginUser({ ...loginUser, userType: "attendee" })
 							}

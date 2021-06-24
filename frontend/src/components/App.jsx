@@ -10,6 +10,7 @@ import PrivateRoute from "./private/PrivateRoute";
 import Admin from "./admin/admin";
 import Researcher from "../pages/Researcher";
 import Attendee from "../pages/Attendee";
+import Download from "../pages/Download";
 
 const App = () => {
 	return (
@@ -25,9 +26,9 @@ const App = () => {
 				<PrivateRoute exact path="/publications">
 					<Home />
 				</PrivateRoute>
-				<PrivateRoute exact path="/downloads">
-					<Home />
-				</PrivateRoute>
+				<Route exact path="/downloads">
+					<Download />
+				</Route>
 				<Route exact path="/about">
 					<About />
 				</Route>
