@@ -86,3 +86,28 @@
 	justify-content: space-between;
 	align-items: center;
 }
+
+.blue,
+.red,
+.green {
+	padding: 0.2rem 0.8rem;
+	border-radius: 5px;
+	color: white;
+	display: inline-block;
+	margin-top: 0.3rem;
+}
+
+.blue {
+	background: rgb(40, 76, 195);
+}
+
+.red {
+	background: rgb(250, 57, 57);
+}
+.green {
+	background: rgb(21, 166, 96);
+}
+
+.researcher-profile .attendee-greeting {
+	padding-top: 1rem;
+}

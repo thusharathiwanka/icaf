@@ -37,7 +37,7 @@ const ResearcherProfile = () => {
 				<ProfileCard profile={profile} />
 				<Link className="add-new">Add new Publication</Link>
 			</div>
-			<h1>Your Submissions</h1>
+			<h1>Your Publications</h1>
 			<div className="publications">
 				{publications.map((publication) => {
 					return (

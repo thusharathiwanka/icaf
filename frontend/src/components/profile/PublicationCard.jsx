@@ -7,7 +7,20 @@ const UserItemCard = ({ publication }) => {
 			<div className="item-text-content">
 				<h2>{publication.topic}</h2>
 				<p>Payment Status - {!publication.isPaid ? "Not Paid" : "Paid"}</p>
-				<p>Approval Status - {publication.isApproved}</p>
+				<p>
+					Approval Status -{" "}
+					<span
+						className={
+							publication.isApproved === "rejected"
+								? "red"
+								: publication.isApproved === "approved"
+								? "green"
+								: "blue"
+						}
+					>
+						{publication.isApproved}
+					</span>
+				</p>
 				<p className="light">
 					Submitted on - {new Date(publication.createdAt).toDateString()}
 				</p>

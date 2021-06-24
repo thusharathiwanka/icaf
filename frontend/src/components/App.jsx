@@ -9,6 +9,7 @@ import Register from "../pages/Register";
 import PrivateRoute from "./private/PrivateRoute";
 import Admin from "./admin/admin";
 import Researcher from "../pages/Researcher";
+import Attendee from "../pages/Attendee";
 
 const App = () => {
 	return (
@@ -41,6 +42,9 @@ const App = () => {
 				</PrivateRoute>
 				<PrivateRoute exact path="/auth/user/researcher/dashboard">
 					<Researcher />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/attendee/dashboard">
+					<Attendee />
 				</PrivateRoute>
 				<Route exact path="/auth/register">
 					<Register />
