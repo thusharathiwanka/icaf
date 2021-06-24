@@ -26,7 +26,7 @@ const App = () => {
 				<PrivateRoute exact path="/downloads">
 					<Home />
 				</PrivateRoute>
-				<PrivateRoute exact path="/Editor">
+				<PrivateRoute exact path="/auth/user/editor/dashboard">
 					<Editor />
 				</PrivateRoute>
 				<Route exact path="/about">
