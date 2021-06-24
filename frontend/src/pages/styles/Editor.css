@@ -234,3 +234,29 @@ margin-bottom: 25px;
     border-radius: 4px;
 }
 
+.topic{
+    width: 500px;
+    height:auto;
+    margin: 50px auto;
+}
+
+.content{
+    width: 500px;
+    height:auto;
+    margin: 50px auto;
+}
+
+
+.ViewNotice{
+    width: 500px;
+    background-color: cadetblue;
+    height: auto;
+    padding: 15px 15px 15px 15px;
+    margin: 100px;
+    position: relative;
+}
+
+.ViewNotice p {
+    width: 500px;
+    height: auto;
+}
