@@ -6,10 +6,16 @@ const UserItemCard = ({ publication }) => {
 		<div className="item-card">
 			<div className="item-text-content">
 				<h2>{publication.topic}</h2>
-				<p>Submitted At - {new Date(publication.createdAt).toDateString()}</p>
-				<p className="paid">{!publication.isPaid ? "Not Paid" : "Paid"}</p>
+				<p>Payment Status - {!publication.isPaid ? "Not Paid" : "Paid"}</p>
+				<p>Approval Status - {publication.isApproved}</p>
+				<p className="light">
+					Submitted on - {new Date(publication.createdAt).toDateString()}
+				</p>
 			</div>
 			<div className="item-action-content">
+				{publication.isApproved === "approved" && (
+					<Link className="pay">Pay</Link>
+				)}
 				<Link
 					to={{
 						pathname: publication.src,
