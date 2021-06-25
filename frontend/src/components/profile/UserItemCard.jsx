@@ -6,7 +6,15 @@ const UserItemCard = ({ publication }) => {
 		<div className="item-card">
 			<div className="item-text-content">
 				<h2>{publication.topic}</h2>
-				<p>Payment Status - {!publication.isPaid ? "Not Paid" : "Paid"}</p>
+				<p>
+					{publication.dueDate
+						? `Due Time - ${new Date(
+								publication.dueDate
+						  ).toDateString()} - ${new Date(
+								publication.dueDate
+						  ).toLocaleTimeString()}`
+						: `Payment Status - ${!publication.isPaid ? "Not Paid" : "Paid"}`}
+				</p>
 				<p>
 					Approval Status -{" "}
 					<span
@@ -26,7 +34,7 @@ const UserItemCard = ({ publication }) => {
 				</p>
 			</div>
 			<div className="item-action-content">
-				{publication.isApproved === "approved" && (
+				{!publication.dueDate && publication.isApproved === "approved" && (
 					<Link className="pay">Pay</Link>
 				)}
 				<Link

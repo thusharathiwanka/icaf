@@ -101,18 +101,14 @@ const rejectWorkshops = async (request, response) => {
 	}
 };
 
-const getWorkshopsByPresenter = async (request, response) => {
-	if (request.params.id) {
-		try {
-			const workshopsByPresenter = await Workshop.find({
-				conductor: request.params.id,
-			});
-			response.status(200).json({ workshopsByPresenter: workshopsByPresenter });
-		} catch (error) {
-			response.status(404).json({ message: error.message });
-		}
-	} else {
-		response.status(406).json({ message: "request parameters are empty" });
+const getPresenterWorkshops = async (request, response) => {
+	try {
+		const presenterWorkshops = await Workshop.find({
+			createdBy: request.userId,
+		});
+		response.status(200).json(presenterWorkshops);
+	} catch (error) {
+		response.status(404).json({ message: error.message });
 	}
 };
 
@@ -124,5 +120,5 @@ module.exports = {
 	approveWorkshops,
 	rejectWorkshops,
 	getPendingWorkshops,
-	getWorkshopsByPresenter,
+	getPresenterWorkshops,
 };

@@ -21,7 +21,6 @@ const AttendeeProfile = () => {
 		});
 		const profile = await result.json();
 		setProfile(profile.attendee);
-		console.log(profile);
 	}, []);
 	return (
 		<div className="researcher-profile">

@@ -23,4 +23,17 @@ const savePresenter = async (request, response) => {
 	}
 };
 
-module.exports = { getAllPresenters, savePresenter };
+const getPresenterDetails = async (request, response) => {
+	try {
+		const { firstName, lastName, email, username } = await Presenter.findById(
+			request.userId
+		);
+		const presenterDetails = { firstName, lastName, email, username };
+
+		response.status(200).json({ presenter: presenterDetails });
+	} catch (error) {
+		response.status(404).json({ message: error.message });
+	}
+};
+
+module.exports = { getAllPresenters, savePresenter, getPresenterDetails };
