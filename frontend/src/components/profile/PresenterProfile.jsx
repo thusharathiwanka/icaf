@@ -5,7 +5,7 @@ import { BASE_URL } from "../../config/config";
 import { getUserToken } from "../../auth/userAuth";
 import "../../pages/Researcher";
 import ProfileCard from "./ProfileCard";
-import PublicationCard from "./UserItemCard";
+import PublicationCard from "../common/UserItemCard";
 
 const PresenterProfile = () => {
 	const [workshops, setWorkshops] = useState([]);

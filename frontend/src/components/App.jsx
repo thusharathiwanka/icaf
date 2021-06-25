@@ -13,6 +13,7 @@ import Researcher from "../pages/Researcher";
 import Attendee from "../pages/Attendee";
 import Presenter from "../pages/Presenter";
 import Download from "../pages/Download";
+import Workshop from "../pages/Workshop";
 
 const App = () => {
 	return (
@@ -23,7 +24,7 @@ const App = () => {
 					<Home />
 				</Route>
 				<PrivateRoute exact path="/workshops">
-					<Home />
+					<Workshop />
 				</PrivateRoute>
 				<PrivateRoute exact path="/publications">
 					<Home />
@@ -31,9 +32,6 @@ const App = () => {
 				<Route exact path="/downloads">
 					<Download />
 				</Route>
-				<PrivateRoute exact path="/auth/user/editor/dashboard">
-					<Editor />
-				</PrivateRoute>
 				<Route exact path="/about">
 					<About />
 				</Route>
@@ -46,14 +44,17 @@ const App = () => {
 				<PrivateRoute exact path="/auth/user/admin/dashboard">
 					<Admin />
 				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/editor/dashboard">
+					<Editor />
+				</PrivateRoute>
 				<PrivateRoute exact path="/auth/user/researcher/dashboard">
 					<Researcher />
 				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/attendee/dashboard">
-					<Attendee />
-				</PrivateRoute>
 				<PrivateRoute exact path="/auth/user/presenter/dashboard">
 					<Presenter />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/attendee/dashboard">
+					<Attendee />
 				</PrivateRoute>
 				<Route exact path="/auth/register">
 					<Register />

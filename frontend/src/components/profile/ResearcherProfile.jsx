@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { BASE_URL } from "../../config/config";
 import { getUserToken } from "../../auth/userAuth";
 import "../../pages/Researcher";
-import PublicationCard from "./UserItemCard";
+import PublicationCard from "../common/UserItemCard";
 import ProfileCard from "./ProfileCard";
 
 const ResearcherProfile = () => {
