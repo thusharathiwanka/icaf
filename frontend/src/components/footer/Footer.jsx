@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { SiFacebook, SiInstagram, SiTwitter, SiYoutube } from "react-icons/si";
 
 import FooterLogo from "url:../../assets/images/logo-white.svg";
@@ -11,25 +11,45 @@ const Footer = () => {
 				<div className="footer-content-left">
 					<img src={FooterLogo} alt="footer-logo" />
 					<div className="details-links">
-						<Link>Blogs</Link>
-						<Link>Events</Link>
-						<Link>Publications</Link>
-						<Link>About</Link>
-						<Link>Contact</Link>
+						<Link to="/blogs">Blogs</Link>
+						<Link to="/events">Events</Link>
+						<Link to="/publications">Publications</Link>
+						<Link to="/about">About</Link>
+						<Link to="/contact">Contact</Link>
 					</div>
 				</div>
 				<div className="footer-content-right">
 					<div className="social-links">
-						<Link to="https://facebook.com" target="blank">
+						<Link
+							to={{
+								pathname: "https://facebook.com",
+							}}
+							target="blank"
+						>
 							<SiFacebook />
 						</Link>
-						<Link to="https://instagram.com">
+						<Link
+							to={{
+								pathname: "https://instagram.com",
+							}}
+							target="blank"
+						>
 							<SiInstagram />
 						</Link>
-						<Link to="https://twitter.com">
+						<Link
+							to={{
+								pathname: "https://twitter.com",
+							}}
+							target="blank"
+						>
 							<SiTwitter />
 						</Link>
-						<Link to="https://youtube.com">
+						<Link
+							to={{
+								pathname: "https://youtube.com",
+							}}
+							target="blank"
+						>
 							<SiYoutube />
 						</Link>
 					</div>

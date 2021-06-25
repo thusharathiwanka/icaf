@@ -10,6 +10,19 @@ const getAllResearchers = async (request, response) => {
 	}
 };
 
+const getResearcherDetails = async (request, response) => {
+	try {
+		const { firstName, lastName, email, username } = await Researcher.findById(
+			request.userId
+		);
+		const researcherDetails = { firstName, lastName, email, username };
+
+		response.status(200).json({ researcher: researcherDetails });
+	} catch (error) {
+		response.status(404).json({ message: error.message });
+	}
+};
+
 const saveResearcher = async (request, response) => {
 	if (request.body) {
 		request.body.password = await hashPassword(request.body.password);
@@ -23,4 +36,4 @@ const saveResearcher = async (request, response) => {
 	}
 };
 
-module.exports = { getAllResearchers, saveResearcher };
+module.exports = { getAllResearchers, saveResearcher, getResearcherDetails };

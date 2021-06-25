@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const noticeSchema = mongoose.Schema({
+const noticeSchema = new mongoose.Schema({
     createdAt:{type:Date , required:true, default:new Date()},
     createdBy :{
         type:mongoose.Schema.Types.ObjectId,
@@ -11,7 +11,7 @@ const noticeSchema = mongoose.Schema({
     topic:{type:String,required:true,trim:true},
     content:{type:String,required:true,trim:true},
 
-}),
+});
 
 
 const notice = mongoose.model("notices",noticeSchema);

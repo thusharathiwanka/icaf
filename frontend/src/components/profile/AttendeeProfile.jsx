@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+import { BASE_URL } from "../../config/config";
+import { getUserToken } from "../../auth/userAuth";
+import "../../pages/Researcher";
+import ProfileCard from "./ProfileCard";
 
 const AttendeeProfile = () => {
-	return <div></div>;
+	const [profile, setProfile] = useState({});
+
+	document.title = "ICAF | Attendee";
+
+	useEffect(async () => {
+		console.log(getUserToken());
+		const result = await fetch(`${BASE_URL}/attendee/my`, {
+			headers: {
+				"Content-Type": "application/json",
+				authToken: getUserToken(),
+			},
+		});
+		const profile = await result.json();
+		setProfile(profile.attendee);
+	}, []);
+	return (
+		<div className="researcher-profile">
+			<div className="profile-container">
+				<ProfileCard profile={profile} />
+			</div>
+			<h1>You are successfully registered for the conference.</h1>
+			<h1 className="attendee-greeting">
+				Your token number is <span className="blue">{profile.id}</span>
+			</h1>
+		</div>
+	);
 };
 
 export default AttendeeProfile;

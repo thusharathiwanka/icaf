@@ -12,6 +12,7 @@ const verifyModeratorAuth = async (request, response, next) => {
 
 		if (verified.userType === "researcher") {
 			request.user = verified;
+			request.userId = verified.id;
 			next();
 		} else {
 			response.status(401).json({ message: "Access denied" });

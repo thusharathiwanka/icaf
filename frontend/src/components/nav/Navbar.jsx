@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { IoMdClose } from "react-icons/io";
 import { CgMenuRight } from "react-icons/cg";
+import { IoNotificationsSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import logo from "url:../../assets/images/logo-blue.svg";
-import { deleteUserAuth } from "../../auth/userAuth";
+import { deleteUserAuth, getUserType } from "../../auth/userAuth";
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const Navbar = () => {
@@ -22,7 +23,11 @@ const Navbar = () => {
 				<img src={logo} alt="nav-logo" className="nav-logo" />
 			</Link>
 			<nav id={isMobile ? "menu-open" : ""} onClick={() => setIsMobile(false)}>
-				<Link to="/">Home</Link>
+				{!isLogin ? (
+					<Link to="/">Home</Link>
+				) : (
+					<Link to={`/auth/user/${getUserType()}/dashboard`}>Dashboard</Link>
+				)}
 				<Link to="/workshops">Workshops</Link>
 				<Link to="/publications">Publications</Link>
 				<Link to="/blogs">Blogs</Link>
@@ -34,26 +39,29 @@ const Navbar = () => {
 				onClick={() => setIsMobile(false)}
 			>
 				{!isLogin ? (
-					<div className="nav-cta">
+					<div className="nav-cta" id={isMobile ? "menu-open-cta" : ""}>
 						<Link to="/auth/login">Login</Link>
 						<Link to="/auth/register" className="active">
 							Register
 						</Link>
 					</div>
 				) : (
-					<Link
-						className="active"
-						to="/"
-						onClick={() => {
-							deleteUserAuth();
-							setIsLogin(false);
-						}}
-					>
-						Logout
-					</Link>
+					<div className="login-cta">
+						<IoNotificationsSharp className="notification" />
+						<Link
+							className="active"
+							to="/"
+							onClick={() => {
+								deleteUserAuth();
+								setIsLogin(false);
+							}}
+						>
+							Logout
+						</Link>
+					</div>
 				)}
 			</div>
-			<button className="mobile-menu">
+			<button className="mobile-menu" onClick={() => setIsMobile(!isMobile)}>
 				{isMobile ? <IoMdClose /> : <CgMenuRight />}
 			</button>
 		</motion.header>

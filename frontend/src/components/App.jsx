@@ -7,6 +7,12 @@ import About from "../pages/About";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./private/PrivateRoute";
+import Admin from "./admin/admin";
+import Editor from "../pages/Editor.dashboard";
+import Researcher from "../pages/Researcher";
+import Attendee from "../pages/Attendee";
+import Presenter from "../pages/Presenter";
+import Download from "../pages/Download";
 
 const App = () => {
 	return (
@@ -22,8 +28,11 @@ const App = () => {
 				<PrivateRoute exact path="/publications">
 					<Home />
 				</PrivateRoute>
-				<PrivateRoute exact path="/downloads">
-					<Home />
+				<Route exact path="/downloads">
+					<Download />
+				</Route>
+				<PrivateRoute exact path="/auth/user/editor/dashboard">
+					<Editor />
 				</PrivateRoute>
 				<Route exact path="/about">
 					<About />
@@ -34,6 +43,18 @@ const App = () => {
 				<Route exact path="/auth/login">
 					<Login />
 				</Route>
+				<PrivateRoute exact path="/auth/user/admin/dashboard">
+					<Admin />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/researcher/dashboard">
+					<Researcher />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/attendee/dashboard">
+					<Attendee />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/presenter/dashboard">
+					<Presenter />
+				</PrivateRoute>
 				<Route exact path="/auth/register">
 					<Register />
 				</Route>

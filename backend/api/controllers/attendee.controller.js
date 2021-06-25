@@ -23,4 +23,15 @@ const saveAttendee = async (request, response) => {
 	}
 };
 
-module.exports = { getAllAttendees, saveAttendee };
+const getAttendeeDetails = async (request, response) => {
+	try {
+		const { id, firstName, lastName, email, username } =
+			await Attendee.findById(request.userId);
+		const attendeeDetails = { id, firstName, lastName, email, username };
+		response.status(200).json({ attendee: attendeeDetails });
+	} catch (error) {
+		response.status(404).json({ message: error.message });
+	}
+};
+
+module.exports = { getAllAttendees, saveAttendee, getAttendeeDetails };
