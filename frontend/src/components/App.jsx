@@ -63,6 +63,9 @@ const App = () => {
 				<PrivateRoute exact path="/workshop/create">
 					<EventForm title="Workshop" />
 				</PrivateRoute>
+				<PrivateRoute exact path="/publication/create">
+					<EventForm title="Publication" />
+				</PrivateRoute>
 			</Switch>
 		</Router>
 	);
