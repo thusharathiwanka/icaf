@@ -7,7 +7,7 @@ const WorkshopPublicationCard = ({ event }) => {
 			<div className="event-details">
 				<h2>{event.topic}</h2>
 				<div className="conductor-details">
-					<h3>
+					<h3 className={!event.dueDate && "grey"}>
 						{event.dueDate ? "Conduct" : "Published"} By{" "}
 						{event.createdBy.firstName + " " + event.createdBy.lastName}
 					</h3>
