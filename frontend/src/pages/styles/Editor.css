@@ -1,3 +1,5 @@
+
+
 .input_text{
     min-width: 350px;
     float: right;
@@ -75,7 +77,7 @@
     width: 600px;
     background-color: #f2f2f2;
     padding: 35px 25px 35px 20px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 4px rgba(0,0,0,0.2);
 }
 
 .NoticesList{
@@ -85,11 +87,17 @@
     width: 1200px;
     height: auto;
     margin: 5px 60px 50px 60px;
-    
+     background-color: white;
     padding: 20px;
     box-shadow: 4px 4px 8px 4px rgba(0,0,0,0.2);
     
 
+}
+
+.Search{
+    background-color: rgb(63, 54, 54);
+    width: auto;
+    height: 50px;
 }
 
 .Search input{
@@ -98,27 +106,29 @@
     margin-left: 85px;
     height: 25px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.Search button{
+.s_button{
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     float: right;
-    margin-right: 85px;
-    height: 25px;
-    width:100px;
-    border-radius: 4px;
+    margin-right: 90px;
+    height: 30px;
+    width:40px;
+    border-radius: 50px;
     background-color:#140880 ;
     color: white;
 }
 
 .welcome{
-    background-color: cadetblue;
+    background-color: rgb(248, 248, 252);
+    border: 2px solid rgb(25, 25, 112) ;
     width: 1000px;
     position: relative;
     justify-content: center;
     margin: 60px auto;
+    box-shadow: 0 4px 8px 4px rgba(0,0,0,0.2);
 }
 
 .main{
@@ -129,7 +139,7 @@
 .table{
     width: 1000px;
     height: auto;
-    margin: 50px auto 20px auto;
+    margin: 20px auto 20px auto;
     border-collapse: collapse;
     padding: auto;
 }
@@ -154,8 +164,8 @@
 .head_row{
     color: #5c5b5b;
     background-color: rgb(60,186,159,0.1);
-    border-bottom: 1.2px solid #3cba9f;
-    border-top: 1.2px solid #3cba9f ;
+    border-bottom: 2px solid #3cba9f;
+    border-top: 2px solid #3cba9f ;
     border-radius: 10px;
     width: 250px;
     height: 60px;
@@ -164,14 +174,10 @@
 .rw{
 
 background-color: #eeeeeece;
-border-bottom: 1px solid #ffffffce;
+border-bottom: 2px solid #b6b6b6ce;
 font-weight: bold;
 height: 50px;
 border-radius: 10px;
-}
-
-.view{
-
 }
 
 .NoticesChart{
@@ -179,22 +185,29 @@ border-radius: 10px;
     display: flexbox;
     justify-content: center;
     width: 400px;
+   
     
 }
 
 .chart{
 margin-top: 25px;
 margin-bottom: 25px;
+padding-top: 25px;
+padding-bottom: 25px;
   width:  400px;
   height: 200px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: white;
 }
 .chart_1{
-       margin-top: 50px;
-       margin-bottom: 50px;
-      width:  400px;
-      height: 150px;
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width:  400px;
+    height: 150px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
     }
 
 .notice_form button {
@@ -259,4 +272,9 @@ margin-bottom: 25px;
 .ViewNotice p {
     width: 500px;
     height: auto;
+}
+
+.editor{
+    background-color: rgb(247, 247, 247);
+    
 }
