@@ -13,54 +13,58 @@ import Researcher from "../pages/Researcher";
 import Attendee from "../pages/Attendee";
 import Presenter from "../pages/Presenter";
 import Download from "../pages/Download";
+import Reviewer from "../pages/Reviewer";
 
 const App = () => {
-	return (
-		<Router>
-			<Navbar />
-			<Switch>
-				<Route exact path="/">
-					<Home />
-				</Route>
-				<PrivateRoute exact path="/workshops">
-					<Home />
-				</PrivateRoute>
-				<PrivateRoute exact path="/publications">
-					<Home />
-				</PrivateRoute>
-				<Route exact path="/downloads">
-					<Download />
-				</Route>
-				<PrivateRoute exact path="/auth/user/editor/dashboard">
-					<Editor />
-				</PrivateRoute>
-				<Route exact path="/about">
-					<About />
-				</Route>
-				<PrivateRoute exact path="/blogs">
-					<About />
-				</PrivateRoute>
-				<Route exact path="/auth/login">
-					<Login />
-				</Route>
-				<PrivateRoute exact path="/auth/user/admin/dashboard">
-					<Admin />
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/researcher/dashboard">
-					<Researcher />
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/attendee/dashboard">
-					<Attendee />
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/presenter/dashboard">
-					<Presenter />
-				</PrivateRoute>
-				<Route exact path="/auth/register">
-					<Register />
-				</Route>
-			</Switch>
-		</Router>
-	);
+  return (
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <PrivateRoute exact path="/workshops">
+          <Home />
+        </PrivateRoute>
+        <PrivateRoute exact path="/publications">
+          <Home />
+        </PrivateRoute>
+        <Route exact path="/downloads">
+          <Download />
+        </Route>
+        <PrivateRoute exact path="/auth/user/editor/dashboard">
+          <Editor />
+        </PrivateRoute>
+        <Route exact path="/about">
+          <About />
+        </Route>
+        <PrivateRoute exact path="/blogs">
+          <About />
+        </PrivateRoute>
+        <Route exact path="/auth/login">
+          <Login />
+        </Route>
+        <PrivateRoute exact path="/auth/user/admin/dashboard">
+          <Admin />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/researcher/dashboard">
+          <Researcher />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/attendee/dashboard">
+          <Attendee />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/presenter/dashboard">
+          <Presenter />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/reviewer/dashboard">
+          <Reviewer />
+        </PrivateRoute>
+        <Route exact path="/auth/register">
+          <Register />
+        </Route>
+      </Switch>
+    </Router>
+  );
 };
 
 export default App;
