@@ -1,11 +1,11 @@
 import React from 'react';
-
+import SearchIcon from '@material-ui/icons/Search';
 const AllNotices = () => {
     return (
 		<div className="NoticesList">
 			<div className="Search" >
 			<input type="text" />
-			<button>Search</button>
+			<button className="s_button"><SearchIcon/></button>
 			</div>
 			<table className="table">
 				<thead>

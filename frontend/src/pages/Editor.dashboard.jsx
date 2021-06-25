@@ -2,6 +2,7 @@ import React from "react";
 import AddNotice from "../components/Editor.dashboard/AddNotice";
 import NoticeList from "../components/Editor.dashboard/NoticesList";
 import NoticesChart from "../components/Editor.dashboard/Chart";
+import ViewNotice from "../components/Editor.dashboard/ViewNotice";
 import '../pages/styles/Editor.css';
 
 
@@ -23,7 +24,8 @@ const Editor_dash = () => {
 			</div>
 			<div >
 				
-			<NoticeList/>
+				<NoticeList />
+				<ViewNotice/>
 			</div>
 			
 			

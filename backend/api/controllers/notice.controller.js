@@ -10,4 +10,7 @@ export const GetAllNotices = async (req, res) => {
 }
 
 };
-export const CreateNotice = (req, res) => {};
+export const CreateNotice = (req, res) => {
+
+    
+};
