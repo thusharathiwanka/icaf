@@ -35,7 +35,9 @@ const PresenterProfile = () => {
 		<div className="researcher-profile">
 			<div className="profile-container">
 				<ProfileCard profile={profile} />
-				<Link className="add-new">Add new Workshop</Link>
+				<Link className="add-new" to="/workshop/create">
+					Add new Workshop
+				</Link>
 			</div>
 			<h1>Your Workshops</h1>
 			<motion.div

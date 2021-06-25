@@ -15,7 +15,7 @@ import Presenter from "../pages/Presenter";
 import Download from "../pages/Download";
 import Workshop from "../pages/Workshop";
 import Publication from "../pages/Publication";
-
+import EventForm from "./common/EventForm";
 const App = () => {
 	return (
 		<Router>
@@ -39,6 +39,9 @@ const App = () => {
 				<PrivateRoute exact path="/blogs">
 					<About />
 				</PrivateRoute>
+				<Route exact path="/auth/register">
+					<Register />
+				</Route>
 				<Route exact path="/auth/login">
 					<Login />
 				</Route>
@@ -57,9 +60,9 @@ const App = () => {
 				<PrivateRoute exact path="/auth/user/attendee/dashboard">
 					<Attendee />
 				</PrivateRoute>
-				<Route exact path="/auth/register">
-					<Register />
-				</Route>
+				<PrivateRoute exact path="/workshop/create">
+					<EventForm title="Workshop" />
+				</PrivateRoute>
 			</Switch>
 		</Router>
 	);
