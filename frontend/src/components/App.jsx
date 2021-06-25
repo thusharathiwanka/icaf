@@ -14,6 +14,7 @@ import Attendee from "../pages/Attendee";
 import Presenter from "../pages/Presenter";
 import Download from "../pages/Download";
 import Workshop from "../pages/Workshop";
+import Publication from "../pages/Publication";
 
 const App = () => {
 	return (
@@ -27,7 +28,7 @@ const App = () => {
 					<Workshop />
 				</PrivateRoute>
 				<PrivateRoute exact path="/publications">
-					<Home />
+					<Publication />
 				</PrivateRoute>
 				<Route exact path="/downloads">
 					<Download />

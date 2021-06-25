@@ -4,6 +4,12 @@
 	padding-bottom: 4rem;
 }
 
+.event-card-content {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
 .event-card {
 	width: 400px;
 	height: 200px;
