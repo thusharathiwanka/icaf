@@ -10,7 +10,6 @@ const WorkshopList = () => {
 		const res = await fetch(`${BASE_URL}/workshop/approved`);
 		const data = await res.json();
 		setWorkshops(data.approvedWorkshops);
-		console.log(data);
 	}, []);
 
 	return (
