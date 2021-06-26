@@ -26,4 +26,4 @@ const saveBlog = async (request, response) => {
 	}
 };
 
-module.exports = { getAllBlogs };
+module.exports = { getAllBlogs, saveBlog };

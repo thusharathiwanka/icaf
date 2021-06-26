@@ -44,7 +44,6 @@ const PresenterForm = ({ title }) => {
 			materialType = "workshop";
 		}
 		material.createdBy = getUserId();
-		console.log(material);
 
 		const response = await fetch(`${BASE_URL}/${materialType}/create`, {
 			method: "POST",

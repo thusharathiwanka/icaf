@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import { getUserType } from "../auth/userAuth";
 import BlogCard from "../components/blog/BlogCard";
@@ -27,7 +28,12 @@ const Blog = () => {
 					</Link>
 				)}
 			</div>
-			<div className="blog-content">
+			<div
+				className="blog-content"
+				initial={{ y: 100, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
+				transition={{ type: "tween", duration: 0.8, delay: 0.8 }}
+			>
 				{blogs.map((blog) => {
 					return <BlogCard blog={blog} key={blog._id} />;
 				})}

@@ -1,8 +1,58 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 
+import { RegisterDataContext } from "../../context/RegisterFormContext";
+import Loading from "../../helpers/Loading";
+import { BASE_URL } from "../../config/config";
+import { getUserId } from "../../auth/userAuth";
+
 const BlogForm = () => {
-	return <div className="login-content">
+	const { material } = useContext(RegisterDataContext);
+	const [blog, setBlog] = useState({});
+	const allowedTypes = ["image/png", "image/jpeg"];
+	const [file, setFile] = useState(null);
+	const [error, setError] = useState(null);
+	const history = useHistory();
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		console.log(blog);
+		blog.src = material.src;
+		blog.createdBy = getUserId();
+		const response = await fetch(`${BASE_URL}/blog/`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(blog),
+		});
+
+		if (response.ok) {
+			toast.success("Blog has been submitted");
+			setBlog({});
+		} else {
+			toast.error("Sorry, something went wrong.");
+		}
+	};
+
+	const handleUpload = (e) => {
+		let selectedPicture = e.target.files[0];
+
+		if (selectedPicture && allowedTypes.includes(selectedPicture.type)) {
+			setFile(selectedPicture);
+			setError("");
+		} else {
+			setFile("");
+			setError("Please select an image file");
+		}
+	};
+
+	return (
+		<div className="login-content">
+			{file && <Loading file={file} setFile={setFile} />}
 			<ToastContainer
 				position="top-center"
 				autoClose={3000}
@@ -14,10 +64,10 @@ const BlogForm = () => {
 				draggable
 				pauseOnHover
 			/>
-			<h1>Login</h1>
+			<h1>Create new Blog</h1>
 			<motion.form
 				className="login-form"
-				onSubmit={handleLogin}
+				onSubmit={handleSubmit}
 				initial={{ y: 100, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ type: "tween", duration: 0.8 }}
@@ -28,90 +78,55 @@ const BlogForm = () => {
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ type: "tween", duration: 0.8, delay: 0.2 }}
 				>
-					<label htmlFor="username">Username</label>
+					<label htmlFor="username">Blog Title</label>
 					<input
 						type="username"
 						name="username"
 						id="username"
 						required
 						autoComplete="off"
-						value={loginUser.username}
+						value={blog.title}
 						onChange={(e) => {
-							setLoginUser({ ...loginUser, username: e.target.value });
+							setBlog({ ...blog, title: e.target.value });
 						}}
 					/>
-					<label htmlFor="password">Password</label>
+					<label htmlFor="password">Blog Description</label>
 					<input
-						type="password"
+						type="text"
 						name="password"
 						id="password"
-						value={loginUser.password}
+						value={blog.description}
 						required
 						autoComplete="off"
-						onChange={(e) =>
-							setLoginUser({ ...loginUser, password: e.target.value })
-						}
+						onChange={(e) => setBlog({ ...blog, description: e.target.value })}
 					/>
+					<label htmlFor="password">Blog Content</label>
+					<textarea
+						type="text"
+						cols={100}
+						rows={6}
+						name="password"
+						id="password"
+						value={blog.content}
+						required
+						autoComplete="off"
+						onChange={(e) => setBlog({ ...blog, content: e.target.value })}
+					/>
+					<div className="last-name">
+						<label htmlFor="material">Upload a Picture</label>
+						<input
+							type="file"
+							accept="image/*"
+							name="material"
+							id="material"
+							required
+							autoComplete="off"
+							maxLength="3"
+							onChange={handleUpload}
+						/>
+					</div>
+					<div>{error && <div className="error">{error}</div>}</div>
 				</motion.div>
-				<motion.div
-					className="user-type-selection"
-					initial={{ y: 50, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					transition={{ type: "tween", duration: 0.8, delay: 0.3 }}
-				>
-					<div className="researcher">
-						<input
-							type="radio"
-							name="user-type"
-							id="researcher"
-							value="researcher"
-							required
-							onClick={() =>
-								setLoginUser({ ...loginUser, userType: "researcher" })
-							}
-							disabled={disabled}
-						/>
-						<label htmlFor="researcher">Researcher</label>
-					</div>
-					<div className="presenter">
-						<input
-							type="radio"
-							name="user-type"
-							id="presenter"
-							value="presenter"
-							required
-							onClick={() =>
-								setLoginUser({ ...loginUser, userType: "presenter" })
-							}
-							disabled={disabled}
-						/>
-						<label htmlFor="presenter">Presenter</label>
-					</div>
-					<div className="attendee">
-						<input
-							type="radio"
-							name="user-type"
-							id="attendee"
-							value="attendee"
-							required
-							onClick={() =>
-								setLoginUser({ ...loginUser, userType: "attendee" })
-							}
-							disabled={disabled}
-						/>
-						<label htmlFor="attendee">Attendee</label>
-					</div>
-				</motion.div>
-				<motion.p
-					initial={{ y: 50, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					transition={{ type: "tween", duration: 0.8, delay: 0.4 }}
-				>
-					Haven't registered yet ?
-					<Link to="/auth/register" className="register-now">
-						Register
-					</Link>
-				</motion.p>
 				<motion.button
 					type="submit"
 					className="gradient-cta"
@@ -119,11 +134,11 @@ const BlogForm = () => {
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
 				>
-					Login
+					Submit
 				</motion.button>
 			</motion.form>
 		</div>
-	);;
+	);
 };
 
 export default BlogForm;
