@@ -16,7 +16,7 @@ import Download from "../pages/Download";
 import Workshop from "../pages/Workshop";
 import Publication from "../pages/Publication";
 import EventForm from "./common/EventForm";
-import Blog from "../pages/styles/Blog";
+import Blog from "../pages/Blog";
 const App = () => {
 	return (
 		<Router>
