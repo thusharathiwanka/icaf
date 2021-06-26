@@ -59,7 +59,13 @@ const Navbar = () => {
 									: setNotificationTray("");
 							}}
 						/>
-						<NotificationList className="active" />
+						<div
+							className={
+								!notificationTray ? "notification-action" : notificationTray
+							}
+						>
+							<NotificationList />
+						</div>
 						<Link
 							className="active"
 							to="/"
