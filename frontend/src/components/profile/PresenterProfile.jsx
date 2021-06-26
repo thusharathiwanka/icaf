@@ -9,6 +9,7 @@ import ProfileCard from "./ProfileCard";
 import PublicationCard from "../common/UserItemCard";
 
 const PresenterProfile = () => {
+	document.title = "ICAF | Presenter";
 	const [workshops, setWorkshops] = useState([]);
 	const [profile, setProfile] = useState({});
 

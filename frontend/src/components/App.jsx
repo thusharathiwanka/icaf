@@ -16,6 +16,7 @@ import Download from "../pages/Download";
 import Workshop from "../pages/Workshop";
 import Publication from "../pages/Publication";
 import EventForm from "./common/EventForm";
+import Blog from "../pages/styles/Blog";
 const App = () => {
 	return (
 		<Router>
@@ -33,12 +34,12 @@ const App = () => {
 				<Route exact path="/downloads">
 					<Download />
 				</Route>
+				<PrivateRoute exact path="/blogs">
+					<Blog />
+				</PrivateRoute>
 				<Route exact path="/about">
 					<About />
 				</Route>
-				<PrivateRoute exact path="/blogs">
-					<About />
-				</PrivateRoute>
 				<Route exact path="/auth/register">
 					<Register />
 				</Route>
