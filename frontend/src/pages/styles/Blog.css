@@ -42,6 +42,7 @@
 .blog-content {
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .blog-card h3 {

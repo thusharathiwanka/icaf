@@ -13,9 +13,13 @@ const Blog = () => {
 	const [blogs, setBlogs] = useState([]);
 
 	useEffect(async () => {
-		const res = await fetch(`${BASE_URL}/blog`);
-		const data = await res.json();
-		setBlogs(data.blogs);
+		try {
+			const res = await fetch(`${BASE_URL}/blog`);
+			const data = await res.json();
+			setBlogs(data.blogs);
+		} catch (error) {
+			console.log(error.message);
+		}
 	}, []);
 
 	return (

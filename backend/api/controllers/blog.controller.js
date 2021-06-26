@@ -26,4 +26,20 @@ const saveBlog = async (request, response) => {
 	}
 };
 
-module.exports = { getAllBlogs, saveBlog };
+const getBlog = async (request, response) => {
+	if (request.params.id) {
+		try {
+			const foundBlog = await Blog.findById(request.params.id).populate(
+				"createdBy",
+				"firstName lastName"
+			);
+			response.status(200).json({ blog: foundBlog });
+		} catch (error) {
+			response.status(404).json({ message: error.message });
+		}
+	} else {
+		response.status(406).json({ message: "request parameters are empty" });
+	}
+};
+
+module.exports = { getAllBlogs, saveBlog, getBlog };
