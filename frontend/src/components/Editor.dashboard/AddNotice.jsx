@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CloudUploadRoundedIcon from '@material-ui/icons/CloudUploadRounded';
 import TextField from '@material-ui/core/TextField';
+import { BASE_URL } from "../../config/config";
 
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -30,21 +31,52 @@ const useStyles = makeStyles((theme) => ({
 
 
 const AddNotice = () => {
-    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
 
-    const handleDateChange = (date) => {
-      setSelectedDate(date);
-    };
+  const [topic, setTopic] = useState('');
+  const [content, setContent] = useState('');
+  
+  const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
+  const handleDateChange = (d) => {
+    setSelectedDate(d);
+  };
+    
+
+  const createdAt = selectedDate.getFullYear() + '-' + selectedDate.getMonth() + '-' + selectedDate.getDay();
+
+ 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const  createdBy = '60b00107e0a4e82e5810018f';
+    const Notice = { createdAt, createdBy, topic, content};
+    console.log(Notice);
+
+    fetch(`${BASE_URL}/notice`, {
+        method: 'POST',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Headers": "*", },
+        body: JSON.stringify(Notice)
+    }).then(() => { console.log("New Notice added!!!"); })
+}
+
+
+
+
 
     const classes = useStyles();
     
-    return (<div className="AddNotice">
-        
-        <form className={classes.root} >
+  return (
+    <div>  
+     <div className="formhead"></div>
+    <div className="AddNotice">
+     
+      <form className={classes.root} onSubmit={handleSubmit} >
     
-        <TextField id="outlined-basic" label="Notice Topic" style={{ backgroundColor: "white" }} variant="outlined" />
+        <TextField label="Notice Topic" value={topic} style={{ backgroundColor: "white" }} onChange={(e)=>setTopic(e.target.value) } variant="outlined" />
 
-        <TextField id="outlined-basic" label="Content" style={{backgroundColor:"white"}}    multiline rows={5}variant="outlined" />
+        <TextField  label="Content" style={{ backgroundColor: "white" }} value={content} onChange={(e)=>setContent(e.target.value) }  multiline rows={5}variant="outlined" />
 
             <div >
           <div className={classes.date_upload} >
@@ -61,7 +93,7 @@ const AddNotice = () => {
             <button  className="input_submit" type="submit" >Submit</button>
     
             </form>
-          
+            </div>  
     </div>  );
 }
  
