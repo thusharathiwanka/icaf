@@ -25,7 +25,7 @@ const Editor_dash = () => {
 			<div >
 				
 				<NoticeList />
-				<ViewNotice/>
+				
 			</div>
 			
 			
