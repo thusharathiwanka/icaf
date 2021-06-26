@@ -73,7 +73,9 @@ const loginUser = async (request, response) => {
 			{ id: authUser.id, userType: userType },
 			process.env.JWT_SECRET
 		);
-		response.status(200).json({ auth: true, userType: userType, authToken });
+		response
+			.status(200)
+			.json({ auth: true, userType: userType, authToken, id: authUser.id });
 	}
 };
 

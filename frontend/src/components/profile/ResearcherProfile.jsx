@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import { BASE_URL } from "../../config/config";
 import { getUserToken } from "../../auth/userAuth";
 import "../../pages/Researcher";
-import PublicationCard from "./UserItemCard";
+import PublicationCard from "../common/UserItemCard";
 import ProfileCard from "./ProfileCard";
 
 const ResearcherProfile = () => {
@@ -35,16 +36,23 @@ const ResearcherProfile = () => {
 		<div className="researcher-profile">
 			<div className="profile-container">
 				<ProfileCard profile={profile} />
-				<Link className="add-new">Add new Publication</Link>
+				<Link className="add-new" to="/publication/create">
+					Add new Publication
+				</Link>
 			</div>
 			<h1>Your Publications</h1>
-			<div className="publications">
+			<motion.div
+				className="publications"
+				initial={{ y: 100, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
+				transition={{ type: "tween", duration: 0.8, delay: 0.3 }}
+			>
 				{publications.map((publication) => {
 					return (
 						<PublicationCard publication={publication} key={publication._id} />
 					);
 				})}
-			</div>
+			</motion.div>
 		</div>
 	);
 };

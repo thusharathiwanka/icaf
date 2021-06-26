@@ -18,7 +18,7 @@ const verifyResearcherAuth = require("../auth/verifyResearcherAuth");
 
 router.get("/", verifyModeratorAuth, getAllPublications);
 router.post("/create", savePublication);
-router.get("/approved", verifyModeratorAuth, getApprovedPublications);
+router.get("/approved", getApprovedPublications);
 router.get("/rejected", verifyModeratorAuth, getRejectedPublications);
 router.get("/pending", verifyModeratorAuth, getPendingPublications);
 router.get("/paid", verifyModeratorAuth, getPaidPublications);

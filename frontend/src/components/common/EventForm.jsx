@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useContext } from "react";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,10 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 import Loading from "../../helpers/Loading";
 import { BASE_URL } from "../../config/config";
+import { getUserType, getUserId } from "../../auth/userAuth";
 
 const PresenterForm = ({ title }) => {
-	const { setCurrentStep, material, setMaterial, userData, setUserData } =
-		useContext(RegisterDataContext);
+	const { material, setMaterial } = useContext(RegisterDataContext);
 	const allowedTypes = [
 		"application/pdf",
 		"application/x-zip-compressed",
@@ -19,7 +18,6 @@ const PresenterForm = ({ title }) => {
 	];
 	const [file, setFile] = useState(null);
 	const [error, setError] = useState(null);
-	const history = useHistory();
 
 	const fileChangeHandler = (e) => {
 		const selectedFile = e.target.files[0];
@@ -36,14 +34,17 @@ const PresenterForm = ({ title }) => {
 		}
 	};
 
-	const handleMaterial = async () => {
+	const handleMaterial = async (e) => {
+		e.preventDefault();
 		let materialType;
 
-		if (userData.userType === "researcher") {
+		if (getUserType() === "researcher") {
 			materialType = "publication";
-		} else if (userData.userType === "presenter") {
+		} else if (getUserType() === "presenter") {
 			materialType = "workshop";
 		}
+		material.createdBy = getUserId();
+		console.log(material);
 
 		const response = await fetch(`${BASE_URL}/${materialType}/create`, {
 			method: "POST",
@@ -54,41 +55,10 @@ const PresenterForm = ({ title }) => {
 		});
 
 		if (response.ok) {
-			setUserData({});
+			toast.success(`Your ${materialType} successfully submitted to review.`);
 			setMaterial({});
-			toast.success("Your account has been created. Please login to proceed");
 		} else {
 			toast.error("Sorry, something went wrong.");
-		}
-	};
-
-	const handleRegister = async (e) => {
-		e.preventDefault();
-		try {
-			const response = await fetch(`${BASE_URL}/${userData.userType}/create`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(userData),
-			});
-
-			const userId = await response.json();
-			material.createdBy = userId.id;
-
-			if (response.status === 406) {
-				if (userId.message.includes("username")) {
-					toast.error("Username already exists");
-				} else if (userId.message.includes("email")) {
-					toast.error("Email already exists");
-				}
-			}
-
-			if (response.ok) {
-				handleMaterial();
-			}
-		} catch (error) {
-			console.log(error);
 		}
 	};
 
@@ -106,7 +76,7 @@ const PresenterForm = ({ title }) => {
 				pauseOnHover
 			/>
 			{file && <Loading file={file} setFile={setFile} />}
-			<h1>{title} Registration</h1>
+			<h1>Create new {title}</h1>
 			<motion.form
 				className="login-form"
 				initial={{ x: 300, opacity: 0 }}
@@ -119,61 +89,6 @@ const PresenterForm = ({ title }) => {
 					animate={{ x: 0, opacity: 1 }}
 					transition={{ type: "tween", duration: 0.8, delay: 0.2 }}
 				>
-					<label htmlFor="email">Email</label>
-					<input
-						type="email"
-						name="email"
-						id="email"
-						required
-						autoComplete="off"
-						value={userData.email}
-						onChange={(e) =>
-							setUserData({ ...userData, email: e.target.value })
-						}
-					/>
-					<label htmlFor="mobile-number">Contact Number</label>
-					<input
-						type="tel"
-						name="mobile-number"
-						id="mobile-number"
-						required
-						maxLength="10"
-						autoComplete="off"
-						value={userData.contactNumber}
-						onChange={(e) =>
-							setUserData({ ...userData, contactNumber: e.target.value })
-						}
-					/>
-					<div className="name-info">
-						<div className="first-name">
-							<label htmlFor="university">University</label>
-							<input
-								type="text"
-								name="university"
-								id="university"
-								required
-								autoComplete="off"
-								value={userData.university}
-								onChange={(e) =>
-									setUserData({ ...userData, university: e.target.value })
-								}
-							/>
-						</div>
-						<div className="last-name">
-							<label htmlFor="department">Department</label>
-							<input
-								type="text"
-								name="department"
-								id="department"
-								required
-								autoComplete="off"
-								value={userData.department}
-								onChange={(e) =>
-									setUserData({ ...userData, department: e.target.value })
-								}
-							/>
-						</div>
-					</div>
 					<div className="name-info">
 						<div className="first-name">
 							<label htmlFor="topic">Your Topic</label>
@@ -203,7 +118,7 @@ const PresenterForm = ({ title }) => {
 							/>
 						</div>
 					</div>
-					{userData.userType === "presenter" && (
+					{getUserType() === "presenter" && (
 						<div className="last-name">
 							<label htmlFor="date">Workshop Date and Time</label>
 							<input
@@ -223,23 +138,14 @@ const PresenterForm = ({ title }) => {
 				</motion.div>
 				<div className="button-container">
 					<motion.button
-						className="gradient-cta transparent"
-						initial={{ x: 10, opacity: 0 }}
-						animate={{ x: 0, opacity: 1 }}
-						transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
-						onClick={() => setCurrentStep(1)}
-					>
-						Back
-					</motion.button>
-					<motion.button
 						type="submit"
 						className="gradient-cta"
 						initial={{ x: 10, opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
-						onClick={handleRegister}
+						onClick={handleMaterial}
 					>
-						Register
+						Submit
 					</motion.button>
 				</div>
 			</motion.form>

@@ -63,7 +63,7 @@ const LoginForm = () => {
 					break;
 			}
 
-			saveUserAuth(userAuth.authToken, userAuth.userType);
+			saveUserAuth(userAuth.authToken, userAuth.userType, userAuth.id);
 			setIsLogin(true);
 			localStorage.setItem("isLogin", true);
 			history.push(location);

@@ -15,7 +15,7 @@ const verifyPresenterAuth = require("../auth/verifyPresenterAuth");
 
 router.get("/", verifyModeratorAuth, getAllWorkshops);
 router.post("/create", saveWorkshop);
-router.get("/approved", verifyModeratorAuth, getApprovedWorkshops);
+router.get("/approved", getApprovedWorkshops);
 router.get("/rejected", verifyModeratorAuth, getRejectedWorkshops);
 router.get("/pending", verifyModeratorAuth, getPendingWorkshops);
 router.get("/my", verifyPresenterAuth, getPresenterWorkshops);
