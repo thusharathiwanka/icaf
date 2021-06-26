@@ -32,6 +32,10 @@
  
 }
 
+.upload{
+    margin-right: 100px;
+}
+
 .label_date{
     text-align: left;
     float: left;
@@ -50,15 +54,20 @@
 }
 
 .input_submit{
-    display: block;
-    width:450px;
+    
+    width:50ch;
     padding: 6px 6px;
     margin: 5px 10px 5px 10px;
     background-color: #140880;
     color: white;
     border-radius: 4px;
     border: none;
+    font-weight: lighter;
 
+}
+
+.input_submit:hover{
+    background-color: rgba(11, 11, 126, 0.637);
 }
 
 .notice_form{
@@ -75,7 +84,7 @@
     justify-content: center;
     height: 500px;
     width: 600px;
-    background-color: #f2f2f2;
+    background-color: #f5f5f5;
     padding: 35px 25px 35px 20px;
     box-shadow: 0 4px 8px 4px rgba(0,0,0,0.2);
 }
@@ -86,8 +95,8 @@
     position: relative;
     width: 1200px;
     height: auto;
-    margin: 5px 60px 50px 60px;
-     background-color: white;
+    margin: 50px 60px 50px 80px;
+    background-color: #ffffff;
     padding: 20px;
     box-shadow: 4px 4px 8px 4px rgba(0,0,0,0.2);
     
@@ -95,9 +104,10 @@
 }
 
 .Search{
-    background-color: rgb(63, 54, 54);
+    
     width: auto;
-    height: 50px;
+    height: 20px;
+    margin: 10px auto 20px auto;
 }
 
 .Search input{
@@ -117,13 +127,13 @@
     height: 30px;
     width:40px;
     border-radius: 50px;
-    background-color:#140880 ;
+    background-color:#b3b3b8 ;
     color: white;
 }
 
 .welcome{
-    background-color: rgb(248, 248, 252);
-    border: 2px solid rgb(25, 25, 112) ;
+    background-color: cadetblue;
+    border: 2px solid cadetblue ;
     width: 1000px;
     position: relative;
     justify-content: center;
@@ -137,7 +147,7 @@
 }
 
 .table{
-    width: 1000px;
+    width: 1100px;
     height: auto;
     margin: 20px auto 20px auto;
     border-collapse: collapse;
@@ -162,10 +172,10 @@
 }
 
 .head_row{
-    color: #5c5b5b;
-    background-color: rgb(60,186,159,0.1);
-    border-bottom: 2px solid #3cba9f;
-    border-top: 2px solid #3cba9f ;
+    color: rgb(170, 167, 167);
+    background-color: rgb(227, 227, 233);
+    border-bottom: 2px solid #ffffff;
+    border-top: 2px solid #f8f8f8 ;
     border-radius: 10px;
     width: 250px;
     height: 60px;
@@ -205,7 +215,7 @@ padding-bottom: 25px;
     margin-top: 25px;
     margin-bottom: 25px;
     width:  400px;
-    height: 150px;
+    height: 200px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: white;
     }
@@ -225,27 +235,7 @@ padding-bottom: 25px;
     margin: 10px 10px 5px 1px;
 }
 
-.NoticesList .Update{
 
-    background-color: rgb(196,88,80,0.1);
-    border: 1px solid #c45850;
-    color:rgb(10, 10, 10);
-    padding: 5px;
-    width: 100px;
-    font-size: small;
-    border-radius: 4px;
-}
-
-.NoticesList .view{
-
-    background-color: rgb(255,165,0,0.1);
-    border: 1px solid #ffa500;
-    color:rgb(10, 10, 10);
-    padding: 5px;
-    width: 100px;
-    font-size: small;
-    border-radius: 4px;
-}
 
 .topic{
     width: 500px;
@@ -254,27 +244,41 @@ padding-bottom: 25px;
 }
 
 .content{
-    width: 500px;
+    width: 450px;
     height:auto;
-    margin: 50px auto;
+    margin: 20px 30px 20px 30px;
+    background-color: yellow;
 }
 
 
 .ViewNotice{
-    width: 500px;
+    width: 600px;
     background-color: cadetblue;
     height: auto;
     padding: 15px 15px 15px 15px;
     margin: 100px;
-    position: relative;
+    position: flex;
+    justify-content: center;
+
 }
 
 .ViewNotice p {
-    width: 500px;
+    width: 400px;
     height: auto;
 }
 
 .editor{
     background-color: rgb(247, 247, 247);
     
+}
+
+.pic{
+    width: 400px;
+    height: 300px;
+    margin: 30px auto;
+}
+
+.pic img {
+    width: 400px;
+    height: 300px;
 }
