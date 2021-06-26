@@ -1,10 +1,35 @@
 import React from "react";
-import dashboard from "../components/Editor.dashboard/dashboard";
+import AddNotice from "../components/Editor.dashboard/AddNotice";
+import NoticeList from "../components/Editor.dashboard/NoticesList";
+import NoticesChart from "../components/Editor.dashboard/Chart";
+import ViewNotice from "../components/Editor.dashboard/ViewNotice";
+import '../pages/styles/Editor.css';
+
 
 const Editor_dash = () => {
 	return (
-		<div>
-			<Editor_dash />
+		<div className="editor">
+			
+			<div className="welcome">
+			<center>
+			<h1>Welcome Back MR EDITOR !!!</h1>
+			</center>
+			</div>
+			<div className="main">
+		    <AddNotice />		
+			<NoticesChart />
+			
+			
+             
+			</div>
+			<div >
+				
+				<NoticeList />
+				
+			</div>
+			
+			
+			
 		</div>
 	);
 };

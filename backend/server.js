@@ -13,6 +13,7 @@ const commonRoutes = require("./api/routes/common.routes");
 const adminRoutes = require("./api/routes/admin.routes");
 const paymentRoutes = require("./api/routes/payment.routes");
 const conferenceRoutes = require("./api/routes/conference.routes");
+const downloadRoutes = require("./api/routes/download.routes");
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use("/auth", commonRoutes);
 app.use("/admin", adminRoutes);
 app.use("/payment", paymentRoutes);
 app.use("/conference", conferenceRoutes);
+app.use("/download", downloadRoutes);
 
 const PORT = process.env.PORT || 3000;
 

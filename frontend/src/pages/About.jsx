@@ -11,8 +11,8 @@ const About = () => {
 
 	return (
 		<div className="about-content">
-			<Timeline />
 			<LatestNews />
+			<Timeline />
 			<Footer />
 		</div>
 	);

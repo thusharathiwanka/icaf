@@ -8,13 +8,18 @@ const deleteUserAuth = () => {
 	localStorage.removeItem("isLogin");
 };
 
-const saveUserAuth = (userAuth, userType) => {
+const saveUserAuth = (userAuth, userType, userId) => {
 	localStorage.setItem("token", userAuth);
 	localStorage.setItem("userType", userType);
+	localStorage.setItem("userId", userId);
 };
 
 const getUserToken = () => {
 	return localStorage.getItem("token");
+};
+
+const getUserId = () => {
+	return localStorage.getItem("userId");
 };
 
 const getUserType = () => {
@@ -24,7 +29,8 @@ const getUserType = () => {
 export {
 	saveUserAuth,
 	checkUserAuth,
-	getUserAuth,
+	getUserToken,
 	deleteUserAuth,
 	getUserType,
+	getUserId,
 };

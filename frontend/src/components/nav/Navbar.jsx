@@ -8,10 +8,14 @@ import { motion } from "framer-motion";
 import logo from "url:../../assets/images/logo-blue.svg";
 import { deleteUserAuth, getUserType } from "../../auth/userAuth";
 import { RegisterDataContext } from "../../context/RegisterFormContext";
+import NotificationList from "../notification/NotificationList";
+
+import "../../pages/styles/Notification.css";
 
 const Navbar = () => {
 	const [isMobile, setIsMobile] = useState(false);
 	const { isLogin, setIsLogin } = useContext(RegisterDataContext);
+	const [notificationTray, setNotificationTray] = useState("");
 
 	return (
 		<motion.header
@@ -47,7 +51,21 @@ const Navbar = () => {
 					</div>
 				) : (
 					<div className="login-cta">
-						<IoNotificationsSharp className="notification" />
+						<IoNotificationsSharp
+							className="notification"
+							onClick={() => {
+								!notificationTray
+									? setNotificationTray("open")
+									: setNotificationTray("");
+							}}
+						/>
+						<div
+							className={
+								!notificationTray ? "notification-action" : notificationTray
+							}
+						>
+							<NotificationList />
+						</div>
 						<Link
 							className="active"
 							to="/"
