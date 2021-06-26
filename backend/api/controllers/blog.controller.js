@@ -2,8 +2,11 @@ const Blog = require("../models/blog.model");
 
 const getAllBlogs = async (request, response) => {
 	try {
-		const allBlogs = await Blog.find();
-		response.status(200).json(allBlogs);
+		const allBlogs = await Blog.find().populate(
+			"createdBy",
+			"firstName lastName"
+		);
+		response.status(200).json({ blogs: allBlogs });
 	} catch (error) {
 		response.status(401).json({ message: error.message });
 	}
