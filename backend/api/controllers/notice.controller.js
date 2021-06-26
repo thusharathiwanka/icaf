@@ -27,4 +27,8 @@ const notice = require( '../models/notice.model')
     
 };
 
+
+const GetByapproval = async (req, res) => {
+    
+}
 module.exports = {GetAllNotices, CreateNotice }

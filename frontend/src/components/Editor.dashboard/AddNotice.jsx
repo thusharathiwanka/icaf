@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CloudUploadRoundedIcon from '@material-ui/icons/CloudUploadRounded';
 import TextField from '@material-ui/core/TextField';
 import { BASE_URL } from "../../config/config";
+import { getUserType, getUserId } from "../../auth/userAuth";
 
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -35,19 +36,19 @@ const AddNotice = () => {
   const [topic, setTopic] = useState('');
   const [content, setContent] = useState('');
   
-  const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
+  const [selectedDate, setSelectedDate] = useState(Date.now());
   const handleDateChange = (d) => {
     setSelectedDate(d);
   };
     
 
-  const createdAt = selectedDate.getFullYear() + '-' + selectedDate.getMonth() + '-' + selectedDate.getDay();
+  const createdAt = selectedDate; //selectedDate.getFullYear() + '-' + selectedDate.getMonth() + '-' + selectedDate.getDay();
 
  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const  createdBy = '60b00107e0a4e82e5810018f';
+    const  createdBy = getUserId();
     const Notice = { createdAt, createdBy, topic, content};
     console.log(Notice);
 

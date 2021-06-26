@@ -24,7 +24,7 @@ const AllNotices = () => {
 		  });
 	}, []);
 	
-	console.log(Notices);
+
 	return (
 		<div>
 		<div className="Listhead"></div>
@@ -46,28 +46,23 @@ const AllNotices = () => {
 						<TableCell  style={{width:"30px" ,textAlign:'center',width:'250px'}}> </TableCell>
 						
 					</TableRow>
-				</TableHead>
+						</TableHead>
+						{Notices&& (
 				<TableBody >
-
+							{Notices.map((notice) =>
+							
+								<TableRow key={notice._id}>
+									<TableCell style={{ textAlign: 'center', width: '250px' }}>{ notice._id}</TableCell>
+									<TableCell style={{ textAlign: 'center', width: '250px' }}>{notice.topic }</TableCell>
+									<TableCell style={{ textAlign: 'center', width: '250px' }}>{notice.isApproved}</TableCell>
+									<TableCell style={{ textAlign: 'center', width: '250px' }}>{notice.createdAt }</TableCell>
+									<TableCell style={{ width: "30px", textAlign: 'center' }} ><ViewNotice /></TableCell>
 					
-						<TableRow >
-								<TableCell style={{textAlign:'center',width:'250px'}}>hi</TableCell>
-								<TableCell style={{textAlign:'center',width:'250px'}}>ho</TableCell>
-                                <TableCell style={{textAlign:'center',width:'250px'}}>hd</TableCell>
-                                <TableCell style={{textAlign:'center',width:'250px'}}>hc</TableCell>
-						<TableCell style={{width:"30px", textAlign:'center'}} ><ViewNotice/></TableCell>
-						
-					</TableRow>
-					<TableRow >
-								<TableCell style={{textAlign:'center',width:'250px'}}>hi</TableCell>
-								<TableCell style={{textAlign:'center',width:'250px'}}>ho</TableCell>
-                                <TableCell style={{textAlign:'center',width:'250px'}}>hd</TableCell>
-                                <TableCell style={{textAlign:'center',width:'250px'}}>hc</TableCell>
-							<TableCell style={{ width: "30px", textAlign:'center' }}><ViewNotice/></TableCell>
-						
-				   </TableRow>
-					
-				</TableBody>
+								</TableRow>
+						 )}
+							</TableBody>
+							) }
+				
 				</Table>
 				</TableContainer>
 				</div>
