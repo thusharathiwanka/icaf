@@ -46,3 +46,10 @@
 	background: none;
 	cursor: pointer;
 }
+
+@media screen and (max-width: 1100px) {
+	.notification-tray {
+		top: 25%;
+		right: 25%;
+	}
+}
