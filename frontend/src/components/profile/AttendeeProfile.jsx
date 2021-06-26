@@ -8,9 +8,8 @@ import "../../pages/Researcher";
 import ProfileCard from "./ProfileCard";
 
 const AttendeeProfile = () => {
-	const [profile, setProfile] = useState({});
-
 	document.title = "ICAF | Attendee";
+	const [profile, setProfile] = useState({});
 
 	useEffect(async () => {
 		console.log(getUserToken());
