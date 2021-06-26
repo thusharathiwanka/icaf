@@ -10,6 +10,8 @@ const admin = () => {
     let [aCount,setACount] = useState(0)
     let [rCount,setRCount] = useState(0)
     let [pCount,setPCount] = useState(0)
+    let [researchPapers,setresearchPapers] = useState([])
+    let [workshpPapers,setworkshpPapers] = useState([])
 
 
 useEffect (async() => {
@@ -21,6 +23,15 @@ useEffect (async() => {
 
         const resPresenter = await fetch(`${BASE_URL}/admin/presenterscount`);
         const presenterData = await resPresenter.text();
+
+        const resResearchpapers = await fetch(`${BASE_URL}/researcher`);
+        const Researchpapers = await resResearchpapers.json();
+
+        const resWorkshppapers = await fetch(`${BASE_URL}/workshop`);
+        const Workshppapers = await resWorkshppapers.json();
+
+        setresearchPapers(Researchpapers)
+        setworkshpPapers(Workshppapers)
             if(presenterData != null){
          setACount(attendeeData);
          setRCount(researcherData);
@@ -28,7 +39,8 @@ useEffect (async() => {
             }
             
 }, [])
-
+console.log(researchPapers);
+console.log(workshpPapers);
     return (
         <div style={{marginBottom: "100px"}}>
             <Count attendee={aCount} researcher={rCount} presenter={pCount}/>
