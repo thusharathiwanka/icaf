@@ -34,7 +34,7 @@ const state_1 = {
 ],
     datasets: [
         {
-          label: 'Yearly added number  of notices',
+          label: 'Monthly added number of notices',
           backgroundColor: [
               "rgb(60,186,159,0.1)",
               
@@ -57,15 +57,17 @@ const state_1 = {
 const NoticesChart = () => {
     return (
       <div className="NoticesChart">
-            <div className="chart_head"></div>
+        <div className="chart_head">
+        <h3 style={{fontSize:'17px',textAlign:'left',margin:'0px 200px 40px 15px',fontWeight:'lighter'}}>Notices appproval</h3>
+            </div>
             <div className="chart">
             <Doughnut
           data={state}
           options={{
             title:{
-              display:true,
-              text:'Average Rainfall per month',
-              fontSize:20
+              display: true,
+             
+              fontSize:100
             },
             legend:{
               display:true,
@@ -76,15 +78,17 @@ const NoticesChart = () => {
         />
             
         </div>
-        <div className="chart_head"></div>
+        <div className="chart_head">
+        <h3 style={{fontSize:'17px',textAlign:'left',margin:'0px 20px 40px 15px',fontWeight:'lighter'}}>Notices added this Year</h3>
+        </div>
             <div>
         <Bar  className="chart_1"
           data={state_1}
           options={{
             title:{
               display:true,
-              text:'Average Rainfall per month',
-              fontSize:20
+              
+              fontSize:50
             },
             legend:{
               display:true,

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-import { RegisterDataContext } from "../../context/RegisterFormContext";
+import { RegisterDataContext } from "../../context/Context";
 
 const RegisterForm = () => {
 	const { setCurrentStep, userData, setUserData } =

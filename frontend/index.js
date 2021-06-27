@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "./src/components/App";
-import RegisterFormContext from "./src/context/RegisterFormContext";
+import Context from "./src/context/Context";
 
 ReactDOM.render(
-	<RegisterFormContext>
+	<Context>
 		<App />
-	</RegisterFormContext>,
+	</Context>,
 	document.getElementById("root")
 );

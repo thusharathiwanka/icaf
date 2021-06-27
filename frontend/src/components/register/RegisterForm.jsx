@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import CommonRegisterForm from "./CommonRegisterForm";
 import AttendeeForm from "./AttendeeForm";
 import ResearcherPresenterForm from "./ResearcherPresenterForm";
-import { RegisterDataContext } from "../../context/RegisterFormContext";
+import { RegisterDataContext } from "../../context/Context";
 
 const RegisterForm = () => {
 	const { currentStep, userData } = useContext(RegisterDataContext);

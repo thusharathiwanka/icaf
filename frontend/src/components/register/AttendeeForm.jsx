@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { RegisterDataContext } from "../../context/RegisterFormContext";
+import { RegisterDataContext } from "../../context/Context";
 import { BASE_URL } from "../../config/config";
 
 const AttendeeForm = () => {

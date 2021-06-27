@@ -146,6 +146,11 @@ const rejectPublications = async (request, response) => {
 					new: true,
 				}
 			);
+			const newNotification = new ResearcherNotification({
+				title: `Your publication has been rejected with topic '${rejectedPublication.topic}'`,
+				to: rejectedPublication.createdBy,
+			});
+			await newNotification.save();
 			response.status(200).json(rejectedPublication);
 		} catch (error) {
 			response.status(404).json({ message: error.message });
