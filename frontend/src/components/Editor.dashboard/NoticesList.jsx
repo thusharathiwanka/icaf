@@ -27,7 +27,9 @@ const AllNotices = () => {
 
 	return (
 		<div>
-		<div className="Listhead"></div>
+			<div className="Listhead">
+				<h3 style={{fontSize:'20px',textAlign:'center',marginLeft:'20px',fontWeight:'lighter'}}>All Notices Added by Editor</h3>
+		</div>
 		<div className="NoticesList">
 			{/*<div className="Search">
 			<button style={{backgroundColor:"white",float:'right',marginBottom:'0'}}><SearchIcon color ="action" /></button>
