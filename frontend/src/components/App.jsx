@@ -16,7 +16,10 @@ import Download from "../pages/Download";
 import Workshop from "../pages/Workshop";
 import Publication from "../pages/Publication";
 import EventForm from "./common/EventForm";
-import Blog from "../pages/styles/Blog";
+import Blog from "../pages/Blog";
+import BlogForm from "./blog/BlogForm";
+import ReadBlog from "./blog/ReadBlog";
+
 const App = () => {
 	return (
 		<Router>
@@ -66,6 +69,12 @@ const App = () => {
 				</PrivateRoute>
 				<PrivateRoute exact path="/publication/create">
 					<EventForm title="Publication" />
+				</PrivateRoute>
+				<PrivateRoute exact path="/blogs/create">
+					<BlogForm />
+				</PrivateRoute>
+				<PrivateRoute exact path="/blogs/:id">
+					<ReadBlog />
 				</PrivateRoute>
 			</Switch>
 		</Router>
