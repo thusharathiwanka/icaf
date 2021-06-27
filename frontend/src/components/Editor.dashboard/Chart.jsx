@@ -56,7 +56,8 @@ const state_1 = {
 }
 const NoticesChart = () => {
     return (
-        <div className="NoticesChart">
+      <div className="NoticesChart">
+            <div className="chart_head"></div>
             <div className="chart">
             <Doughnut
           data={state}
@@ -74,7 +75,8 @@ const NoticesChart = () => {
           }}
         />
             
-            </div>
+        </div>
+        <div className="chart_head"></div>
             <div>
         <Bar  className="chart_1"
           data={state_1}

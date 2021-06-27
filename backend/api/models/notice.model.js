@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
 const noticeSchema = new mongoose.Schema({
-    createdAt:{type:Date , required:true, default:new Date()},
+    createdAt:{type:Date , required:true, default:Date.now()},
     createdBy :{
-        type:mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
+        trim:true,
         required:true,
         ref:"moderators",
     },
@@ -16,5 +17,7 @@ const noticeSchema = new mongoose.Schema({
 
 const notice = mongoose.model("notices",noticeSchema);
 module.exports = notice;
+
+
 
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -6,8 +6,12 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Link } from "react-router-dom";
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Notice from "./Notice";
 
-import imageurl from "url:../Editor.dashboard/photo-1588196749597-9ff075ee6b5b.jpg";
 const ViewNotice = () => {
 
     const [open, setOpen] = React.useState(false);
@@ -18,6 +22,12 @@ const ViewNotice = () => {
   
     const handleClose = () => {
       setOpen(false);
+    };
+
+    const [Value, SetValue] = useState(2);
+   
+    const handleChange = (event, newValue) => {
+      SetValue(newValue);
     };
   
     return (<div>
@@ -31,10 +41,21 @@ const ViewNotice = () => {
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="alert-dialog-title">{"Notice Topic"}</DialogTitle>
-          <DialogContent>
+            <DialogContent>
+            <nav >
+                <div className="navB">
+                    <Paper square className="paper">
+                        <Tabs value={Value} indicatorColor="primary" textColor="primary" onChange={handleChange}>
+                            <Tab label="Notice"/>
+                            <Tab label="Update Notice" />
+                        </Tabs>
+                            </Paper>
+                            
+       
+                    </div>    
+        </nav>
             <DialogContentText id="alert-dialog-description">
-              Let Google help apps determine location. This means sending anonymous location data to
-              Google, even when no apps are running.
+         
             </DialogContentText>
           </DialogContent>
           <DialogActions>
