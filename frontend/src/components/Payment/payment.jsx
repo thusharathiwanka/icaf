@@ -1,18 +1,47 @@
-import React from 'react'
+import React,{useState,} from 'react'
+import {useParams} from 'react-router-dom'
 import {MdCreditCard, MdLockOutline, MdDateRange} from 'react-icons/md'
+import './payment.css'
+import { BASE_URL } from "../../config/config";
+import {getUserToken} from '../../auth/userAuth'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const payment = () => {
 
-    const [CardDetails, setCardDetails] = useState("");
+const [CardDetails, setCardDetails] = useState("");
+const {id} = useParams()
+const paymenthandle = async(e) =>{
+    e.preventDefault();
 
+    const res = await fetch(`${BASE_URL}/publication/pay/${id}`,{
+      method: "Patch",
+      headers:{
+          "Content-Type": "application/json",
+				  authToken: getUserToken(),
+      },
+    })
+    if(res.ok){
+        toast.success("payment successful")
+    }
+}
 
     return (
         <div>
-        <form className="cdForm">
-          <label label>card number</label>
+        <form className="cdForm" onSubmit={(e) => paymenthandle(e)}>
+            <h1>Payment</h1>
+            <hr/>
+            <div className = "fee">
+            <h4>Submission fee</h4>
+            
+            <h4 className="price">LKR 800.00</h4>
+            </div>
+            <br/>
+            <div className="card">
+          <label >card number</label>
           <br />
           <input
-            type="text"
+            type="number"
             placeholder="xxxx-xxxx-xxxx-xxxx"
             onChange={(e) => setCardDetails({...CardDetails, number:e.target.value})}
             className="numberInput"
@@ -32,7 +61,7 @@ const payment = () => {
           />
           <MdDateRange className="dateIcon" />
           <input
-            type="text"
+            type="number"
             placeholder="cvc"
             onChange={(e) => setCardDetails({...CardDetails, cvc:e.target.value})}
             className="cvcInput"
@@ -47,7 +76,9 @@ const payment = () => {
           >
             PAY
           </button>
+          </div>
         </form>
+        <ToastContainer position="top-center" />
         </div>
     )
 }
