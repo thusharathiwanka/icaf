@@ -1,0 +1,12 @@
+.piechart{
+    width: 490px;
+    height: 490px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(63 63 68 / 15%) 0px 0px 0px 1px, rgb(63 63 68 / 65%) 0px 1px 2px 0px;
+    padding-top: 10px;
+    margin-left: 960px;
+    position: absolute;
+    top: 355px;
+
+   
+}
