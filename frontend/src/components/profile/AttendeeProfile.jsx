@@ -12,15 +12,18 @@ const AttendeeProfile = () => {
 	const [profile, setProfile] = useState({});
 
 	useEffect(async () => {
-		console.log(getUserToken());
-		const result = await fetch(`${BASE_URL}/attendee/my`, {
-			headers: {
-				"Content-Type": "application/json",
-				authToken: getUserToken(),
-			},
-		});
-		const profile = await result.json();
-		setProfile(profile.attendee);
+		try {
+			const result = await fetch(`${BASE_URL}/attendee/my`, {
+				headers: {
+					"Content-Type": "application/json",
+					authToken: getUserToken(),
+				},
+			});
+			const profile = await result.json();
+			setProfile(profile.attendee);
+		} catch (error) {
+			console.log(error.message);
+		}
 	}, []);
 	return (
 		<div className="researcher-profile">
