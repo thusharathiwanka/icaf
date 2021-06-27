@@ -7,6 +7,7 @@ import { BASE_URL } from "../../config/config";
 
 const NotificationList = () => {
 	const { setNotifications, notifications } = useContext(RegisterDataContext);
+	let fetchEndpoint;
 
 	if (getUserType() === "researcher") {
 		fetchEndpoint = "researcher";
