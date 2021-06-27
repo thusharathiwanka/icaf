@@ -14,6 +14,8 @@ import Attendee from "../pages/Attendee";
 import Presenter from "../pages/Presenter";
 import Download from "../pages/Download";
 import Reviewer from "../pages/Reviewer";
+import ReviewerResearchPapaer from "../pages/ReviewerResearchPapaer";
+import ReviewerWorkshop from "../pages/ReviewerWorkshop";
 
 const App = () => {
   return (
@@ -58,6 +60,12 @@ const App = () => {
         </PrivateRoute>
         <PrivateRoute exact path="/auth/user/reviewer/dashboard">
           <Reviewer />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/reviewerReasearchPaper/dashboard">
+          <ReviewerResearchPapaer />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/reviewerWorkshop/dashboard">
+          <ReviewerWorkshop />
         </PrivateRoute>
         <Route exact path="/auth/register">
           <Register />
