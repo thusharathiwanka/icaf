@@ -36,6 +36,7 @@ const Navbar = () => {
 				<Link to="/publications">Publications</Link>
 				<Link to="/blogs">Blogs</Link>
 				<Link to="/downloads">Downloads</Link>
+				{getUserType() === "admin" && <Link to="">New Link</Link>}
 			</nav>
 			<div
 				className="nav-cta"
