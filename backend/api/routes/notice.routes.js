@@ -1,12 +1,9 @@
 const express = require("express");
 const Router = express.Router();
 
-const {
-  GetAllNotices,
-  CreateNotice,
-} = require("../controllers/blog.controller");
+const {GetAllNotices,CreateNotice} = require("../controllers/notice.controller.js");
 
 Router.get("/", GetAllNotices);
-Router.get("/", CreateNotice);
+Router.post("/", CreateNotice);
 
 module.exports = Router;

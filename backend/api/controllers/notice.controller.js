@@ -1,8 +1,8 @@
-import notice from '../models/notice.model';
+const notice = require( '../models/notice.model')
 
-export const GetAllNotices = async (req, res) => {
+ const GetAllNotices = async (req, res) => {
     try {
-        const notices = notice.find();
+        const notices = await notice.find();
         res.status(200).json(notices);
         
     } catch (error) {
@@ -10,7 +10,25 @@ export const GetAllNotices = async (req, res) => {
 }
 
 };
-export const CreateNotice = (req, res) => {
-
+ const CreateNotice = async (req, res) => {
+   
+    console.log(req.body);
+    const newNotice= new notice(req.body);
+    
+    try {
+        
+        await newNotice.save();
+        console.log(newNotice);
+        res.status(201).json(newNotice);
+    } catch (error) {
+        
+        res.status(409).json({message:error.message});
+    }
     
 };
+
+
+const GetByapproval = async (req, res) => {
+    
+}
+module.exports = {GetAllNotices, CreateNotice }
