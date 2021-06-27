@@ -1,3 +1,4 @@
+const ResearcherNotification = require("../models/researcherNotification.model");
 const Publication = require("../models/publication.model");
 
 const getAllPublications = async (request, response) => {
@@ -118,6 +119,12 @@ const approvePublications = async (request, response) => {
 					new: true,
 				}
 			);
+
+			const newNotification = new ResearcherNotification({
+				title: `Your publication has been approved with topic '${approvedPublication.topic}'`,
+				to: approvedPublication.createdBy,
+			});
+			await newNotification.save();
 			response.status(200).json(approvedPublication);
 		} catch (error) {
 			response.status(404).json({ message: error.message });
@@ -139,6 +146,11 @@ const rejectPublications = async (request, response) => {
 					new: true,
 				}
 			);
+			const newNotification = new ResearcherNotification({
+				title: `Your publication has been rejected with topic '${rejectedPublication.topic}'`,
+				to: rejectedPublication.createdBy,
+			});
+			await newNotification.save();
 			response.status(200).json(rejectedPublication);
 		} catch (error) {
 			response.status(404).json({ message: error.message });

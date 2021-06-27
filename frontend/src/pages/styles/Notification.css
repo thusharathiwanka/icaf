@@ -48,6 +48,27 @@
 	cursor: pointer;
 }
 
+#indicator::before {
+	content: "●";
+	font-size: 2rem;
+	color: var(--secondary-accent-color);
+	z-index: 10;
+	position: absolute;
+	left: 50%;
+	top: -50%;
+	pointer-events: none;
+}
+
+.notification {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#indicator {
+	position: relative;
+}
+
 @media screen and (max-width: 1100px) {
 	.notification-tray {
 		top: 25%;

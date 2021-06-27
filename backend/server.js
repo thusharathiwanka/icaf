@@ -15,6 +15,8 @@ const paymentRoutes = require("./api/routes/payment.routes");
 const conferenceRoutes = require("./api/routes/conference.routes");
 const downloadRoutes = require("./api/routes/download.routes");
 const noticeRoutes = require("./api/routes/notice.routes");
+const notificationRoutes = require("./api/routes/notification.routes");
+
 
 const app = express();
 
@@ -35,6 +37,8 @@ app.use("/payment", paymentRoutes);
 app.use("/conference", conferenceRoutes);
 app.use("/download", downloadRoutes);
 app.use("/notice",noticeRoutes);
+app.use("/notification", notificationRoutes);
+
 
 const PORT = process.env.PORT || 3000;
 

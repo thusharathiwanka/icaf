@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { BASE_URL } from "../../config/config";
 import { saveUserAuth } from "../../auth/userAuth";
-import { RegisterDataContext } from "../../context/RegisterFormContext";
+import { RegisterDataContext } from "../../context/Context";
 
 const LoginForm = () => {
 	const [loginUser, setLoginUser] = useState({

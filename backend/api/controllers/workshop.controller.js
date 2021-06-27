@@ -1,4 +1,5 @@
 const Workshop = require("../models/workshop.model");
+const PresenterNotification = require("../models/presenterNotification.model");
 
 const getAllWorkshops = async (request, response) => {
 	try {
@@ -71,6 +72,11 @@ const approveWorkshops = async (request, response) => {
 					new: true,
 				}
 			);
+			const newNotification = new PresenterNotification({
+				title: `Your workshop has been approved with topic '${approvedWorkshop.topic}'`,
+				to: approvedWorkshop.createdBy,
+			});
+			await newNotification.save();
 			response.status(200).json(approvedWorkshop);
 		} catch (error) {
 			response.status(404).json({ message: error.message });
@@ -92,6 +98,11 @@ const rejectWorkshops = async (request, response) => {
 					new: true,
 				}
 			);
+			const newNotification = new PresenterNotification({
+				title: `Your workshop has been rejected with topic '${rejectedWorkshop.topic}'`,
+				to: rejectedWorkshop.createdBy,
+			});
+			await newNotification.save();
 			response.status(200).json(rejectedWorkshop);
 		} catch (error) {
 			response.status(404).json({ message: error.message });

@@ -7,14 +7,15 @@ import { motion } from "framer-motion";
 
 import logo from "url:../../assets/images/logo-blue.svg";
 import { deleteUserAuth, getUserType } from "../../auth/userAuth";
-import { RegisterDataContext } from "../../context/RegisterFormContext";
+import { RegisterDataContext } from "../../context/Context";
 import NotificationList from "../notification/NotificationList";
 
 import "../../pages/styles/Notification.css";
 
 const Navbar = () => {
 	const [isMobile, setIsMobile] = useState(false);
-	const { isLogin, setIsLogin } = useContext(RegisterDataContext);
+	const { isLogin, setIsLogin, notifications } =
+		useContext(RegisterDataContext);
 	const [notificationTray, setNotificationTray] = useState("");
 
 	return (
@@ -36,6 +37,7 @@ const Navbar = () => {
 				<Link to="/publications">Publications</Link>
 				<Link to="/blogs">Blogs</Link>
 				<Link to="/downloads">Downloads</Link>
+				{getUserType() === "admin" && <Link to="">New Link</Link>}
 			</nav>
 			<div
 				className="nav-cta"
@@ -51,14 +53,18 @@ const Navbar = () => {
 					</div>
 				) : (
 					<div className="login-cta">
-						<IoNotificationsSharp
+						<div
 							className="notification"
-							onClick={() => {
-								!notificationTray
-									? setNotificationTray("open")
-									: setNotificationTray("");
-							}}
-						/>
+							id={notifications.length > 0 && "indicator"}
+						>
+							<IoNotificationsSharp
+								onClick={() => {
+									!notificationTray
+										? setNotificationTray("open")
+										: setNotificationTray("");
+								}}
+							/>
+						</div>
 						<div
 							className={
 								!notificationTray ? "notification-action" : notificationTray

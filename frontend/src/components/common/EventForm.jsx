@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { RegisterDataContext } from "../../context/RegisterFormContext";
+import { RegisterDataContext } from "../../context/Context";
 import Loading from "../../helpers/Loading";
 import { BASE_URL } from "../../config/config";
 import { getUserType, getUserId } from "../../auth/userAuth";

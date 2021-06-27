@@ -1,11 +1,46 @@
 import React from "react";
 
-const NotificationItem = () => {
+import { BASE_URL } from "../../config/config";
+
+const NotificationItem = ({
+	notification,
+	setNotifications,
+	notifications,
+	fetchEndpoint,
+}) => {
+	const handleMarkNotification = async (id) => {
+		try {
+			const res = await fetch(
+				`${BASE_URL}/notification/${fetchEndpoint}/${id}`,
+				{
+					method: "PATCH",
+				}
+			);
+
+			if (res.ok) {
+				setNotifications(
+					notifications.filter((notification) => {
+						return notification._id !== id;
+					})
+				);
+			}
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+
 	return (
 		<div className="notification-item">
-			<h4>Notification Title</h4>
-			<p>Time</p>
-			<button>Mark as read</button>
+			<h4>{notification.title}</h4>
+			<p>
+				At{" "}
+				{new Date(notification.createdAt).toDateString() +
+					" " +
+					new Date(notification.createdAt).toLocaleTimeString()}
+			</p>
+			<button onClick={() => handleMarkNotification(notification._id)}>
+				Mark as read
+			</button>
 			<hr />
 		</div>
 	);

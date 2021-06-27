@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 
 import useStorage from "../hooks/useStorage";
-import { RegisterDataContext } from "../context/RegisterFormContext";
+import { RegisterDataContext } from "../context/Context";
 
 import "./Loading.css";
 
