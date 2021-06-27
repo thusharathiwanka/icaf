@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 
+import { RegisterDataContext } from "../../context/Context";
 import NotificationItem from "./NotificationItem";
 import { getUserType } from "../../auth/userAuth";
 import { BASE_URL } from "../../config/config";
 
 const NotificationList = () => {
-	const [notifications, setNotifications] = useState([]);
+	const { setNotifications, notifications } = useContext(RegisterDataContext);
 
 	if (getUserType() === "researcher") {
 		fetchEndpoint = "researcher";

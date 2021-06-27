@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import { RegisterDataContext } from "../../context/RegisterFormContext";
+import { RegisterDataContext } from "../../context/Context";
 import Loading from "../../helpers/Loading";
 import { BASE_URL } from "../../config/config";
 import { getUserId } from "../../auth/userAuth";

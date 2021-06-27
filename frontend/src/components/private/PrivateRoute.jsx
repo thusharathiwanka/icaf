@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Redirect, Route } from "react-router";
 
-import { RegisterDataContext } from "../../context/RegisterFormContext";
+import { RegisterDataContext } from "../../context/Context";
 
 const PrivateRoute = ({ children, ...rest }) => {
 	const { isLogin } = useContext(RegisterDataContext);
