@@ -19,6 +19,8 @@ import EventForm from "./common/EventForm";
 import Blog from "../pages/Blog";
 import BlogForm from "./blog/BlogForm";
 import ReadBlog from "./blog/ReadBlog";
+import Noticeacception from "./admin/Noticeacception";
+import Payment from "./Payment/payment";
 
 const App = () => {
 	return (
@@ -49,8 +51,12 @@ const App = () => {
 				<Route exact path="/auth/login">
 					<Login />
 				</Route>
+
 				<PrivateRoute exact path="/auth/user/admin/dashboard">
 					<Admin />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/admin/notices">
+					<Noticeacception/>
 				</PrivateRoute>
 				<PrivateRoute exact path="/auth/user/editor/dashboard">
 					<Editor />
@@ -75,6 +81,9 @@ const App = () => {
 				</PrivateRoute>
 				<PrivateRoute exact path="/blogs/:id">
 					<ReadBlog />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/researcher/publication/pay/:id">
+					<Payment/>
 				</PrivateRoute>
 			</Switch>
 		</Router>
