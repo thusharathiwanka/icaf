@@ -16,16 +16,16 @@ const NotificationItem = ({
 					method: "PATCH",
 				}
 			);
+
+			if (res.ok) {
+				setNotifications(
+					notifications.filter((notification) => {
+						return notification._id !== id;
+					})
+				);
+			}
 		} catch (error) {
 			console.log(error.message);
-		}
-
-		if (res.ok) {
-			setNotifications(
-				notifications.filter((notification) => {
-					return notification._id !== id;
-				})
-			);
 		}
 	};
 
