@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { RegisterDataContext } from "../../context/RegisterFormContext";
+import { RegisterDataContext } from "../../context/Context";
 import Loading from "../../helpers/Loading";
 import { BASE_URL } from "../../config/config";
 
@@ -56,11 +56,9 @@ const PresenterForm = ({ title }) => {
 		if (response.ok) {
 			setUserData({});
 			setMaterial({});
-			toast.success("Your account has been created.");
-			history.push("/auth/login");
+			toast.success("Your account has been created. Please login to proceed");
 		} else {
-			toast.success("Sorry, something went wrong.");
-			console.log("something went wrong");
+			toast.error("Sorry, something went wrong.");
 		}
 	};
 
@@ -77,6 +75,14 @@ const PresenterForm = ({ title }) => {
 
 			const userId = await response.json();
 			material.createdBy = userId.id;
+
+			if (response.status === 406) {
+				if (userId.message.includes("username")) {
+					toast.error("Username already exists");
+				} else if (userId.message.includes("email")) {
+					toast.error("Email already exists");
+				}
+			}
 
 			if (response.ok) {
 				handleMaterial();

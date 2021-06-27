@@ -63,7 +63,8 @@
 	padding: 0 1.5rem 0rem 0.5rem;
 }
 
-.user-credentials input {
+.user-credentials input,
+textarea {
 	padding: 0.6rem 1rem;
 	font-size: 1.1rem;
 	width: 100%;

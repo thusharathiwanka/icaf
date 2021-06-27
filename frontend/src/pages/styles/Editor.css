@@ -1,3 +1,5 @@
+
+
 .input_text{
     min-width: 350px;
     float: right;
@@ -30,6 +32,13 @@
  
 }
 
+.upload{
+    margin-right: 8px;
+    margin-left: 360px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
 .label_date{
     text-align: left;
     float: left;
@@ -48,15 +57,20 @@
 }
 
 .input_submit{
-    display: block;
-    width:450px;
+    
+    width:50ch;
     padding: 6px 6px;
-    margin: 5px 10px 5px 10px;
+    margin: 20px 10px 15px 10px;
     background-color: #140880;
     color: white;
     border-radius: 4px;
     border: none;
+    font-weight: lighter;
 
+}
+
+.input_submit:hover{
+    background-color: rgba(11, 11, 126, 0.637);
 }
 
 .notice_form{
@@ -68,14 +82,24 @@
 }
 
 .AddNotice{
-    margin: 90px 30px 50px 40px;
+    margin: 5px 30px 50px 40px;
     display: flex;
     justify-content: center;
-    height: 500px;
+    height: auto;
     width: 600px;
-    background-color: #f2f2f2;
+    background-color: #f5f5f5;
     padding: 35px 25px 35px 20px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 2px rgba(0,0,0,0.2);
+}
+
+.formhead{
+    width: 600px;
+    margin: 95px 30px 2px 40px;
+    background-color: #f5f5f5;
+    padding: 30px;
+    height: 20px;
+    box-shadow: 0 4px 8px 4px rgba(0,0,0,0.2);
+
 }
 
 .NoticesList{
@@ -84,12 +108,30 @@
     position: relative;
     width: 1200px;
     height: auto;
-    margin: 5px 60px 50px 60px;
-    
+    margin: 5px 60px 20px 80px;
+    background-color: #ffffff;
     padding: 20px;
     box-shadow: 4px 4px 8px 4px rgba(0,0,0,0.2);
     
 
+}
+
+.Listhead{
+    width: 1200px;
+    margin: 30px 60px 2px 80px;
+    background-color: #ffffff;
+    padding: 20px;
+    height: 70px;
+    box-shadow: 4px 4px 8px 4px rgba(0,0,0,0.2);
+}
+
+
+
+.Search{
+    
+    width: auto;
+    height: 20px;
+    margin: 10px auto 20px auto;
 }
 
 .Search input{
@@ -98,27 +140,29 @@
     margin-left: 85px;
     height: 25px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.Search button{
+.s_button{
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     float: right;
-    margin-right: 85px;
-    height: 25px;
-    width:100px;
-    border-radius: 4px;
-    background-color:#140880 ;
+    margin-right: 90px;
+    height: 30px;
+    width:40px;
+    border-radius: 50px;
+    background-color:#b3b3b8 ;
     color: white;
 }
 
 .welcome{
     background-color: cadetblue;
+    border: 2px solid cadetblue ;
     width: 1000px;
     position: relative;
     justify-content: center;
     margin: 60px auto;
+    box-shadow: 0 4px 8px 4px rgba(0,0,0,0.2);
 }
 
 .main{
@@ -127,74 +171,45 @@
 }
 
 .table{
-    width: 1000px;
+    width: 1100px;
     height: auto;
-    margin: 50px auto 20px auto;
+    margin: 20px auto 20px auto;
     border-collapse: collapse;
     padding: auto;
 }
 
-.table .head{
-    width:250px;
-    height: 20px;
-    padding: 10px auto;
-    font-size: 20px;
-    text-align: center;
 
-}
 
-.table td{
-    width: 250px;
-    padding: 10px auto;
-    vertical-align:middle;
-    text-align: center;
 
-}
-
-.head_row{
-    color: #5c5b5b;
-    background-color: rgb(60,186,159,0.1);
-    border-bottom: 1.2px solid #3cba9f;
-    border-top: 1.2px solid #3cba9f ;
-    border-radius: 10px;
-    width: 250px;
-    height: 60px;
-    
-}
-.rw{
-
-background-color: #eeeeeece;
-border-bottom: 1px solid #ffffffce;
-font-weight: bold;
-height: 50px;
-border-radius: 10px;
-}
-
-.view{
-
-}
 
 .NoticesChart{
-    margin: 90px 60px 50px 30px;
+    margin: 84px 60px 52px 30px;
     display: flexbox;
     justify-content: center;
-    width: 400px;
+    width: 550px;
+   
     
 }
 
 .chart{
-margin-top: 25px;
+margin-top: 2px;
 margin-bottom: 25px;
-  width:  400px;
-  height: 200px;
+padding-top: 25px;
+padding-bottom: 27px;
+  width:  550px;
+  height: 305px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: white;
 }
 .chart_1{
-       margin-top: 50px;
-       margin-bottom: 50px;
-      width:  400px;
-      height: 150px;
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-top: 2px;
+    margin-bottom: 25px;
+    width:  400px;
+    height: 200px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
     }
 
 .notice_form button {
@@ -212,25 +227,69 @@ margin-bottom: 25px;
     margin: 10px 10px 5px 1px;
 }
 
-.NoticesList .Update{
 
-    background-color: rgb(196,88,80,0.1);
-    border: 1px solid #c45850;
-    color:rgb(10, 10, 10);
-    padding: 5px;
-    width: 100px;
-    font-size: small;
-    border-radius: 4px;
+
+.topic{
+    width: 500px;
+    height:auto;
+    margin: 50px auto;
 }
 
-.NoticesList .view{
-
-    background-color: rgb(255,165,0,0.1);
-    border: 1px solid #ffa500;
-    color:rgb(10, 10, 10);
-    padding: 5px;
-    width: 100px;
-    font-size: small;
-    border-radius: 4px;
+.content{
+    width: 450px;
+    height:auto;
+    margin: 20px 30px 20px 30px;
+    background-color: yellow;
 }
 
+
+.ViewNotice{
+    width: 600px;
+    background-color: cadetblue;
+    height: auto;
+    padding: 15px 15px 15px 15px;
+    margin: 100px;
+    position: flex;
+    justify-content: center;
+
+}
+
+.ViewNotice p {
+    width: 400px;
+    height: auto;
+}
+
+.editor{
+    background-color: rgb(247, 247, 247);
+    
+}
+
+.pic{
+    width: 400px;
+    height: 300px;
+    margin: 30px auto;
+}
+
+.pic img {
+    width: 400px;
+    height: 300px;
+}
+
+
+.navB{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    
+
+}
+.chart_head{
+margin-top: 12px;
+margin-bottom: 5px;
+padding-top: 25px;
+padding-bottom: 25px;
+  width:  550px;
+  height: 60px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: white;
+}

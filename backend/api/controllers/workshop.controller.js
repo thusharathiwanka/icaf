@@ -1,9 +1,10 @@
 const Workshop = require("../models/workshop.model");
+const PresenterNotification = require("../models/presenterNotification.model");
 
 const getAllWorkshops = async (request, response) => {
 	try {
 		const allWorkshops = await Workshop.find().populate(
-			"conductor",
+			"createdBy",
 			"firstName lastName"
 		);
 		response.status(200).json({ workshops: allWorkshops });
@@ -30,7 +31,7 @@ const getApprovedWorkshops = async (request, response) => {
 	try {
 		const allApprovedWorkshops = await Workshop.find({
 			isApproved: "approved",
-		}).populate("conductor", "firstName lastName");
+		}).populate("createdBy", "firstName lastName");
 		response.status(200).json({ approvedWorkshops: allApprovedWorkshops });
 	} catch (error) {
 		response.status(406).json({ message: error.message });
@@ -41,7 +42,7 @@ const getRejectedWorkshops = async (request, response) => {
 	try {
 		const allRejectedWorkshops = await Workshop.find({
 			isApproved: "rejected",
-		}).populate("conductor", "firstName lastName");
+		}).populate("createdBy", "firstName lastName");
 		response.status(200).json({ rejectedWorkshops: allRejectedWorkshops });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
@@ -52,7 +53,7 @@ const getPendingWorkshops = async (request, response) => {
 	try {
 		const allPendingWorkshops = await Workshop.find({
 			isApproved: "pending",
-		}).populate("conductor", "firstName lastName");
+		}).populate("createdBy", "firstName lastName");
 		response.status(200).json({ pendingWorkshops: allPendingWorkshops });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
@@ -71,6 +72,11 @@ const approveWorkshops = async (request, response) => {
 					new: true,
 				}
 			);
+			const newNotification = new PresenterNotification({
+				title: `Your workshop has been approved with topic '${approvedWorkshop.topic}'`,
+				to: approvedWorkshop.createdBy,
+			});
+			await newNotification.save();
 			response.status(200).json(approvedWorkshop);
 		} catch (error) {
 			response.status(404).json({ message: error.message });
@@ -92,6 +98,11 @@ const rejectWorkshops = async (request, response) => {
 					new: true,
 				}
 			);
+			const newNotification = new PresenterNotification({
+				title: `Your workshop has been rejected with topic '${rejectedWorkshop.topic}'`,
+				to: rejectedWorkshop.createdBy,
+			});
+			await newNotification.save();
 			response.status(200).json(rejectedWorkshop);
 		} catch (error) {
 			response.status(404).json({ message: error.message });

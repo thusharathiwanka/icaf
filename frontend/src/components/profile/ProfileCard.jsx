@@ -1,11 +1,17 @@
 import React from "react";
 import { FaUserCircle } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 import { getUserType } from "../../auth/userAuth";
 
 const ProfileCard = ({ profile }) => {
 	return (
-		<div className="profile-card">
+		<motion.div
+			className="profile-card"
+			initial={{ y: 100, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			transition={{ type: "tween", duration: 0.8 }}
+		>
 			<div className="profile-img">
 				<FaUserCircle className="profile-avatar" />
 			</div>
@@ -15,7 +21,7 @@ const ProfileCard = ({ profile }) => {
 				} (${getUserType()})`}</h3>
 				<p>{profile.email}</p>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

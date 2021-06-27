@@ -1,7 +1,7 @@
 import React from "react";
 
 import RegisterForm from "../components/register/RegisterForm";
-import RegisterFormContext from "../context/RegisterFormContext";
+import RegisterFormContext from "../context/Context";
 
 import "./styles/Register.css";
 

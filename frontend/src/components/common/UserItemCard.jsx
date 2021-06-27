@@ -35,7 +35,7 @@ const UserItemCard = ({ publication }) => {
 			</div>
 			<div className="item-action-content">
 				{!publication.dueDate && publication.isApproved === "approved" && (
-					<Link className="pay">Pay</Link>
+					<Link className="pay" to={`publication/pay/${publication._id}`}>Pay</Link>
 				)}
 				<Link
 					to={{
