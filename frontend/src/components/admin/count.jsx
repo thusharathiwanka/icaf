@@ -7,27 +7,7 @@ import researcherImg from "url:../../assets/images/research1.png";
 import presenterImg from "url:../../assets/images/presenter.png"; 
 
 const count = (props) => {
-console.log(props);
-//     let [aCount,setACount] = useState("0")
-//     let [rCount,setRCount] = useState("0")
-//     let [pCount,setPCount] = useState("0")
 
-//     const counthadeler =async(e)=>{
-//         const resAttendee = await fetch(`${BASE_URL}/admin/attendeecount`);
-//         const attendeeData = await resAttendee.text()
-//         setACount(attendeeData);
-//         console.log(attendeeData)
-
-//         const resResearcher = await fetch(`${BASE_URL}/admin/researcherscount`);
-//         const researcherData = await resResearcher.text();
-//         setRCount(researcherData);
-
-//         const resPresenter = await fetch(`${BASE_URL}/admin/presenterscount`);
-//         const presenterData = await resPresenter.text();
-//         setPCount(presenterData);
-        
-// }
-// counthadeler()
     return (
         <div>
             <div className ="squire">

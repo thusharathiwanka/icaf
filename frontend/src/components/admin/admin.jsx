@@ -4,6 +4,7 @@ import Piechart from './Piechart'
 import Barchart from './Barchart';
 import Table from './Table';
 import { BASE_URL } from "../../config/config";
+import {getUserToken} from '../../auth/userAuth'
 
 const admin = () => {
 
@@ -11,7 +12,8 @@ const admin = () => {
     let [rCount,setRCount] = useState(0)
     let [pCount,setPCount] = useState(0)
     let [researchPapers,setresearchPapers] = useState([])
-    let [workshpPapers,setworkshpPapers] = useState([])
+    let [workshopPapers,setworkshopPapers] = useState([])
+    let [Tcontent, setTcontent] = useState([])
 
 
 useEffect (async() => {
@@ -24,29 +26,44 @@ useEffect (async() => {
         const resPresenter = await fetch(`${BASE_URL}/admin/presenterscount`);
         const presenterData = await resPresenter.text();
 
-        const resResearchpapers = await fetch(`${BASE_URL}/researcher`);
-        const Researchpapers = await resResearchpapers.json();
+        const resResearchpapers = await fetch(`${BASE_URL}/publication`, {
+			headers: {
+				"Content-Type": "application/json",
+				authToken: getUserToken(),
+			},
+		});
+        const Researchpaper = await resResearchpapers.json();
 
-        const resWorkshppapers = await fetch(`${BASE_URL}/workshop`);
-        const Workshppapers = await resWorkshppapers.json();
+        const resWorkshoppapers = await fetch(`${BASE_URL}/workshop`, {
+			headers: {
+				"Content-Type": "application/json",
+				authToken: getUserToken(),
+			},
+		});
+        const Workshoppaper = await resWorkshoppapers.json();
 
-        setresearchPapers(Researchpapers)
-        setworkshpPapers(Workshppapers)
-            if(presenterData != null){
+       
+        setresearchPapers(Researchpaper.publications)
+        setworkshopPapers(Workshoppaper.workshops)
+        setTcontent([Researchpaper.publications,Workshoppaper.workshops])
+
+        if(presenterData != null){
          setACount(attendeeData);
          setRCount(researcherData);
          setPCount(presenterData);
             }
-            
+    
 }, [])
-console.log(researchPapers);
-console.log(workshpPapers);
+console.log(Tcontent);
+
+
     return (
         <div style={{marginBottom: "100px"}}>
             <Count attendee={aCount} researcher={rCount} presenter={pCount}/>
-            <Barchart/>
+            <Barchart ResearchPapers = {researchPapers} WorkshopPapers = {workshopPapers}/>
             <Piechart attendee={aCount} researcher={rCount} presenter={pCount}/>
-            <Table/>
+            <Table Tablecontent = {researchPapers} topic ={"Research Papers"}/>
+            <Table Tablecontent ={workshopPapers} topic ={"Workshops"}/>     
         </div>
 
     )

@@ -7,7 +7,7 @@ import About from "../pages/About";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./private/PrivateRoute";
-import Admin from "./admin/admin";
+import Admin from "./admin/Admin";
 import Editor from "../pages/Editor.dashboard";
 import Researcher from "../pages/Researcher";
 import Attendee from "../pages/Attendee";
