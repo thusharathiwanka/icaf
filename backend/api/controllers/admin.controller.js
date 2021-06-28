@@ -15,6 +15,18 @@ const approveNotice = async (req,res) => {
     }
 }
 
+const rejectNotice = async (req,res) => {
+    try{
+        const firstNotice = await Notice.findByIdAndUpdate(req.params.id,
+            {
+                isApproved : "Rejected",
+            })
+        res.status(200).json({message: 'notice successfully rejected'})
+    }catch(err){
+        res.status(400).json({message: err.message })
+    }
+}
+
 const getNotice = async(req,res) =>{
     try{
         const firstNotice = await Notice.find()
@@ -64,4 +76,4 @@ const getPendingNotice = async(req,res)=>{
 
 
 
-module.exports = { approveNotice , getNotice ,attendeesCount, researchersCount, presentersCount, getPendingNotice}
+module.exports = { approveNotice, rejectNotice , getNotice ,attendeesCount, researchersCount, presentersCount, getPendingNotice}

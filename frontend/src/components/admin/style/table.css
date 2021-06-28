@@ -5,15 +5,15 @@
 }
 
 .approved{
-color: white !important;
+/* color: white !important;
 background-color: rgb(7 123 12);
 border-radius: 500px;
 width : 20px;
-height: 1px;
+height: 1px; */
 }
 
 .rejected{
-color: white !important;
+/* color: white !important;
 background-color: rgb(165 17 13);
-padding: 10px;
+padding: 10px; */
 }
