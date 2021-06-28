@@ -5,7 +5,7 @@ import NoticesChart from "../components/Editor.dashboard/Chart";
 import { getUserType, checkUserAuth } from "../auth/userAuth";
 import '../pages/styles/Editor.css';
 import Update from '../components/Editor.dashboard/UpdateNotice';
-
+import UpdateConferenceDate from '../components/Editor.dashboard/UpdateConferenceDate';
 
 const Editor_dash = () => {
 	
@@ -20,7 +20,7 @@ const Editor_dash = () => {
 	return (
 		<div className="editor">
 			{view ?
-			<div className="welcome">
+			<div className="welcome_div">
 			<center>
 				<h1>Welcome Back  {editor}  !!!</h1>
 					</center>
@@ -28,9 +28,16 @@ const Editor_dash = () => {
 				</div> :
 		'' }
 			
-			<div className="main">
-		    <AddNotice />		
-			<NoticesChart />
+			<div className="AddNotice_chart_conf">
+				<div>
+				<AddNotice />
+				<UpdateConferenceDate/>
+				</div>
+				
+				<NoticesChart />
+				
+
+				
 			
 			
              
@@ -38,7 +45,7 @@ const Editor_dash = () => {
 			<div >
 				
 				<NoticeList />
-				<Update/>
+				
 				
 			</div>
 			
