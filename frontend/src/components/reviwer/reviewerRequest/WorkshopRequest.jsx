@@ -11,6 +11,7 @@ const WorkshopRequest = () => {
             <th>Date</th>
             <th>Topic</th>
             <th>Researcher Name</th>
+            <th>View</th>
           </tr>
           <tr>
             <td>Alfreds Futterkiste</td>
@@ -21,7 +22,7 @@ const WorkshopRequest = () => {
               <div>
                 <Link to="/auth/user/reviewer/reasearch/card">
                   <button type="button" className="downbtn">
-                    Reasearch Paper Card
+                    view Card
                   </button>
                 </Link>
               </div>
