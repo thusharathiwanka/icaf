@@ -102,4 +102,7 @@ const DeleteOneNotice = async (req, res) => {
         }
     }
 };
+
+
+
 module.exports = {GetAllNotices, CreateNotice,GetByapproval,getNoticeById,UpdateOneNotice,DeleteOneNotice, GetNoticeByMonth}

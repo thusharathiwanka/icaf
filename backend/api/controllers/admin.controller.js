@@ -51,8 +51,17 @@ const presentersCount = async(req,res) => {
     }
 }
 
+const getPendingNotice = async(req,res)=>{
+    try{
+        const pendingnotice = await Notice.find({
+            isApproved:"Pending"
+        })
+        res.json(pendingnotice)
+    }catch(err){
+        res.status(500).json({massage: err.message})
+    }
+}
 
 
 
-
-module.exports = { approveNotice , getNotice ,attendeesCount, researchersCount, presentersCount }
+module.exports = { approveNotice , getNotice ,attendeesCount, researchersCount, presentersCount, getPendingNotice}

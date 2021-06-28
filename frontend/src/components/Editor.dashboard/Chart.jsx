@@ -58,9 +58,9 @@ const NoticesChart = () => {
     return (
       <div className="NoticesChart">
         <div className="chart_head">
-        <h3 style={{fontSize:'17px',textAlign:'left',margin:'0px 200px 40px 15px',fontWeight:'lighter'}}>Notices appproval</h3>
+        <h3 style={{fontSize:'17px',textAlign:'left',margin:'25px 200px 40px 15px',fontWeight:'lighter'}}>Notices appproval</h3>
             </div>
-            <div className="chart">
+            <div className="Doughnut_chart">
             <Doughnut
           data={state}
           options={{
@@ -79,10 +79,10 @@ const NoticesChart = () => {
             
         </div>
         <div className="chart_head">
-        <h3 style={{fontSize:'17px',textAlign:'left',margin:'0px 20px 40px 15px',fontWeight:'lighter'}}>Notices added this Year</h3>
+        <h3 style={{fontSize:'17px',textAlign:'left',margin:'25px 20px 40px 15px',fontWeight:'lighter'}}>Notices added this Year</h3>
         </div>
             <div>
-        <Bar  className="chart_1"
+        <Bar  className="Bar_chart"
           data={state_1}
           options={{
             title:{

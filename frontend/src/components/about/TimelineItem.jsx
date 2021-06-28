@@ -1,13 +1,13 @@
 import React from "react";
 
-const TimelineItem = () => {
+const TimelineItem = ({ timelineItem }) => {
 	return (
 		<li>
 			<div className="timeline-content">
-				<h2>Heading</h2>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum
-					mi sem. Aliquam augue diam, fringilla eu tincidunt mattis, iaculis.
+				<h2>{timelineItem.topic}</h2>
+				<p>{timelineItem.content}</p>
+				<p className="grey">
+					On {new Date(timelineItem.startAt).toDateString()}
 				</p>
 			</div>
 		</li>

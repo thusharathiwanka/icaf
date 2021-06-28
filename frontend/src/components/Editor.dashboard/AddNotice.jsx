@@ -16,7 +16,7 @@ import {
 const useStyles = makeStyles((theme) => ({
     root: {
       '& > *': {
-        margin: theme.spacing(2.5),
+        margin: theme.spacing(2),
         width: '50ch',
         },
        
@@ -35,12 +35,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 const AddNotice = () => {
-
-  const [topic, setTopic] = useState('');
-  const [content, setContent] = useState('');
+  const [topic, setTopic] = useState(" ");
+  const [content, setContent] = useState(" ");
   
   const [selectedDate, setSelectedDate] = useState(Date.now());
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  // [isSubmitted, setIsSubmitted] = useState(false);
   const handleDateChange = (d) => {
     setSelectedDate(d);
   };
@@ -65,7 +64,7 @@ const AddNotice = () => {
         body: JSON.stringify(Notice)
     }).then(() => {
       console.log("New Notice added!!!");
-      setIsSubmitted(true);  })
+        })
 
   
 
@@ -79,8 +78,8 @@ const AddNotice = () => {
     
   return (
     <div>  
-      <div className="formhead">
-      <h3 style={{fontSize:'18px',textAlign:'left',margin:'0px 200px 50px 15px',fontWeight:'lighter'}}>Add a New Notice</h3>
+      <div className="AddNotice_formhead">
+      <h3 style={{fontSize:'18px',textAlign:'left',margin:'0px 200px 80px 15px',fontWeight:'lighter'}}>Add a New Notice</h3>
      </div>
     <div className="AddNotice">
      
@@ -99,12 +98,9 @@ const AddNotice = () => {
                    
             </div>   
     
-          <div style={{marginTop:'50px'}}>
-            <p className={ classes.upload}>Select a image: <button className="upload"><CloudUploadRoundedIcon color="action" /></button> </p>
-                  </div>
-           
+        
             
-            <button  className="input_submit" type="submit" >Submit</button>
+            <button  className="AddNotice_submit" type="submit" >Submit</button>
     
             </form>
             </div>  
