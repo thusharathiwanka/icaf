@@ -1,71 +1,31 @@
-import React, { useState} from "react";
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Link } from "react-router-dom";
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Notice from "./Notice";
+import React, { useState,useEffect} from "react";
 
-const ViewNotice = () => {
 
-    const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
+const ViewNotice = ({Notices,id}) => {
 
-    const [Value, SetValue] = useState(2);
+  notice = Notices.filter((notice) => notice._id === id);
+  console.log(notice);
+  console.log(Notices);
+
    
-    const handleChange = (event, newValue) => {
-      SetValue(newValue);
-    };
   
-    return (<div>
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        <MoreVertIcon color="action" />
-        </Button>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">{"Notice Topic"}</DialogTitle>
-            <DialogContent>
-            <nav >
-                <div className="navB">
-                    <Paper square className="paper">
-                        <Tabs value={Value} indicatorColor="primary" textColor="primary" onChange={handleChange}>
-                            <Tab label="Notice"/>
-                            <Tab label="Update Notice" />
-                        </Tabs>
-                            </Paper>
-                            
+   
+  
+  
+  
+  
+  return (<div>
+  
+      
+   <h1 className="ViewNotice_head">{notice[0].topic}</h1>
+     
        
-                    </div>    
-        </nav>
-            <DialogContentText id="alert-dialog-description">
-         
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              close
-            </Button>
-           
-          </DialogActions>
-        </Dialog>
-      </div> );
+          <div className="ViewNotice_Body">
+           <p className="ViewNotice_paragraph">{notice[0].content}</p> 
+          </div>
+         <button className="ViewNotice_delete">Delete</button>
+    </div>);
 }
  
 export default ViewNotice;
