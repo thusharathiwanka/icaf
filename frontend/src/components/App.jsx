@@ -3,8 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import PrivateRoute from "./private/PrivateRoute";
 import PrivateAdminRoute from "./private/PrivateAdminRoute";
+import PrivateEditorRoute from "./private/PrivateEditorRoute";
+import PrivateReviewerRoute from "./private/PrivateReviewerRoute";
 import PrivateResearcherRoute from "./private/PrivateResearcherRoute";
 import PrivatePresenterRoute from "./private/PrivatePresenterRoute";
+import PrivateAttendeeRoute from "./private/PrivateAttendeeRoute";
 
 import Navbar from "../components/nav/Navbar";
 import Home from "../pages/Home";
@@ -63,18 +66,18 @@ const App = () => {
 				<PrivateRoute exact path="/auth/user/admin/notices">
 					<Noticeacception />
 				</PrivateRoute>
-				<PrivateAdminRoute exact path="/auth/user/editor/dashboard">
+				<PrivateEditorRoute exact path="/auth/user/editor/dashboard">
 					<Editor />
-				</PrivateAdminRoute>
+				</PrivateEditorRoute>
 				<PrivateResearcherRoute exact path="/auth/user/researcher/dashboard">
 					<Researcher />
 				</PrivateResearcherRoute>
 				<PrivatePresenterRoute exact path="/auth/user/presenter/dashboard">
 					<Presenter />
 				</PrivatePresenterRoute>
-				<PrivateRoute exact path="/auth/user/attendee/dashboard">
+				<PrivateAttendeeRoute exact path="/auth/user/attendee/dashboard">
 					<Attendee />
-				</PrivateRoute>
+				</PrivateAttendeeRoute>
 				<PrivatePresenterRoute exact path="/workshop/create">
 					<EventForm title="Workshop" />
 				</PrivatePresenterRoute>
@@ -93,9 +96,9 @@ const App = () => {
 				>
 					<Payment />
 				</PrivateResearcherRoute>
-				<PrivateRoute exact path="/auth/user/reviewer/dashboard">
+				<PrivateReviewerRoute exact path="/auth/user/reviewer/dashboard">
 					<Reviewer />
-				</PrivateRoute>
+				</PrivateReviewerRoute>
 				<Route path="*">
 					<ErrorPage />
 				</Route>
