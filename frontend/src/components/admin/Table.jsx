@@ -38,7 +38,7 @@ export default function Table(props) {
         </TableHead>
         <TableBody>
           {props.Tablecontent.map((paper) =>{
-             if(paper.isApproved == "approved"){
+            if(paper.isApproved == "approved"){
                       tagColor = "approved"
               }else if(paper.isApproved == "rejected"){
                       tagColor = "rejected"
