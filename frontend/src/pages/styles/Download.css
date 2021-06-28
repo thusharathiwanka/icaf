@@ -30,6 +30,15 @@
 	margin-right: 3rem;
 }
 
+.download-card .downbtn {
+	background-color: var(--primary-accent-color);
+	border: 1px var(--primary-accent-color) solid;
+	color: white;
+	padding: 0.6rem 1rem;
+	border-radius: 5px;
+	margin-top: 2rem;
+}
+
 @media screen and (max-width: 911px) {
 	.downloads-content .download-card:not(:last-child) {
 		margin-right: 0rem;
