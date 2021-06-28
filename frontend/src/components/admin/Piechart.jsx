@@ -51,12 +51,15 @@ const options = {
 }
 
     return (
-        
-            <div className ="piechart" > 
+          <div className ="chartoutline">
+            <h1>Users</h1>
+            <hr/>
+            <div className ="piechart" >          
               <Doughnut
                 data={data}
                 options={options} 
               />
+              </div>
         </div>
     )
 }

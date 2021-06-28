@@ -101,12 +101,15 @@ plugins: {
 
     return (
      
-        <div className="bar" >
-
+        <div className="barOutline" >
+          <h1>Events</h1>
+          <hr/>
+        <div className="bar">
          <Bar 
            data = {data}
            options = {options}
          />
+         </div>
         </div>
     )
 }
