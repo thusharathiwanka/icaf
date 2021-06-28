@@ -19,6 +19,7 @@ const useStyles = makeStyles({
 export default function Table(props) {
   const classes = useStyles();
 
+  let tagColor
   return (
       <div className="table">
     <TableContainer component={Paper}>
@@ -36,13 +37,20 @@ export default function Table(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.Tablecontent.map((paper) => (
-            <TableRow key={paper._id}>
+          {props.Tablecontent.map((paper) =>{
+             if(paper.isApproved == "approved"){
+                      tagColor = "approved"
+              }else if(paper.isApproved == "rejected"){
+                      tagColor = "rejected"
+              }else{
+                    tagColor = "pending"
+              } 
+              return( <TableRow key={paper._id}>
               <TableCell align="center">{paper.topic}</TableCell>
-              <TableCell align="center">{paper.isApproved}</TableCell>
-              <TableCell align="center">{paper.createdAt}</TableCell>
-            </TableRow>
-          ))}
+              <TableCell className={tagColor} align="center" >{paper.isApproved}</TableCell>
+              <TableCell align="center">{new Date(paper.createdAt).toDateString()}</TableCell>
+            </TableRow>)
+          })}
         </TableBody>
       </Table>
     </TableContainer>

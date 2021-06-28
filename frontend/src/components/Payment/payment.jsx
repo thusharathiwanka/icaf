@@ -29,7 +29,7 @@ const paymenthandle = async(e) =>{
     return (
         <div>
         <form className="cdForm" onSubmit={(e) => paymenthandle(e)}>
-            <h1>Payment</h1>
+            <h1 className="h1">Payment</h1>
             <hr/>
             <div className = "fee">
             <h4>Submission fee</h4>
@@ -38,7 +38,7 @@ const paymenthandle = async(e) =>{
             </div>
             <br/>
             <div className="card">
-          <label >card number</label>
+          <label className="lable" >card number</label>
           <br />
           <input
             type="number"
@@ -49,7 +49,7 @@ const paymenthandle = async(e) =>{
           />
           <MdCreditCard className="cardIcon" />
           <br />
-          <label>expiration date</label>
+          <label className="lable" >expiration date</label>
           <label className="cvc">cvc</label>
           <br />
           <input
