@@ -38,9 +38,9 @@ export default function Table(props) {
         <TableBody>
           {props.Tablecontent.map((paper) => (
             <TableRow key={paper._id}>
-              <TableCell align="right">{paper.topic}</TableCell>
-              <TableCell align="right">{paper.isApproved}</TableCell>
-              <TableCell align="right">{paper.createdAt}</TableCell>
+              <TableCell align="center">{paper.topic}</TableCell>
+              <TableCell align="center">{paper.isApproved}</TableCell>
+              <TableCell align="center">{paper.createdAt}</TableCell>
             </TableRow>
           ))}
         </TableBody>
