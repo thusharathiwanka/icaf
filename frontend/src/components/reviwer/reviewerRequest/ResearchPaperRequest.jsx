@@ -20,7 +20,7 @@ const ResearchPaperRequest = () => {
               {" "}
               <div>
                 <Link to="/auth/user/reviewer/reasearch/card">
-                  <button type="button" className="downbtn">
+                  <button type="button" className="cardbtn">
                     Reasearch Paper Card
                   </button>
                 </Link>

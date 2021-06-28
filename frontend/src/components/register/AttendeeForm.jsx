@@ -145,7 +145,7 @@ const AttendeeForm = () => {
 								required
 								autoComplete="off"
 								maxLength="3"
-								value="Rs. 1000"
+								value="LKR 1000"
 								disabled
 								onChange={() => setPayment({ ...payment, amount: 1000 })}
 							/>

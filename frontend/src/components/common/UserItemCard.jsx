@@ -34,9 +34,13 @@ const UserItemCard = ({ publication }) => {
 				</p>
 			</div>
 			<div className="item-action-content">
-				{!publication.dueDate && publication.isApproved === "approved" && (
-					<Link className="pay" to={`publication/pay/${publication._id}`}>Pay</Link>
-				)}
+				{!publication.dueDate &&
+					publication.isApproved === "approved" &&
+					!publication.isPaid && (
+						<Link className="pay" to={`publication/pay/${publication._id}`}>
+							Pay
+						</Link>
+					)}
 				<Link
 					to={{
 						pathname: publication.src,
