@@ -5,6 +5,7 @@ import WorkshopDelete from "../components/reviwer/reviewerDelete/WorkshopDelete"
 import WorkshopRequest from "../components/reviwer/reviewerRequest/WorkshopRequest";
 
 import "./styles/Reviewer.css";
+import "./styles/ReviewerTable.css";
 
 const ReviewerWorkshop = () => {
   document.title = "ICAF | Reviewer";
