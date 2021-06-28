@@ -20,7 +20,7 @@ const WorkshopRequest = () => {
             <td>
               {" "}
               <div>
-                <Link to="/auth/user/reviewer/reasearch/card">
+                <Link to="/auth/user/reviewer/workshop/card">
                   <button type="button" className="downbtn">
                     view Card
                   </button>

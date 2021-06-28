@@ -29,6 +29,10 @@ import ReadBlog from "./blog/ReadBlog";
 import Noticeacception from "./admin/Noticeacception";
 import Payment from "./Payment/payment";
 import Reviewer from "../pages/Reviewer";
+import ResearchCard from "../pages/ReviewerResearchCard";
+import WorkshopCard from "../pages/ReviewerWorksopCard";
+import ReviewerResearchPapaer from "../pages/ReviewerResearchPapaer";
+import ReviewerWorkshop from "../pages/ReviewerWorkshop";
 import ErrorPage from "./error/404";
 
 const App = () => {
@@ -98,6 +102,18 @@ const App = () => {
         </PrivateResearcherRoute>
         <PrivateReviewerRoute exact path="/auth/user/reviewer/dashboard">
           <Reviewer />
+        </PrivateReviewerRoute>
+        <PrivateReviewerRoute exact path="/auth/user/reviewer/reasearch/card">
+          <ResearchCard />
+        </PrivateReviewerRoute>
+        <PrivateReviewerRoute exact path="/auth/user/reviewer/workshop/card">
+          <WorkshopCard />
+        </PrivateReviewerRoute>
+        <PrivateReviewerRoute exact path="/auth/user/reviewer/research">
+          <ReviewerResearchPapaer />
+        </PrivateReviewerRoute>
+        <PrivateReviewerRoute exact path="/auth/user/reviewer/workshop">
+          <ReviewerWorkshop />
         </PrivateReviewerRoute>
         <Route path="*">
           <ErrorPage />
