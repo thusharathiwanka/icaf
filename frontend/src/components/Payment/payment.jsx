@@ -15,7 +15,7 @@ const paymenthandle = async(e) =>{
     e.preventDefault();
 
     const res = await fetch(`${BASE_URL}/publication/pay/${id}`,{
-      method: "Patch",
+      method: "PATCH",
       headers:{
           "Content-Type": "application/json",
 				  authToken: getUserToken(),
@@ -38,7 +38,7 @@ const paymenthandle = async(e) =>{
             </div>
             <br/>
             <div className="card">
-          <label className="lable" >card number</label>
+          <label className="lables" >card number</label>
           <br />
           <input
             type="number"
@@ -49,7 +49,7 @@ const paymenthandle = async(e) =>{
           />
           <MdCreditCard className="cardIcon" />
           <br />
-          <label className="lable" >expiration date</label>
+          <label className="lables" >expiration date</label>
           <label className="cvc">cvc</label>
           <br />
           <input
