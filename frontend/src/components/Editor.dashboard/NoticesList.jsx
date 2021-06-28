@@ -1,5 +1,6 @@
 import React, { useState,useEffect} from 'react';
-import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ViewNotice from "../Editor.dashboard/ViewNotice";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,19 +8,48 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import TextField from '@material-ui/core/TextField';
 import { BASE_URL } from "../../config/config";
+import Dialog from '@material-ui/core/Dialog';
+import NoticeUpdate from '../Editor.dashboard/UpdateNotice';
 const AllNotices = () => {
 
+	const [open, setOpen] = React.useState(false);
 	const[Notices, setNotices] = useState(null);
+	const [id, setId] = useState(null);
+	const [view, SetView] = useState(true);
+	const [update, SetUpdate] = useState(false);
+
+	//const [notice, setNotice] = useState(null);
+
+	const handleClose = () => {
+		setOpen(false);
+	  };
+
+	const handleId = (id) => {
+		setId(id);
+		console.log(id);
+	}
+
 	
+	
+	
+    const handleClickOpen = () => {
+		setOpen(true);
+		SetView(true)
+		
+     
+    };
 
 	useEffect(() => {
-		fetch(`${BASE_URL}/notice`).then((res) => {
-			return res.json();
+		fetch(`${BASE_URL}/notice`, {
+			method: 'GET',
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Headers": "*", }
+		}).then((res) => {return res.json();
 		  })
 		  .then((data) => {
-			console.log(data);
 			setNotices(data);
 		  });
 	}, []);
@@ -27,7 +57,7 @@ const AllNotices = () => {
 
 	return (
 		<div>
-			<div className="Listhead">
+			<div className="NoticesList_head">
 				<h3 style={{fontSize:'20px',textAlign:'center',marginLeft:'20px',fontWeight:'lighter'}}>All Notices Added by Editor</h3>
 		</div>
 		<div className="NoticesList">
@@ -38,7 +68,7 @@ const AllNotices = () => {
 	</div>*/}
 			<TableContainer >
 				
-			<Table className="table">
+			<Table className="NoticesList_table">
 					<TableHead >
 					<TableRow style={{backgroundColor:'rgb(229, 228, 226)'}} >
 						<TableCell style={{textAlign:'center',width:'250px'}}>ID</TableCell>
@@ -58,7 +88,8 @@ const AllNotices = () => {
 									<TableCell style={{ textAlign: 'center', width: '250px' }}>{notice.topic }</TableCell>
 									<TableCell style={{ textAlign: 'center', width: '250px' }}>{notice.isApproved}</TableCell>
 									<TableCell style={{ textAlign: 'center', width: '250px' }}>{notice.createdAt }</TableCell>
-									<TableCell style={{ width: "30px", textAlign: 'center' }} ><ViewNotice /></TableCell>
+									<TableCell style={{ width: "30px", textAlign: 'center' }} onClick={() => { handleId(notice._id);SetView(true); SetUpdate(false)  }}> <Button variant="outlined" color="primary" onClick={handleClickOpen}> <MoreVertIcon color="action" />
+									</Button></TableCell>
 					
 								</TableRow>
 						 )}
@@ -67,7 +98,19 @@ const AllNotices = () => {
 				
 				</Table>
 				</TableContainer>
+			</div>
+			<Dialog open={open} onClose={handleClose} maxWidth={'700px'} aria-labelledby="customized-dialog-title">
+				<nav>
+					<div className="navB">
+						<button className="NoticesList_Dialog_update" onClick={() => { SetView(false); SetUpdate(true) }}>Update Notice</button>
+						<button className="NoticesList_Dialog_view" onClick={() => { SetView(true); SetUpdate(false) }}>View Notice</button>
+					</div>
+				</nav>
+				<div className="NoticesList_Dialog">
+					{view ? id && <ViewNotice id={id} Notices={Notices} /> : ''}
+					{update ? <NoticeUpdate id={id} Notices={Notices} /> : ''}
 				</div>
+			</Dialog>
 		</div>
     );
 }

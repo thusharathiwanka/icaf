@@ -9,18 +9,18 @@ const NotificationList = () => {
 	const { setNotifications, notifications } = useContext(RegisterDataContext);
 	let fetchEndpoint;
 
-	if (getUserType() === "researcher") {
-		fetchEndpoint = "researcher";
-	} else if (getUserType() === "presenter") {
-		fetchEndpoint = "presenter";
+	if (getUserType() === "researcher" || getUserType() === "presenter") {
+		if (getUserType() === "researcher") {
+			fetchEndpoint = "researcher";
+		} else if (getUserType() === "presenter") {
+			fetchEndpoint = "presenter";
+		}
+		useEffect(async () => {
+			const res = await fetch(`${BASE_URL}/notification/${fetchEndpoint}`);
+			const data = await res.json();
+			setNotifications(data.notifications);
+		}, []);
 	}
-
-	useEffect(async () => {
-		const res = await fetch(`${BASE_URL}/notification/${fetchEndpoint}`);
-		const data = await res.json();
-		setNotifications(data.notifications);
-	}, []);
-
 	return (
 		<div className="notification-tray">
 			<h2 className="notification-banner">Notifications</h2>

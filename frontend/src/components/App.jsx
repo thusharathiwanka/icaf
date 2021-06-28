@@ -21,73 +21,77 @@ import BlogForm from "./blog/BlogForm";
 import ReadBlog from "./blog/ReadBlog";
 import Noticeacception from "./admin/Noticeacception";
 import Payment from "./Payment/payment";
+import Reviewer from "../pages/Reviewer";
 
 const App = () => {
-	return (
-		<Router>
-			<Navbar />
-			<Switch>
-				<Route exact path="/">
-					<Home />
-				</Route>
-				<PrivateRoute exact path="/workshops">
-					<Workshop />
-				</PrivateRoute>
-				<PrivateRoute exact path="/publications">
-					<Publication />
-				</PrivateRoute>
-				<Route exact path="/downloads">
-					<Download />
-				</Route>
-				<PrivateRoute exact path="/blogs">
-					<Blog />
-				</PrivateRoute>
-				<Route exact path="/about">
-					<About />
-				</Route>
-				<Route exact path="/auth/register">
-					<Register />
-				</Route>
-				<Route exact path="/auth/login">
-					<Login />
-				</Route>
+  return (
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <PrivateRoute exact path="/workshops">
+          <Workshop />
+        </PrivateRoute>
+        <PrivateRoute exact path="/publications">
+          <Publication />
+        </PrivateRoute>
+        <Route exact path="/downloads">
+          <Download />
+        </Route>
+        <PrivateRoute exact path="/blogs">
+          <Blog />
+        </PrivateRoute>
+        <Route exact path="/about">
+          <About />
+        </Route>
+        <Route exact path="/auth/register">
+          <Register />
+        </Route>
+        <Route exact path="/auth/login">
+          <Login />
+        </Route>
 
-				<PrivateRoute exact path="/auth/user/admin/dashboard">
-					<Admin />
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/admin/notices">
-					<Noticeacception/>
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/editor/dashboard">
-					<Editor />
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/researcher/dashboard">
-					<Researcher />
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/presenter/dashboard">
-					<Presenter />
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/attendee/dashboard">
-					<Attendee />
-				</PrivateRoute>
-				<PrivateRoute exact path="/workshop/create">
-					<EventForm title="Workshop" />
-				</PrivateRoute>
-				<PrivateRoute exact path="/publication/create">
-					<EventForm title="Publication" />
-				</PrivateRoute>
-				<PrivateRoute exact path="/blogs/create">
-					<BlogForm />
-				</PrivateRoute>
-				<PrivateRoute exact path="/blogs/:id">
-					<ReadBlog />
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/researcher/publication/pay/:id">
-					<Payment/>
-				</PrivateRoute>
-			</Switch>
-		</Router>
-	);
+        <PrivateRoute exact path="/auth/user/admin/dashboard">
+          <Admin />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/admin/notices">
+          <Noticeacception />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/editor/dashboard">
+          <Editor />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/researcher/dashboard">
+          <Researcher />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/presenter/dashboard">
+          <Presenter />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/attendee/dashboard">
+          <Attendee />
+        </PrivateRoute>
+        <PrivateRoute exact path="/workshop/create">
+          <EventForm title="Workshop" />
+        </PrivateRoute>
+        <PrivateRoute exact path="/publication/create">
+          <EventForm title="Publication" />
+        </PrivateRoute>
+        <PrivateRoute exact path="/blogs/create">
+          <BlogForm />
+        </PrivateRoute>
+        <PrivateRoute exact path="/blogs/:id">
+          <ReadBlog />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/researcher/publication/pay/:id">
+          <Payment />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/reviewer/dashboard">
+          <Reviewer />
+        </PrivateRoute>
+      </Switch>
+    </Router>
+  );
 };
 
 export default App;
