@@ -6,8 +6,8 @@
 }
 
 .workshopsTable{
-    position: relative;
-    top: -965px;
+    position: absolute;
+    top: 894px;
     margin-left: 740px;
     width: 710px;
 }

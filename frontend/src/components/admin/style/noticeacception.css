@@ -38,7 +38,8 @@
 
 .date{
     display: initial;
-    margin-left: 1127px;
+    position: absolute;
+    right: 190px;
 }
 
 .contents{
