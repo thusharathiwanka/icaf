@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { BASE_URL } from "../../config/config";
 
 const Countdown = () => {
 	const [timerDays, setTimerDays] = useState("00");
@@ -6,11 +7,21 @@ const Countdown = () => {
 	const [timerMinutes, setTimerMinutes] = useState("00");
 	const [timerSeconds, setTimerSeconds] = useState("00");
 	const [isShow, setIsShow] = useState(true);
+	const [date, setDate] = useState(null);
 
 	let interval = useRef();
 
+	useEffect(async () => {
+		const res = await fetch(`${BASE_URL}/conference`);
+		const data = await res.json();
+		setDate(data.conference[0].startDate);
+		return () => {
+			clearInterval(interval.current);
+		};
+	}, []);
+
 	const startTimer = () => {
-		const countdownDate = new Date("July 31, 2021 00:00:00").getTime();
+		const countdownDate = new Date(date).getTime();
 
 		interval = setInterval(() => {
 			const now = new Date().getTime();
@@ -35,12 +46,7 @@ const Countdown = () => {
 		}, 1000);
 	};
 
-	useEffect(() => {
-		startTimer();
-		return () => {
-			clearInterval(interval.current);
-		};
-	});
+	date && startTimer();
 
 	return (
 		<>
