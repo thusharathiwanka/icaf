@@ -22,6 +22,10 @@ import ReadBlog from "./blog/ReadBlog";
 import Noticeacception from "./admin/Noticeacception";
 import Payment from "./Payment/payment";
 import Reviewer from "../pages/Reviewer";
+import ReviewerResearch from "../pages/ReviewerResearchPapaer";
+import ReviewerWorkshop from "../pages/ReviewerWorkshop";
+import ResearchCard from "../components/reviwer/cards/ResearchCard";
+import WorkCard from "../components/reviwer/cards/WorkCard";
 
 const App = () => {
   return (
@@ -88,6 +92,18 @@ const App = () => {
         </PrivateRoute>
         <PrivateRoute exact path="/auth/user/reviewer/dashboard">
           <Reviewer />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/reviewer/reasearch">
+          <ReviewerResearch />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/reviewer/workshop">
+          <ReviewerWorkshop />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/reviewer/reasearch/card">
+          <ResearchCard />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/reviewer/workshop/card">
+          <WorkCard />
         </PrivateRoute>
       </Switch>
     </Router>
