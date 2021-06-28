@@ -20,3 +20,29 @@ describe("POST @ /presenters endpoint", () => {
 		}
 	});
 });
+
+describe("GET @ /presenter endpoint", () => {
+	it("should return an array and return status code 200", async () => {
+		try {
+			const res = axios.get("http://localhost:5000/presenter");
+
+			expect(res.status).toEqual(200);
+			expect(typeof res.data).toEqual("Object");
+		} catch (error) {
+			console.log(error);
+		}
+	});
+});
+
+describe("GET @ /presenter/my endpoint", () => {
+	it("should return an presenter and return status code 200", async () => {
+		try {
+			const res = axios.get("http://localhost:5000/presenter/my");
+
+			expect(res.status).toEqual(200);
+			expect(typeof res.data).toEqual("Object");
+		} catch (error) {
+			console.log(error);
+		}
+	});
+});
