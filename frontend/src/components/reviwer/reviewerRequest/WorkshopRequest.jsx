@@ -21,7 +21,7 @@ const WorkshopRequest = () => {
               {" "}
               <div>
                 <Link to="/auth/user/reviewer/workshop/card">
-                  <button type="button" className="downbtn">
+                  <button type="button" className="cardbtn">
                     view Card
                   </button>
                 </Link>
