@@ -4,6 +4,8 @@ import CloudUploadRoundedIcon from '@material-ui/icons/CloudUploadRounded';
 import TextField from '@material-ui/core/TextField';
 import { BASE_URL } from "../../config/config";
 import { getUserId } from "../../auth/userAuth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 import DateFnsUtils from '@date-io/date-fns';
@@ -37,22 +39,27 @@ const useStyles = makeStyles((theme) => ({
 const AddNotice = () => {
   const [topic, setTopic] = useState(" ");
   const [content, setContent] = useState(" ");
+ 
   
   const [selectedDate, setSelectedDate] = useState(Date.now());
-  // [isSubmitted, setIsSubmitted] = useState(false);
+  
   const handleDateChange = (d) => {
     setSelectedDate(d);
   };
     
 
-  const createdAt = selectedDate; //selectedDate.getFullYear() + '-' + selectedDate.getMonth() + '-' + selectedDate.getDay();
+  const tobePost = selectedDate; //selectedDate.getFullYear() + '-' + selectedDate.getMonth() + '-' + selectedDate.getDay();
 
- 
+  const reset_Submit = () => {
+    setTopic(" ");
+    setContent(" ");
+    setSelectedDate(Date.now());
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const  createdBy = getUserId();
-    const Notice = { createdAt, createdBy, topic, content};
+    const Notice = { tobePost, createdBy, topic, content};
     console.log(Notice);
 
     fetch(`${BASE_URL}/notice`, {
@@ -63,9 +70,15 @@ const AddNotice = () => {
             "Access-Control-Allow-Headers": "*", },
         body: JSON.stringify(Notice)
     }).then(() => {
-      console.log("New Notice added!!!");
-        })
-
+      toast.success(" New Notice Added succesfully !!");
+      setTopic(" ");
+      setContent(" ");
+      setSelectedDate(Date.now());
+     
+    })
+    .catch((error) => {
+      toast.error("Error occurred!!");
+    })
   
 
 }
@@ -79,11 +92,21 @@ const AddNotice = () => {
   return (
     <div>  
       <div className="AddNotice_formhead">
-      <h3 style={{fontSize:'18px',textAlign:'left',margin:'0px 200px 80px 15px',fontWeight:'lighter'}}>Add a New Notice</h3>
+      <h2 style={{fontSize:'18px',textAlign:'left',margin:'0px 200px 80px 15px',fontWeight:'lighter'}}>Add a New Notice</h2>
      </div>
     <div className="AddNotice">
-     
-      <form className={classes.root} onSubmit={handleSubmit} >
+    <ToastContainer
+				position="top-center"
+				autoClose={3000}
+				showProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
+        <form className={classes.root} id="ADD_Form" onSubmit={handleSubmit} onReset={reset_Submit} >
     
         <TextField label="Notice Topic" value={topic} style={{ backgroundColor: "white" }} onChange={(e)=>setTopic(e.target.value) } variant="outlined" />
 
@@ -100,7 +123,7 @@ const AddNotice = () => {
     
         
             
-            <button  className="AddNotice_submit" type="submit" >Submit</button>
+          <button className="AddNotice_submit" type="submit" >Submit</button>
     
             </form>
             </div>  
