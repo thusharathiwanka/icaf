@@ -27,15 +27,6 @@ const rejectNotice = async (req,res) => {
     }
 }
 
-const getNotice = async(req,res) =>{
-    try{
-        const firstNotice = await Notice.find()
-        res.json(firstNotice)
-    }catch(err){
-        res.status(400).json({message: err.message})
-    } 
-}
-
 const attendeesCount = async(req,res)=>{
     try{
         const attendeeCount = await Attendee.count()
@@ -76,4 +67,4 @@ const getPendingNotice = async(req,res)=>{
 
 
 
-module.exports = { approveNotice, rejectNotice , getNotice ,attendeesCount, researchersCount, presentersCount, getPendingNotice}
+module.exports = { approveNotice, rejectNotice ,attendeesCount, researchersCount, presentersCount, getPendingNotice}
