@@ -1,7 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useParams } from "react-router-dom";
+import { BASE_URL } from "../../../config/config";
+import { getUserToken } from "../../../auth/userAuth";
 
 const ResearchPaperApproval = () => {
+  const { id } = useParams();
+  let [card, setCard] = useState([]);
+  const [btnClick, setbtnClick] = useState(false);
+
+  useEffect(async () => {
+    const resCard = await fetch(`${BASE_URL}/publication/pending/${id}`, {
+      headers: {
+        authToken: getUserToken(),
+      },
+    });
+
+    const data = await resCard.json();
+    setCard(data.workshopcard);
+    setbtnClick(true);
+  }, []);
+
+  const Approvehandle = async (id) => {
+    const res = await fetch(`${BASE_URL}/publication/approve/${id}`, {
+      method: "PATCH",
+      headers: {
+        authToken: getUserToken(),
+      },
+    });
+
+    if (res.ok) {
+      toast.success("Successfully Approved");
+      setbtnClick(id);
+    }
+  };
+
+  const Rejecthandle = async (id) => {
+    const res = await fetch(`${BASE_URL}/publication/reject/${id}`, {
+      method: "PATCH",
+      headers: {
+        authToken: getUserToken(),
+      },
+    });
+    if (res.ok) {
+      toast.success("Successfully Rejected");
+      setbtnClick(id);
+    }
+  };
   return (
     <div>
       <h3>Workshop Request</h3>

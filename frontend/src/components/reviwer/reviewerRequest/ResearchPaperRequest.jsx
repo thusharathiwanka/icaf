@@ -1,9 +1,9 @@
-import React from "react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../../../config/config";
+import { getUserToken } from "../../../auth/userAuth";
 const ResearchPaperRequest = () => {
-  const [pendingPublications, setpendingPublications] = useState(null);
+  const [pendingPublications, setpendingPublications] = useState([]);
   const handleId = (id) => {
     setId(id);
     console.log(id);
@@ -11,12 +11,15 @@ const ResearchPaperRequest = () => {
   useEffect(() => {
     fetch(`${BASE_URL}/publication/pending`, {
       method: "GET",
+      headers: {
+        authToken: getUserToken(),
+      },
     })
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        setpendingPublications(data);
+        setpendingPublications(data.pendingPublications);
       });
   }, []);
   return (
@@ -30,26 +33,23 @@ const ResearchPaperRequest = () => {
             <th>Topic</th>
             <th>View</th>
           </tr>
-          {pendingPublications && (
-            <tr>
-              {pendingPublications.map((paper) => (
-                <tr key={paper._id}>
-                  <td>{paper.createdAt}</td>
-                  <td>{paper.topic}</td>
-                  <td>
-                    {" "}
-                    <div>
-                      <Link to="/auth/user/reviewer/reasearch/card">
-                        <button type="button" className="cardbtn">
-                          Reasearch Paper Card
-                        </button>
-                      </Link>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tr>
-          )}
+          {pendingPublications &&
+            pendingPublications.map((paper) => (
+              <tr key={paper._id}>
+                <td>{paper.createdAt}</td>
+                <td>{paper.topic}</td>
+                <td>
+                  <div>
+                    <Link
+                      className="cardbtn"
+                      to={`/auth/user/reviewer/research/card/${paper._id}`}
+                    >
+                      view Card
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+            ))}
         </table>
       </div>
       <hr></hr>

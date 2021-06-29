@@ -1,8 +1,8 @@
-import React from "react";
 import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../../../config/config";
+
 const WorkshopApproval = () => {
-  const [pendingWorkshops, setPendingWorkshops] = useState(null);
+  const [pendingWorkshops, setPendingWorkshops] = useState([]);
   const handleId = (id) => {
     setId(id);
     console.log(id);
@@ -15,7 +15,7 @@ const WorkshopApproval = () => {
         return res.json();
       })
       .then((data) => {
-        setPendingWorkshops(data);
+        setPendingWorkshops(data.approvedWorkshops);
       });
   }, []);
   return (
@@ -24,21 +24,16 @@ const WorkshopApproval = () => {
       <table id="customers">
         <tbody>
           <tr>
-            <th>Date</th>
+            <th>Due Date</th>
             <th>Topic</th>
-            <th>Researcher Name</th>
           </tr>
-          {pendingWorkshops && (
-            <tr>
-              {pendingWorkshops.map((approvedworkshop) => (
-                <tr key={approvedworkshop._id}>
-                  <td>Alfreds Futterkiste</td>
-                  <td>Maria Anders</td>
-                  <td>Germany</td>
-                </tr>
-              ))}
-            </tr>
-          )}
+          {pendingWorkshops &&
+            pendingWorkshops.map((approvedworkshop) => (
+              <tr key={approvedworkshop._id}>
+                <td>{approvedworkshop.dueDate}</td>
+                <td>{approvedworkshop.topic}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
       <hr></hr>
