@@ -67,4 +67,5 @@ const getPendingNotice = async(req,res)=>{
 
 
 
+
 module.exports = { approveNotice, rejectNotice ,attendeesCount, researchersCount, presentersCount, getPendingNotice}
