@@ -98,3 +98,31 @@
 		left: -2.5rem;
 	}
 }
+
+.Latest_newsItem{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+    margin: 20px 0px 20px 50px;
+    height: auto;
+    padding-bottom: 15px;
+}
+
+.Latest_newsItem_body{
+    width: 400px;
+	margin: 40px 50px 20px 50px;
+    height: auto;
+    background-color: #f5f5f5d0;
+    box-shadow: 0 4px 8px 0px rgba(0,0,0,0.2);
+    padding-bottom: 15px;
+	border-radius: 6px;
+
+}
+.Latest_newsItem_body_h1 {
+	margin: 20px 50px 20px 50px;
+	text-align: center;
+}
+
+.Latest_newsItem_body_p{
+	margin: 20px 30px 20px 30px;
+}

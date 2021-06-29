@@ -27,7 +27,7 @@ const LatestNews = () => {
 			
 				<ul >
 				
-					<NewsItem news={news} />;
+					<NewsItem news={news} />
 			
 				</ul>
 					
