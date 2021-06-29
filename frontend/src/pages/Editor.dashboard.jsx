@@ -20,11 +20,13 @@ const Editor_dash = () => {
 	return (
 		<div className="editor">
 			{view ?
-			<div className="welcome_div">
+				<div className="welcome_div">
+					<button style={{color:'whitesmoke',width:'0px',marginBottom:'5px'}} onClick={handleclick}>x</button>
 			<center>
-				<h1>Welcome Back  {editor}  !!!</h1>
+						<h1 style={{ marginBottom: '20px' }}>Welcome Back  {editor}  !!!</h1>
+						
 					</center>
-					<button onClick={handleclick}>x</button>
+					
 				</div> :
 		'' }
 			

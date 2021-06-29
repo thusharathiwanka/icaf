@@ -16,6 +16,7 @@ const UpdateConferenceDate = () => {
 		setSelectedDate(d);
 	};
 
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const startDate = selectedDate;
@@ -30,6 +31,7 @@ const UpdateConferenceDate = () => {
 		})
 			.then(() => {
 				toast.success("conference date updated !!");
+				setSelectedDate(Date.now());
 			})
 			.catch((error) => {
 				toast.error("conference date not updated !!");

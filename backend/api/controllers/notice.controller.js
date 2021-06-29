@@ -53,6 +53,17 @@ const GetNoticeByMonth = async (req, res) => {
 		}
 	}
 };
+
+const getbyDateNotice = async (req, res) => {
+	 
+		try {
+			const Found_notice = await notice.find({ isApproved:'Approved'});
+			res.status(200).json({ notice: Found_notice });
+		} catch (error) {
+			res.status(409).json({ message: error.message });
+		}
+	
+}
 const getNoticeById = async (req, res) => {
 	
 	if (req.params.id) {
@@ -67,6 +78,7 @@ const getNoticeById = async (req, res) => {
 		response.status(406).json({ message: "request parameters are empty" });
 	}
 };
+
 
 const UpdateOneNotice = async (req, res) => {
 	if (req.params.id) {
@@ -101,4 +113,5 @@ module.exports = {
 	UpdateOneNotice,
 	DeleteOneNotice,
 	GetNoticeByMonth,
+	getbyDateNotice
 };

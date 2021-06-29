@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const AddNotice = () => {
   const [topic, setTopic] = useState(" ");
   const [content, setContent] = useState(" ");
+ 
   
   const [selectedDate, setSelectedDate] = useState(Date.now());
   
@@ -49,7 +50,11 @@ const AddNotice = () => {
 
   const tobePost = selectedDate; //selectedDate.getFullYear() + '-' + selectedDate.getMonth() + '-' + selectedDate.getDay();
 
- 
+  const reset_Submit = () => {
+    setTopic(" ");
+    setContent(" ");
+    setSelectedDate(Date.now());
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -66,6 +71,10 @@ const AddNotice = () => {
         body: JSON.stringify(Notice)
     }).then(() => {
       toast.success(" New Notice Added succesfully !!");
+      setTopic(" ");
+      setContent(" ");
+      setSelectedDate(Date.now());
+     
     })
     .catch((error) => {
       toast.error("Error occurred!!");
@@ -97,7 +106,7 @@ const AddNotice = () => {
 				draggable
 				pauseOnHover
 			/>
-      <form className={classes.root} onSubmit={handleSubmit} >
+        <form className={classes.root} id="ADD_Form" onSubmit={handleSubmit} onReset={reset_Submit} >
     
         <TextField label="Notice Topic" value={topic} style={{ backgroundColor: "white" }} onChange={(e)=>setTopic(e.target.value) } variant="outlined" />
 
@@ -114,7 +123,7 @@ const AddNotice = () => {
     
         
             
-            <button  className="AddNotice_submit" type="submit" >Submit</button>
+          <button className="AddNotice_submit" type="submit" >Submit</button>
     
             </form>
             </div>  
