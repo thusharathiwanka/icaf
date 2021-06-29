@@ -21,6 +21,7 @@
 		"@material-ui/pickers": "^3.3.10",
 		"chart.js": "^3.3.2",
 		"date-fns": "^2.22.1",
+		"emailjs": "^3.5.0",
 		"firebase": "^8.6.3",
 		"framer-motion": "^4.1.17",
 		"material-icons": "^0.7.4",
