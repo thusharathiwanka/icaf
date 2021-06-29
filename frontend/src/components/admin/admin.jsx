@@ -3,6 +3,7 @@ import Count from "./Count"
 import Piechart from './Piechart'
 import Barchart from './Barchart';
 import Table from './Table';
+import './style/admin.css'
 import { BASE_URL } from "../../config/config";
 import {getUserToken} from '../../auth/userAuth'
 
@@ -62,8 +63,12 @@ console.log(Tcontent);
             <Count attendee={aCount} researcher={rCount} presenter={pCount}/>
             <Barchart ResearchPapers = {researchPapers} WorkshopPapers = {workshopPapers}/>
             <Piechart attendee={aCount} researcher={rCount} presenter={pCount}/>
+            <div className="researchTable">
             <Table Tablecontent = {researchPapers} topic ={"Research Papers"}/>
-            <Table Tablecontent ={workshopPapers} topic ={"Workshops"}/>     
+            </div>
+            <div className="workshopsTable">
+            <Table Tablecontent ={workshopPapers} topic ={"Workshops"}/>  
+            </div>
         </div>
 
     )

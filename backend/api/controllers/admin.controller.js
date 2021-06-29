@@ -15,13 +15,16 @@ const approveNotice = async (req,res) => {
     }
 }
 
-const getNotice = async(req,res) =>{
+const rejectNotice = async (req,res) => {
     try{
-        const firstNotice = await Notice.find()
-        res.json(firstNotice)
+        const firstNotice = await Notice.findByIdAndUpdate(req.params.id,
+            {
+                isApproved : "Rejected",
+            })
+        res.status(200).json({message: 'notice successfully rejected'})
     }catch(err){
-        res.status(400).json({message: err.message})
-    } 
+        res.status(400).json({message: err.message })
+    }
 }
 
 const attendeesCount = async(req,res)=>{
@@ -51,8 +54,17 @@ const presentersCount = async(req,res) => {
     }
 }
 
+const getPendingNotice = async(req,res)=>{
+    try{
+        const pendingnotice = await Notice.find({
+            isApproved:"Pending"
+        })
+        res.json(pendingnotice)
+    }catch(err){
+        res.status(500).json({massage: err.message})
+    }
+}
 
 
 
-
-module.exports = { approveNotice , getNotice ,attendeesCount, researchersCount, presentersCount }
+module.exports = { approveNotice, rejectNotice ,attendeesCount, researchersCount, presentersCount, getPendingNotice}

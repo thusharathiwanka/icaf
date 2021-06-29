@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import WorkshopApproval from "../components/reviwer/reviewerApproval/WorkshopApproval";
 import WorkshopDelete from "../components/reviwer/reviewerDelete/WorkshopDelete";
 import WorkshopRequest from "../components/reviwer/reviewerRequest/WorkshopRequest";
 
 import "./styles/Reviewer.css";
+import "./styles/ReviewerTable.css";
 
 const ReviewerWorkshop = () => {
   document.title = "ICAF | Reviewer";

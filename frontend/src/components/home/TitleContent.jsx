@@ -11,10 +11,11 @@ const TitleContent = () => {
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ type: "tween", duration: 0.8, delay: 0.2 }}
 			>
-				Lorem Ipsum is simply dummy text of the printing and typesetting
-				industry. Lorem Ipsum has been the industry's standard dummy text ever
-				since the 1500s, when an unknown printer took a galley of type and
-				scrambled it to make a type specimen book.
+				The International Conference on Application Frameworks is dedicated to
+				promoting researchers in different programming languages organized by
+				the Faculty of Computing of the Sri Lanka Institute of Information
+				Technology (SLIIT). Witness the event on 31st July 2021 in SLIIT
+				premises.
 			</motion.p>
 			<motion.div
 				initial={{ y: 50, opacity: 0 }}

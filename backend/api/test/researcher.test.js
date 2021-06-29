@@ -1,9 +1,9 @@
 const axios = require("axios");
 
-describe("POST @ /presenters endpoint", () => {
-	it("should create a presenter and return an id", async () => {
+describe("POST @ /researcher endpoint", () => {
+	it("should create a researcher and return an id", async () => {
 		try {
-			const res = axios.post("http://localhost:5000/presenters", {
+			const res = axios.post("http://localhost:5000/researcher", {
 				username: "chamath123",
 				firstName: "Chamath",
 				email: "chamath@gmail.com",
@@ -21,10 +21,10 @@ describe("POST @ /presenters endpoint", () => {
 	});
 });
 
-describe("GET @ /presenter endpoint", () => {
+describe("GET @ /researcher endpoint", () => {
 	it("should return an array and return status code 200", async () => {
 		try {
-			const res = axios.get("http://localhost:5000/presenter");
+			const res = axios.get("http://localhost:5000/researcher");
 
 			expect(res.status).toEqual(200);
 			expect(typeof res.data).toEqual("Object");
@@ -34,10 +34,10 @@ describe("GET @ /presenter endpoint", () => {
 	});
 });
 
-describe("GET @ /presenter/my endpoint", () => {
-	it("should return an presenter and return status code 200", async () => {
+describe("GET @ /researcher/my endpoint", () => {
+	it("should return an researcher and return status code 200", async () => {
 		try {
-			const res = axios.get("http://localhost:5000/presenter/my");
+			const res = axios.get("http://localhost:5000/researcher/my");
 
 			expect(res.status).toEqual(200);
 			expect(typeof res.data).toEqual("Object");
