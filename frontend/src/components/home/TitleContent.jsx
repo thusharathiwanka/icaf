@@ -4,12 +4,15 @@ import { motion } from "framer-motion";
 
 const TitleContent = () => {
 	return (
-		<section className="text-content">
-			<h1>International Conference on Application Frameworks</h1>
+		<section className="text-content" data-testid="section-tag">
+			<h1 data-testid="h1-tag">
+				International Conference on Application Frameworks
+			</h1>
 			<motion.p
 				initial={{ y: 50, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ type: "tween", duration: 0.8, delay: 0.2 }}
+				data-testid="p-tag"
 			>
 				The International Conference on Application Frameworks is dedicated to
 				promoting researchers in different programming languages organized by
