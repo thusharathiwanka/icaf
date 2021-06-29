@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const noticeSchema = new mongoose.Schema({
-    createdAt:{type:Date , required:true, default:Date.now()},
+    createdAt: { type: Date, required: true, default: Date.now() },
+    tobePost:{type:Date , required:true, default:Date.now()},
     createdBy :{
         type: mongoose.Schema.Types.ObjectId,
         trim:true,

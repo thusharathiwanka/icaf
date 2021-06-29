@@ -47,14 +47,14 @@ const AddNotice = () => {
   };
     
 
-  const createdAt = selectedDate; //selectedDate.getFullYear() + '-' + selectedDate.getMonth() + '-' + selectedDate.getDay();
+  const tobePost = selectedDate; //selectedDate.getFullYear() + '-' + selectedDate.getMonth() + '-' + selectedDate.getDay();
 
  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const  createdBy = getUserId();
-    const Notice = { createdAt, createdBy, topic, content};
+    const Notice = { tobePost, createdBy, topic, content};
     console.log(Notice);
 
     fetch(`${BASE_URL}/notice`, {
