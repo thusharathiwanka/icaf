@@ -99,18 +99,22 @@
 	}
 }
 
+.ALL_newsItems{
+	display: flex;
+	justify-content: center;
+}
 .Latest_newsItem{
 	display: flex;
 	justify-content: center;
 	width: 100%;
-    margin: 20px 0px 20px 50px;
+    margin: 20px 20px 20px 20px;
     height: auto;
     padding-bottom: 15px;
 }
 
 .Latest_newsItem_body{
-    width: 400px;
-	margin: 40px 50px 20px 50px;
+    width: 25%;
+	margin: 50px 50px 20px 50px;
     height: auto;
     background-color: #f5f5f5d0;
     box-shadow: 0 4px 8px 0px rgba(0,0,0,0.2);
