@@ -1,6 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BASE_URL } from "../../../config/config";
 const WorkshopRequest = () => {
+  const [pendingWorkshop, setpendingWorkshop] = useState(null);
+  const handleId = (id) => {
+    setId(id);
+    console.log(id);
+  };
+  useEffect(() => {
+    fetch(`${BASE_URL}/workshops/pending`, {
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setpendingWorkshop(data);
+      });
+  }, []);
   return (
     <div>
       <h3>Workshop Request</h3>
@@ -10,24 +28,27 @@ const WorkshopRequest = () => {
           <tr>
             <th>Date</th>
             <th>Topic</th>
-            <th>Researcher Name</th>
             <th>View</th>
           </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>
-              {" "}
-              <div>
-                <Link to="/auth/user/reviewer/workshop/card">
-                  <button type="button" className="cardbtn">
-                    view Card
-                  </button>
-                </Link>
-              </div>
-            </td>
-          </tr>
+          {pendingWorkshop && (
+            <tr>
+              {pendingWorkshop.map((workshop) => (
+                <tr key={workshop._id}>
+                  <td>{workshop.dueDate}</td>
+                  <td>{workshop.topic}</td>
+                  <td>
+                    <div>
+                      <Link to="/auth/user/reviewer/workshop/card">
+                        <button type="button" className="cardbtn">
+                          view Card
+                        </button>
+                      </Link>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tr>
+          )}
         </table>
       </div>
       <hr></hr>

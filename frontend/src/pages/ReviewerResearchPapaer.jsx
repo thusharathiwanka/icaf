@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { BASE_URL } from "../config/config";
 
 import ResearchPaperApproval from "../components/reviwer/reviewerApproval/ResearchPaperApproval";
 import ResearchPaperDelete from "../components/reviwer/reviewerDelete/ResearchPaperDelete";
@@ -9,7 +10,6 @@ import "./styles/Reviewer.css";
 import "./styles/ReviewerTable.css";
 
 const ReviewerResearchpaper = () => {
-  document.title = "ICAF | Reviewer";
   return (
     <>
       <ResearchPaperApproval />
