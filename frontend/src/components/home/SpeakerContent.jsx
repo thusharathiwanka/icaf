@@ -14,9 +14,9 @@ const SpeakerContent = () => {
 	}, []);
 
 	return (
-		<section className="speaker-content">
+		<section className="speaker-content"  data-testid='section-tag'>
 			<MdFormatQuote className="quote-icon" />
-			<h1>Meet our Keynote Speakers</h1>
+			<h1 data-testid='h1-tag'>Meet our Keynote Speakers</h1>
 			<div className="speaker-card-content">
 				{speakers.map((speaker) => (
 					<SpeakerCard speaker={speaker} key={speaker.id} />
