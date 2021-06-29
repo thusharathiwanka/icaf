@@ -1,9 +1,8 @@
-import React from "react";
 import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../../../config/config";
-
+import { getUserToken } from "../../../auth/userAuth";
 const WorkshopDelete = () => {
-  const [rejectedWorkshop, setRejectedWorkshop] = useState(null);
+  const [rejectedWorkshop, setRejectedWorkshop] = useState([]);
   const handleId = (id) => {
     setId(id);
     console.log(id);
@@ -11,12 +10,15 @@ const WorkshopDelete = () => {
   useEffect(() => {
     fetch(`${BASE_URL}/workshop/rejected`, {
       method: "GET",
+      headers: {
+        authToken: getUserToken(),
+      },
     })
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        setRejectedWorkshop(data);
+        setRejectedWorkshop(data.rejectedWorkshops);
       });
   }, []);
   return (
@@ -28,18 +30,14 @@ const WorkshopDelete = () => {
           <tr>
             <th>Date</th>
             <th>Topic</th>
-            <th>Researcher Name</th>
           </tr>
-          {rejectedWorkshop && (
-            <tr>
-              {rejectedWorkshop.map((deletedworkshop) => (
-                <tr key={deletedworkshop._id}>
-                  <td>{deletedworkshop.createdAt}</td>
-                  <td>{deletedworkshop.topic}</td>
-                </tr>
-              ))}
-            </tr>
-          )}
+          {rejectedWorkshop &&
+            rejectedWorkshop.map((deletedworkshop) => (
+              <tr key={deletedworkshop._id}>
+                <td>{deletedworkshop.createdAt}</td>
+                <td>{deletedworkshop.topic}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

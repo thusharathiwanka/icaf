@@ -12,7 +12,7 @@ const ResearchPaperApproval = () => {
   const [btnClick, setbtnClick] = useState(false);
 
   useEffect(async () => {
-    const resCard = await fetch(`${BASE_URL}/publication/pending/${id}`, {
+    const resCard = await fetch(`${BASE_URL}/workshop/pending/${id}`, {
       method: "GET",
       headers: {
         authToken: getUserToken(),
@@ -20,12 +20,12 @@ const ResearchPaperApproval = () => {
     });
 
     const data = await resCard.json();
-    setCard(data.card);
+    setCard(data.workshopcard);
     setbtnClick(true);
   }, []);
-  console.log(card);
+
   const Approvehandle = async (id) => {
-    const res = await fetch(`${BASE_URL}/publication/approve/${id}`, {
+    const res = await fetch(`${BASE_URL}/workshop/approve/${id}`, {
       method: "PATCH",
       headers: {
         authToken: getUserToken(),
@@ -39,7 +39,7 @@ const ResearchPaperApproval = () => {
   };
 
   const Rejecthandle = async (id) => {
-    const res = await fetch(`${BASE_URL}/publication/reject/${id}`, {
+    const res = await fetch(`${BASE_URL}/workshop/reject/${id}`, {
       method: "PATCH",
       headers: {
         authToken: getUserToken(),
@@ -63,7 +63,7 @@ const ResearchPaperApproval = () => {
         draggable
         pauseOnHover
       />
-      <h3>Researcher Paper Request</h3>
+      <h3>Workshop Request</h3>
       <hr></hr>
       <div className="reviewer-research-card-container">
         <div className="reviewer-research-card">
@@ -72,7 +72,7 @@ const ResearchPaperApproval = () => {
               <span className="reviewer-research-date">Created Date</span>
             </div>
             <hr></hr>
-            <span className="reviewer-research-date">{card.createdAt}</span>
+            <span className="reviewer-research-date">{card.dueDate}</span>
           </div>
           <header>
             <hr></hr>

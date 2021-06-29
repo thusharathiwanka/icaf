@@ -25,7 +25,6 @@ const payment = () => {
 	}, [])
 
 	const paymentconfirm = (serviceID, templateId, variables) => {
-    toast.success("Your payment successful");
         window.emailjs.send(
             serviceID, templateId,
             variables
@@ -38,8 +37,7 @@ const payment = () => {
   	const paymentemail = () => {
         const templateId = 'template_3e10xcd';
         const serviceID = 'service_f5upd53';
-        console.log(email);
-        paymentconfirm(serviceID, templateId, { to_name:Researcher.firstName, from_name: "icaf.com", reply_to:Researcher.email})
+        paymentconfirm(serviceID, templateId, { to_name:Researcher.researcher.firstName, from_name: "icaf.com", reply_to:Researcher.researcher.email})
       
     }
 	const paymenthandle = async (e) => {
@@ -56,6 +54,7 @@ const payment = () => {
 			toast.success("payment successful");
 		}
 	};
+	console.log(Researcher);
 
 	return (
 		<div>
@@ -67,7 +66,7 @@ const payment = () => {
 				<br />
 				<div className="card">
 					<label className="lables">Card Number</label>
-					<br />
+					<br/>
 					<input
 						type="number"
 						maxLength="16"
@@ -107,7 +106,6 @@ const payment = () => {
 					<br />
 					<button
 						type="submit"
-						onClick={console.log("onclick")}
 						className="payBt"
 					>
 						Pay

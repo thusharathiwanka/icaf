@@ -4,17 +4,13 @@ const Reviewer = () => {
   return (
     <div>
       <div>
-        <Link to="/auth/user/reviewer/research">
-          <button type="button" className="button">
-            Reasearch Paper
-          </button>
+        <Link className="button" to={`/auth/user/reviewer/research`}>
+          Reasearch Paper
         </Link>
       </div>
       <div>
-        <Link to="/auth/user/reviewer/workshop">
-          <button type="button" className="button1">
-            Workshop
-          </button>
+        <Link className="button1" to={`/auth/user/reviewer/workshop`}>
+          Workshop
         </Link>
       </div>
     </div>
