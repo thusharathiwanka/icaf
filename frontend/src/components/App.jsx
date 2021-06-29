@@ -34,7 +34,7 @@ import WorkshopCard from "../pages/ReviewerWorksopCard";
 import ReviewerResearchPapaer from "../pages/ReviewerResearchPapaer";
 import ReviewerWorkshop from "../pages/ReviewerWorkshop";
 import ReviewerResearcherCard from "../components/reviwer/cards/ResearchCard";
-import ReviewerWorkshopCard from "../components/reviwer/cards/WorkCard";
+import ReviewerWorkshopCard from "../components/reviwer/cards/WorkshopCard";
 import ErrorPage from "./error/404";
 
 const App = () => {

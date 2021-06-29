@@ -12,7 +12,8 @@ const ResearchPaperApproval = () => {
   const [btnClick, setbtnClick] = useState(false);
 
   useEffect(async () => {
-    const resCard = await fetch(`${BASE_URL}/publication/pending/${id}`, {
+    const resCard = await fetch(`${BASE_URL}/workshop/pending/${id}`, {
+      method: "GET",
       headers: {
         authToken: getUserToken(),
       },
@@ -24,7 +25,7 @@ const ResearchPaperApproval = () => {
   }, []);
 
   const Approvehandle = async (id) => {
-    const res = await fetch(`${BASE_URL}/publication/approve/${id}`, {
+    const res = await fetch(`${BASE_URL}/workshop/approve/${id}`, {
       method: "PATCH",
       headers: {
         authToken: getUserToken(),
@@ -38,7 +39,7 @@ const ResearchPaperApproval = () => {
   };
 
   const Rejecthandle = async (id) => {
-    const res = await fetch(`${BASE_URL}/publication/reject/${id}`, {
+    const res = await fetch(`${BASE_URL}/workshop/reject/${id}`, {
       method: "PATCH",
       headers: {
         authToken: getUserToken(),
@@ -51,6 +52,17 @@ const ResearchPaperApproval = () => {
   };
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <h3>Workshop Request</h3>
       <hr></hr>
       <div className="reviewer-research-card-container">
@@ -60,11 +72,11 @@ const ResearchPaperApproval = () => {
               <span className="reviewer-research-date">Created Date</span>
             </div>
             <hr></hr>
-            <span className="reviewer-research-date">Jan 19, 2020</span>
+            <span className="reviewer-research-date">{card.dueDate}</span>
           </div>
           <header>
             <hr></hr>
-            <h2>JavaScript Short Circuiting</h2>
+            <h2>{card.topic}</h2>
           </header>
 
           <div>
@@ -73,8 +85,7 @@ const ResearchPaperApproval = () => {
                 <div>
                   <Link
                     to={{
-                      pathname:
-                        "https://cdn.scribbr.com/wp-content/uploads/2020/11/APA-7th-edition-tem...",
+                      pathname: card.src,
                     }}
                     target="blank"
                   >
@@ -83,11 +94,20 @@ const ResearchPaperApproval = () => {
                 </div>
               </td>
               <td>
-                <div className="cardbtn">Approve</div>
+                <button
+                  className="cardbtn"
+                  onClick={() => Approvehandle(card._id)}
+                >
+                  Approve
+                </button>
               </td>
-
               <td>
-                <div className="cardbtn">Dicline</div>
+                <button
+                  className="cardbtn"
+                  onClick={() => Rejecthandle(card._id)}
+                >
+                  Reject
+                </button>
               </td>
             </tr>
           </div>

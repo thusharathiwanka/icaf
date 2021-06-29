@@ -31,16 +31,13 @@ const WorkshopDelete = () => {
             <th>Date</th>
             <th>Topic</th>
           </tr>
-          {rejectedWorkshop && (
-            <tr>
-              {rejectedWorkshop.map((deletedworkshop) => (
-                <tr key={deletedworkshop._id}>
-                  <td>{deletedworkshop.createdAt}</td>
-                  <td>{deletedworkshop.topic}</td>
-                </tr>
-              ))}
-            </tr>
-          )}
+          {rejectedWorkshop &&
+            rejectedWorkshop.map((deletedworkshop) => (
+              <tr key={deletedworkshop._id}>
+                <td>{deletedworkshop.createdAt}</td>
+                <td>{deletedworkshop.topic}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

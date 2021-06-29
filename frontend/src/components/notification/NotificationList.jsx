@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 
 import { RegisterDataContext } from "../../context/Context";
 import NotificationItem from "./NotificationItem";
-import { getUserType } from "../../auth/userAuth";
+import { getUserId, getUserType } from "../../auth/userAuth";
 import { BASE_URL } from "../../config/config";
 
 const NotificationList = () => {
@@ -18,7 +18,12 @@ const NotificationList = () => {
 		useEffect(async () => {
 			const res = await fetch(`${BASE_URL}/notification/${fetchEndpoint}`);
 			const data = await res.json();
-			setNotifications(data.notifications);
+
+			const notifications = data.notifications.filter((notification) => {
+				return getUserId() === notification.to;
+			});
+
+			setNotifications(notifications);
 		}, []);
 	}
 	return (
