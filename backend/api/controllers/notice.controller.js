@@ -9,7 +9,7 @@ const GetAllNotices = async (req, res) => {
 	}
 };
 const CreateNotice = async (req, res) => {
-	console.log(req.body);
+
 	const newNotice = await new notice(req.body);
 
 	try {
@@ -22,7 +22,7 @@ const CreateNotice = async (req, res) => {
 };
 
 const GetByapproval = async (req, res) => {
-	console.log(req.params.isApproved);
+	
 	if (req.params.isApproved) {
 		try {
 			const Count = await notice.countDocuments({
@@ -44,17 +44,17 @@ const GetNoticeByMonth = async (req, res) => {
 				//console.log(new Date(notice.createdAt).getMonth()+1);
 				return req.params.month == new Date(notice.createdAt).getMonth()+1;
 			});
+			console.log( req.params.month +" "+ monthlyCount.length);
+			
 
-			console.log(monthlyCount);
-
-			res.status(200).json({ monthlyCount: monthlyCount.length });
+			res.status(200).json( monthlyCount.length );
 		} catch (error) {
 			res.status(409).json({ message: error.message });
 		}
 	}
 };
 const getNoticeById = async (req, res) => {
-	console.log(req.params.id);
+	
 	if (req.params.id) {
 		try {
 			const found_notice = await notice.findById(req.params.id);

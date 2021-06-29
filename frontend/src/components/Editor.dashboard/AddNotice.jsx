@@ -83,7 +83,7 @@ const AddNotice = () => {
   return (
     <div>  
       <div className="AddNotice_formhead">
-      <h3 style={{fontSize:'18px',textAlign:'left',margin:'0px 200px 80px 15px',fontWeight:'lighter'}}>Add a New Notice</h3>
+      <h2 style={{fontSize:'18px',textAlign:'left',margin:'0px 200px 80px 15px',fontWeight:'lighter'}}>Add a New Notice</h2>
      </div>
     <div className="AddNotice">
     <ToastContainer
