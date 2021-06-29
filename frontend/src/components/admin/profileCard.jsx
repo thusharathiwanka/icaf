@@ -7,7 +7,7 @@ const profileCard = () => {
     return (
         <div className="profile">
             <FaUserCircle className = "usericon"/>
-            <h1 className="name">Hi! Admin</h1>
+            <h3 className="name">Hi, Admin</h3>
         </div>
     )
 }
