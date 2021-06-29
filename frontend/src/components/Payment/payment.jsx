@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { MdCreditCard, MdLockOutline, MdDateRange } from "react-icons/md";
 import "./payment.css";
@@ -8,11 +8,43 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const payment = () => {
+
 	const [CardDetails, setCardDetails] = useState("");
 	const { id } = useParams();
+	const [Researcher, setResearcher] = useState("")
+
+	useEffect( async() => {
+		const res = await fetch(`${BASE_URL}/researcher/my`, {
+			headers: {
+				"Content-Type": "application/json",
+				authToken: getUserToken(),
+			},
+		});
+		const data = await res.json();
+		setResearcher(data);
+	}, [])
+
+	const paymentconfirm = (serviceID, templateId, variables) => {
+    toast.success("Your payment successful");
+        window.emailjs.send(
+            serviceID, templateId,
+            variables
+        ).then(res => {
+            console.log('Email successfully sent!')
+        })
+            .catch(err => console.error('There has been an error.  Here some thoughts on the error that occured:', err))
+    }
+
+  	const paymentemail = () => {
+        const templateId = 'template_3e10xcd';
+        const serviceID = 'service_f5upd53';
+        console.log(email);
+        paymentconfirm(serviceID, templateId, { to_name:Researcher.firstName, from_name: "icaf.com", reply_to:Researcher.email})
+      
+    }
 	const paymenthandle = async (e) => {
 		e.preventDefault();
-
+		paymentemail();
 		const res = await fetch(`${BASE_URL}/publication/pay/${id}`, {
 			method: "PATCH",
 			headers: {
