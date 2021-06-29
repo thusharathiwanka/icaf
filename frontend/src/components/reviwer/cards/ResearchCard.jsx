@@ -12,7 +12,8 @@ const ResearchPaperApproval = () => {
   const [btnClick, setbtnClick] = useState(false);
 
   useEffect(async () => {
-    const resCard = await fetch(`${BASE_URL}/workshop/pending/${id}`, {
+    const resCard = await fetch(`${BASE_URL}/publication/pending/${id}`, {
+      method: "GET",
       headers: {
         authToken: getUserToken(),
       },
@@ -22,9 +23,9 @@ const ResearchPaperApproval = () => {
     setCard(data.card);
     setbtnClick(true);
   }, []);
-
+  console.log(card);
   const Approvehandle = async (id) => {
-    const res = await fetch(`${BASE_URL}/workshop/approve/${id}`, {
+    const res = await fetch(`${BASE_URL}/publication/approve/${id}`, {
       method: "PATCH",
       headers: {
         authToken: getUserToken(),
@@ -51,6 +52,17 @@ const ResearchPaperApproval = () => {
   };
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <h3>Researcher Paper Request</h3>
       <hr></hr>
       <div className="reviewer-research-card-container">
@@ -102,17 +114,6 @@ const ResearchPaperApproval = () => {
           </div>
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </div>
   );
 };
