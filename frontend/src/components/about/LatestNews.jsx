@@ -23,15 +23,10 @@ const LatestNews = () => {
 			
 			<h1>Latest News</h1>
 		
-			<div  initial={{ y: 200, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: "tween", duration: 1 }}>
-			
-				<ul >
-				
-					<NewsItem news={news} />;
-			
-				</ul>
-					
-				</div> 
+			<div className="ALL_newsItems">
+				<NewsItem news={news} />
+		
+			</div> 
 				
 		
 		</div>
