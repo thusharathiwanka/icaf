@@ -1,6 +1,8 @@
 import React, { useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { BASE_URL } from "../../config/config";
 
@@ -50,15 +52,27 @@ const NoticeUpdate = ({ Notices, id }) => {
             "Access-Control-Allow-Headers": "*", },
         body: JSON.stringify(Notice)
     }).then(() => {
-      console.log(" Notice Updated!!!");
-        })
-
+      toast.success("Notice updated !!");
+    })
+    .catch((error) => {
+      toast.error("Notice not updated !!");
+    });
 }
     
     const classes = useStyles();
     return (
         <div className="NoticeUpdate">
-        
+         <ToastContainer
+				position="top-center"
+				autoClose={3000}
+				hideProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
         <form className={classes.root} onSubmit={handleSubmit}>
     
           <TextField value={topic} placeholder={notice[0].topic} label="Notice Topic" onChange={(e)=>SetTopic(e.target.value) }  style={{ backgroundColor: "white" }} variant="outlined" />
@@ -66,7 +80,7 @@ const NoticeUpdate = ({ Notices, id }) => {
                 <TextField   value={content} label="Content" onChange={(e)=>SetContent(e.target.value) } style={{ backgroundColor: "white" }} multiline rows={5} variant="outlined" />
 
                           
-                <button className="NoticeUpdate_submit" type="submit" style={{backgroundColor:'crimson'}} >Update</button>
+                <button className="NoticeUpdate_submit" type="submit" >Update</button>
     
             </form>
           

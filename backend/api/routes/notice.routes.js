@@ -7,7 +7,7 @@ Router.get("/", GetAllNotices);
 Router.get("/:id", getNoticeById);
 Router.delete("/delete/:id", DeleteOneNotice);
 Router.get("/approval/:isApproved", GetByapproval);
-Router.get("Month/:month", GetNoticeByMonth);
+Router.get("/month/:month", GetNoticeByMonth);
 
 
 Router.post("/", CreateNotice);

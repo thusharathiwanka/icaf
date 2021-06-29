@@ -1,33 +1,12 @@
-import React from 'react';
+import React, { useState,useEffect} from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import {Bar} from 'react-chartjs-2';
+import { BASE_URL } from "../../config/config";
 
-const state = {
-    labels: ['Approved', 'Pending', 'Rejected'
-             ],
-    datasets: [
-      {
-       
-        backgroundColor: [
-            "rgb(60,186,159,0.1)",
-            "rgb(255,165,0,0.1)",
-            "rgb(196,88,80,0.1)",
-        ],
-         data: [65, 59, 80],
-            borderColor:[
-                "#3cba9f",
-                "#ffa500",
-                "#c45850",
-            ],
-            hoverBackgroundColor: [
-                "rgb(60,186,159,0.1)",
-                "rgb(255,165,0,0.1)",
-                "rgb(196,88,80,0.1)",
-                ],
-            borderWidth:2,
-      }
-    ]
-}
+
+
+
+
   
 const state_1 = {
     labels: ['January', 'February', 'March','April' ,'May' ,'June' ,'July','August' ,'September' ,'October' ,'November','December'
@@ -55,6 +34,70 @@ const state_1 = {
 
 }
 const NoticesChart = () => {
+
+ 
+  const [Approve, SetApprove] = useState(null);
+  const [Reject, SetReject] = useState(null);
+  const [Pending, SetPending] = useState(null);
+ 
+
+  useEffect( async() => {
+    const resApprove = await fetch(`${BASE_URL}/notice/approval/Approved`);
+    const approvelCount = await resApprove.text();
+
+    const resReject = await fetch(`${BASE_URL}/notice/approval/Rejected`);
+    const rejectCount = await resReject.text();
+
+    const resPending = await fetch(`${BASE_URL}/notice/approval/Pending`);
+    const pendingCount = await resPending.text();
+
+    SetApprove(parseInt(approvelCount));
+    SetReject(parseInt(rejectCount));
+    SetPending(parseInt(pendingCount));
+
+  }, []);
+  
+
+
+
+
+  console.log(Approve);
+  console.log(Reject);
+  console.log(Pending);
+  
+  const state = {
+    labels: ['Approved', 'Pending', 'Rejected'
+    ],
+    datasets: [
+      {
+         
+        backgroundColor: [
+          "rgb(60,186,159,0.1)",
+          "rgb(255,165,0,0.1)",
+          "rgb(196,88,80,0.1)",
+        ],
+        data: [Approve, Pending, Reject],
+        borderColor: [
+          "#3cba9f",
+          "#ffa500",
+          "#c45850",
+        ],
+        hoverBackgroundColor: [
+          "rgb(60,186,159,0.1)",
+          "rgb(255,165,0,0.1)",
+          "rgb(196,88,80,0.1)",
+        ],
+        borderWidth: 2,
+      }
+    ]
+  };
+ 
+ 
+    
+  
+  
+
+
     return (
       <div className="NoticesChart">
         <div className="chart_head">

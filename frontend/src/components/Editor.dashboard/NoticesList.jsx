@@ -19,7 +19,7 @@ const AllNotices = () => {
 	const [view, SetView] = useState(true);
 	const [update, SetUpdate] = useState(false);
 
-	//const [notice, setNotice] = useState(null);
+	
 
 	const handleClose = () => {
 		setOpen(false);
@@ -79,7 +79,7 @@ const AllNotices = () => {
 						
 					</TableRow>
 						</TableHead>
-						{Notices&& (
+						{Notices && (
 				<TableBody >
 							{Notices.map((notice) =>
 							
@@ -87,7 +87,7 @@ const AllNotices = () => {
 									<TableCell style={{ textAlign: 'center', width: '250px' }}>{ notice._id}</TableCell>
 									<TableCell style={{ textAlign: 'center', width: '250px' }}>{notice.topic }</TableCell>
 									<TableCell style={{ textAlign: 'center', width: '250px' }}>{notice.isApproved}</TableCell>
-									<TableCell style={{ textAlign: 'center', width: '250px' }}>{notice.createdAt }</TableCell>
+									<TableCell style={{ textAlign: 'center', width: '250px' }}>{new Date(notice.createdAt).toDateString()}</TableCell>
 									<TableCell style={{ width: "30px", textAlign: 'center' }} onClick={() => { handleId(notice._id);SetView(true); SetUpdate(false)  }}> <Button variant="outlined" color="primary" onClick={handleClickOpen}> <MoreVertIcon color="action" />
 									</Button></TableCell>
 					
@@ -99,11 +99,11 @@ const AllNotices = () => {
 				</Table>
 				</TableContainer>
 			</div>
-			<Dialog open={open} onClose={handleClose} maxWidth={'700px'} aria-labelledby="customized-dialog-title">
+			<Dialog open={open} onClose={handleClose} maxWidth={'lg'} aria-labelledby="customized-dialog-title">
 				<nav>
 					<div className="navB">
-						<button className="NoticesList_Dialog_update" onClick={() => { SetView(false); SetUpdate(true) }}>Update Notice</button>
-						<button className="NoticesList_Dialog_view" onClick={() => { SetView(true); SetUpdate(false) }}>View Notice</button>
+						<button className="NoticesList_Dialog_update_view" onClick={() => { SetView(false); SetUpdate(true) }}>Update Notice</button>
+						<button className="NoticesList_Dialog_update_view" onClick={() => { SetView(true); SetUpdate(false) }}>View Notice</button>
 					</div>
 				</nav>
 				<div className="NoticesList_Dialog">

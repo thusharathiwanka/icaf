@@ -4,6 +4,8 @@ import CloudUploadRoundedIcon from '@material-ui/icons/CloudUploadRounded';
 import TextField from '@material-ui/core/TextField';
 import { BASE_URL } from "../../config/config";
 import { getUserId } from "../../auth/userAuth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 import DateFnsUtils from '@date-io/date-fns';
@@ -39,7 +41,7 @@ const AddNotice = () => {
   const [content, setContent] = useState(" ");
   
   const [selectedDate, setSelectedDate] = useState(Date.now());
-  // [isSubmitted, setIsSubmitted] = useState(false);
+  
   const handleDateChange = (d) => {
     setSelectedDate(d);
   };
@@ -63,9 +65,11 @@ const AddNotice = () => {
             "Access-Control-Allow-Headers": "*", },
         body: JSON.stringify(Notice)
     }).then(() => {
-      console.log("New Notice added!!!");
-        })
-
+      toast.success(" New Notice Added succesfully !!");
+    })
+    .catch((error) => {
+      toast.error("Error occurred!!");
+    })
   
 
 }
@@ -82,7 +86,17 @@ const AddNotice = () => {
       <h3 style={{fontSize:'18px',textAlign:'left',margin:'0px 200px 80px 15px',fontWeight:'lighter'}}>Add a New Notice</h3>
      </div>
     <div className="AddNotice">
-     
+    <ToastContainer
+				position="top-center"
+				autoClose={3000}
+				showProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
       <form className={classes.root} onSubmit={handleSubmit} >
     
         <TextField label="Notice Topic" value={topic} style={{ backgroundColor: "white" }} onChange={(e)=>setTopic(e.target.value) } variant="outlined" />
