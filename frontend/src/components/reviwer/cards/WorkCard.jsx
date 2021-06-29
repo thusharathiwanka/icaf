@@ -31,16 +31,16 @@ const ResearchPaperApproval = () => {
                     }}
                     target="blank"
                   >
-                    <div className="downbtn">Download</div>
+                    <div className="cardbtn">Download</div>
                   </Link>
                 </div>
               </td>
               <td>
-                <div className="downbtn">Approve</div>
+                <div className="cardbtn">Approve</div>
               </td>
 
               <td>
-                <div className="downbtn">Dicline</div>
+                <div className="cardbtn">Dicline</div>
               </td>
             </tr>
           </div>

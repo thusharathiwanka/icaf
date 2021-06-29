@@ -9,7 +9,7 @@ const WorkshopRequest = () => {
     console.log(id);
   };
   useEffect(() => {
-    fetch(`${BASE_URL}/workshops/pending`, {
+    fetch(`${BASE_URL}/workshop/pending`, {
       method: "GET",
     })
       .then((res) => {

@@ -9,7 +9,7 @@ const ResearchPaperRequest = () => {
     console.log(id);
   };
   useEffect(() => {
-    fetch(`${BASE_URL}/publications/pending`, {
+    fetch(`${BASE_URL}/publication/pending`, {
       method: "GET",
     })
       .then((res) => {
