@@ -1,22 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useParams } from "react-router-dom";
+import { BASE_URL } from "../../../config/config";
+import { getUserToken } from "../../../auth/userAuth";
 
-const ResearchPaperApproval = (paper) => {
-  let [Notices, setNotices] = useState([]);
-  const [btnClick, setbtnClick] = useState("");
+const ResearchPaperApproval = () => {
+  const { id } = useParams();
+  let [card, setCard] = useState([]);
+  const [btnClick, setbtnClick] = useState(false);
+
   useEffect(async () => {
-    const resCard = await fetch(`${BASE_URL}/publications/pending`);
-    const card = await resCard.json();
-    setNotices(card);
-  }, [btnClick]);
+    const resCard = await fetch(`${BASE_URL}/workshop/pending/${id}`, {
+      headers: {
+        authToken: getUserToken(),
+      },
+    });
+
+    const data = await resCard.json();
+    setCard(data.card);
+    setbtnClick(true);
+  }, []);
 
   const Approvehandle = async (id) => {
-    const res = await fetch(`${BASE_URL}/publication/approve/${id}`, {
+    const res = await fetch(`${BASE_URL}/workshop/approve/${id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json",
+        authToken: getUserToken(),
       },
     });
 
@@ -27,10 +38,10 @@ const ResearchPaperApproval = (paper) => {
   };
 
   const Rejecthandle = async (id) => {
-    const res = await fetch(`${BASE_URL}/publication/reject/${id}`, {
+    const res = await fetch(`${BASE_URL}/workshop/reject/${id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json",
+        authToken: getUserToken(),
       },
     });
     if (res.ok) {
@@ -91,6 +102,17 @@ const ResearchPaperApproval = (paper) => {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
-import ResearchCard from "../components/reviwer/cards/ResearchCard";
+import React from "react";
+// import ResearchCard from "../components/reviwer/cards/ResearchCard";
 import "./styles/Reviewer.css";
 
 const ResearchCard = () => {
   document.title = "ICAF | Reviewer";
-  return (
-    <>
-      <ResearchCard />
-    </>
-  );
+  return <>{/* <ResearchCard /> */}</>;
 };
 
 export default ResearchCard;
