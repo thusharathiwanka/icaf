@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { BASE_URL } from "../../../config/config";
 import { getUserToken } from "../../../auth/userAuth";
 const WorkshopRequest = () => {
@@ -29,7 +29,7 @@ const WorkshopRequest = () => {
       <div>
         <table id="customers">
           <tr>
-            <th>Date</th>
+            <th>Due Date</th>
             <th>Topic</th>
             <th>View</th>
           </tr>
@@ -42,7 +42,7 @@ const WorkshopRequest = () => {
                   <div>
                     <Link
                       className="cardbtn"
-                      to={`/auth/user/reviewer/workshop/card${workshop._id}`}
+                      to={`/auth/user/reviewer/workshop/card/${workshop._id}`}
                     >
                       view Card
                     </Link>

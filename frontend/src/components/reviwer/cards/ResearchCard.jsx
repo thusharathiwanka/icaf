@@ -39,7 +39,7 @@ const ResearchPaperApproval = () => {
   };
 
   const Rejecthandle = async (id) => {
-    const res = await fetch(`${BASE_URL}/workshop/reject/${id}`, {
+    const res = await fetch(`${BASE_URL}/publication/reject/${id}`, {
       method: "PATCH",
       headers: {
         authToken: getUserToken(),
@@ -85,8 +85,7 @@ const ResearchPaperApproval = () => {
                 <div>
                   <Link
                     to={{
-                      pathname:
-                        "https://cdn.scribbr.com/wp-content/uploads/2020/11/APA-7th-edition-tem...",
+                      pathname: card.src,
                     }}
                     target="blank"
                   >
