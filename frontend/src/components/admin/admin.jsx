@@ -3,7 +3,8 @@ import Count from "./Count"
 import Piechart from './Piechart'
 import Barchart from './Barchart';
 import Table from './Table';
-import './style/admin.css'
+import './style/admin.css';
+import ProfileCard from './profileCard';
 import { BASE_URL } from "../../config/config";
 import {getUserToken} from '../../auth/userAuth'
 
@@ -60,6 +61,7 @@ console.log(Tcontent);
 
     return (
         <div style={{marginBottom: "100px"}}>
+            <ProfileCard/>
             <Count attendee={aCount} researcher={rCount} presenter={pCount}/>
             <Barchart ResearchPapers = {researchPapers} WorkshopPapers = {workshopPapers}/>
             <Piechart attendee={aCount} researcher={rCount} presenter={pCount}/>
