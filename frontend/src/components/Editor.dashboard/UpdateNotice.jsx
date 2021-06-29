@@ -32,22 +32,22 @@ const NoticeUpdate = ({ Notices, id }) => {
 
 
   
- 
   useEffect(() => {
     SetTopic(notice[0].topic);
     SetContent(notice[0].content);
-   }, []);
+  }, []);
 
     const handleSubmit = async (e) => {
     e.preventDefault();
 
-      if ((notice[0].topic == Notice.topic) && (notice[0].content == Notice.content)) {
-        toast.warning("Same data please update!!!");
+const Notice = { topic, content };
+console.log(Notice);
+
+if ((notice[0].topic === Notice.topic) && (notice[0].content === Notice.content)) {
         
-      }
-      else {
-        const Notice = { topic, content };
-        console.log(Notice);
+  toast.warning("Same data please update!!!");
+}
+else {
 
     fetch(`${BASE_URL}/notice/${id}`, {
         method: 'PUT',
@@ -58,7 +58,7 @@ const NoticeUpdate = ({ Notices, id }) => {
         body: JSON.stringify(Notice)
     }).then(() => {
       console.log("updated");
-
+      setSubmit(true);
         toast.success("Notice updated !!");
       
     })
@@ -72,8 +72,8 @@ const NoticeUpdate = ({ Notices, id }) => {
   
     const classes = useStyles();
     return (
-        <div className="NoticeUpdate">
-         <ToastContainer
+      <div className="NoticeUpdate">
+        <ToastContainer
 				position="top-center"
 				autoClose={3000}
 				hideProgressBar
@@ -84,16 +84,13 @@ const NoticeUpdate = ({ Notices, id }) => {
 				draggable
 				pauseOnHover
         />
-        {isSubmit ?  <h3 style={{ textAlign: 'center', color: 'green' }}>Sucessfully Updated !!!!</h3> :<form className={classes.root} onSubmit={handleSubmit}>
-    
-          <TextField value={topic} placeholder={notice[0].topic} label="Notice Topic" onChange={(e)=>SetTopic(e.target.value) }  style={{ backgroundColor: "white" }} variant="outlined" />
-
-                <TextField   value={content} label="Content" onChange={(e)=>SetContent(e.target.value) } style={{ backgroundColor: "white" }} multiline rows={5} variant="outlined" />
-
-                          
+        {isSubmit ? <h3 style={{ textAlign: 'center', color: 'green' }}>Sucessfully Updated !!!!</h3> :
+          
+        <form className={classes.root} onSubmit={handleSubmit}>
+          <TextField value={topic} placeholder={notice[0].topic} label="Notice Topic" onChange={(e) => SetTopic(e.target.value)} style={{ backgroundColor: "white" }} variant="outlined" />
+          <TextField value={content} label="Content" onChange={(e) => SetContent(e.target.value)} style={{ backgroundColor: "white" }} multiline rows={5} variant="outlined" />
           <button className="NoticeUpdate_submit" type="submit" >Update</button>
-    
-            </form> }
+        </form>}
           
         </div>
       );

@@ -25,7 +25,7 @@ const ViewNotice = ({Notices,id}) => {
        
     }).then(() => {
       toast.success("Notice Deleted");
-      notice = Notices.filter((notice) => notice._id !== id);
+      
       notice[0] == [''];
     })
     .catch((error) => {

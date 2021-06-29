@@ -8,7 +8,7 @@ const NewsItem = ({news}) => {
 				<p className="Latest_newsItem_body_p">{newsItem.content}</p>
 				
 			</div>
-			) }
+			)}
 	</div>;
 };
 

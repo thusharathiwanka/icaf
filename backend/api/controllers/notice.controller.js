@@ -14,8 +14,8 @@ const CreateNotice = async (req, res) => {
 
 	try {
 		await newNotice.save();
-		console.log(newNotice);
-		res.status(201).json(newNotice);
+		
+		res.status(200).json(newNotice);
 	} catch (error) {
 		res.status(409).json({ message: error.message });
 	}
@@ -41,10 +41,10 @@ const GetNoticeByMonth = async (req, res) => {
 			const notices = await notice.find();
 
 			const monthlyCount = notices.filter((notice) => {
-				//console.log(new Date(notice.createdAt).getMonth()+1);
+				
 				return req.params.month == new Date(notice.createdAt).getMonth()+1;
 			});
-			console.log( req.params.month +" "+ monthlyCount.length);
+			
 			
 
 			res.status(200).json( monthlyCount.length );
@@ -53,6 +53,7 @@ const GetNoticeByMonth = async (req, res) => {
 		}
 	}
 };
+
 
 const getbyDateNotice = async (req, res) => {
 	 
