@@ -62,8 +62,8 @@ const getPendingWorkshops = async (request, response) => {
 const getWorkshopCard = async (request, response) => {
   if (request.params.id) {
     try {
-      const foundCard = await Workshop.findById(request.params.id);
-      response.status(200).json({ workshopcard: foundCard });
+      const foundWorkCard = await Workshop.findById(request.params.id);
+      response.status(200).json({ workshopcard: foundWorkCard });
     } catch (error) {
       response.status(404).json({ message: error.message });
     }

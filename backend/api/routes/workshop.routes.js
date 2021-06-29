@@ -22,6 +22,6 @@ router.get("/pending", verifyModeratorAuth, getPendingWorkshops);
 router.get("/my", verifyPresenterAuth, getPresenterWorkshops);
 router.patch("/approve/:id", verifyModeratorAuth, approveWorkshops);
 router.patch("/reject/:id", verifyModeratorAuth, rejectWorkshops);
-router.patch("/pending/:id", verifyModeratorAuth, getWorkshopCard);
+router.get("/pending/:id", verifyModeratorAuth, getWorkshopCard);
 
 module.exports = router;

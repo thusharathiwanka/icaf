@@ -33,26 +33,23 @@ const WorkshopRequest = () => {
             <th>Topic</th>
             <th>View</th>
           </tr>
-          {pendingWorkshop && (
-            <tr>
-              {pendingWorkshop.map((workshop) => (
-                <tr key={workshop._id}>
-                  <td>{workshop.dueDate}</td>
-                  <td>{workshop.topic}</td>
-                  <td>
-                    <div>
-                      <Link
-                        className="cardbtn"
-                        to={`/auth/user/reviewer/workshop/card${workshop._id}`}
-                      >
-                        view Card
-                      </Link>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tr>
-          )}
+          {pendingWorkshop &&
+            pendingWorkshop.map((workshop) => (
+              <tr key={workshop._id}>
+                <td>{workshop.dueDate}</td>
+                <td>{workshop.topic}</td>
+                <td>
+                  <div>
+                    <Link
+                      className="cardbtn"
+                      to={`/auth/user/reviewer/workshop/card${workshop._id}`}
+                    >
+                      view Card
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+            ))}
         </table>
       </div>
       <hr></hr>
