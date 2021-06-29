@@ -33,6 +33,8 @@ import ResearchCard from "../pages/ReviewerResearchCard";
 import WorkshopCard from "../pages/ReviewerWorksopCard";
 import ReviewerResearchPapaer from "../pages/ReviewerResearchPapaer";
 import ReviewerWorkshop from "../pages/ReviewerWorkshop";
+import ReviewerResearcherCard from "../components/reviwer/cards/ResearchCard";
+import ReviewerWorkshopCard from "../components/reviwer/cards/WorkCard";
 import ErrorPage from "./error/404";
 
 const App = () => {
@@ -114,6 +116,18 @@ const App = () => {
         </PrivateReviewerRoute>
         <PrivateReviewerRoute exact path="/auth/user/reviewer/workshop">
           <ReviewerWorkshop />
+        </PrivateReviewerRoute>
+        <PrivateReviewerRoute
+          exact
+          path="/auth/user/reviewer/research/card/:id"
+        >
+          <ReviewerResearcherCard />
+        </PrivateReviewerRoute>
+        <PrivateReviewerRoute
+          exact
+          path="/auth/user/reviewer/workshop/card/:id"
+        >
+          <ReviewerWorkshopCard />
         </PrivateReviewerRoute>
         <Route path="*">
           <ErrorPage />

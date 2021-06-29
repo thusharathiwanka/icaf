@@ -1,9 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../../../config/config";
+import { getUserToken } from "../../../auth/userAuth";
 const WorkshopRequest = () => {
-  const [pendingWorkshop, setpendingWorkshop] = useState(null);
+  const [pendingWorkshop, setpendingWorkshop] = useState([]);
   const handleId = (id) => {
     setId(id);
     console.log(id);
@@ -11,12 +11,15 @@ const WorkshopRequest = () => {
   useEffect(() => {
     fetch(`${BASE_URL}/workshop/pending`, {
       method: "GET",
+      headers: {
+        authToken: getUserToken(),
+      },
     })
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        setpendingWorkshop(data);
+        setpendingWorkshop(data.pendingWorkshops);
       });
   }, []);
   return (
@@ -30,25 +33,23 @@ const WorkshopRequest = () => {
             <th>Topic</th>
             <th>View</th>
           </tr>
-          {pendingWorkshop && (
-            <tr>
-              {pendingWorkshop.map((workshop) => (
-                <tr key={workshop._id}>
-                  <td>{workshop.dueDate}</td>
-                  <td>{workshop.topic}</td>
-                  <td>
-                    <div>
-                      <Link to="/auth/user/reviewer/workshop/card">
-                        <button type="button" className="cardbtn">
-                          view Card
-                        </button>
-                      </Link>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tr>
-          )}
+          {pendingWorkshop &&
+            pendingWorkshop.map((workshop) => (
+              <tr key={workshop._id}>
+                <td>{workshop.dueDate}</td>
+                <td>{workshop.topic}</td>
+                <td>
+                  <div>
+                    <Link
+                      className="cardbtn"
+                      to={`/auth/user/reviewer/workshop/card${workshop._id}`}
+                    >
+                      view Card
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+            ))}
         </table>
       </div>
       <hr></hr>
