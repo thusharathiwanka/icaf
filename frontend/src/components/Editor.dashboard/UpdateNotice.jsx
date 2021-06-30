@@ -26,16 +26,12 @@ const useStyles = makeStyles((theme) => ({
 
 const NoticeUpdate = ({ Notices, id }) => {
   notice = Notices.filter((notice) => notice._id === id);
-  const [topic, SetTopic] = useState(" ");
-  const [content, SetContent] = useState(" ");
+  const [topic, SetTopic] = useState(notice[0].topic);
+  const [content, SetContent] = useState(notice[0].content);
   const [isSubmit, setSubmit] = useState(false);
 
 
   
-  useEffect(() => {
-    SetTopic(notice[0].topic);
-    SetContent(notice[0].content);
-  }, []);
 
     const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,8 +55,9 @@ else {
     }).then(() => {
       console.log("updated");
       setSubmit(true);
-        toast.success("Notice updated !!");
-      
+      toast.success("Notice updated !!");
+      SetTopic(topic);
+      SetContent(content);
     })
     .catch((error) => {
       toast.error(error);
@@ -71,7 +68,27 @@ else {
     
   
     const classes = useStyles();
-    return (
+  return (<div>
+      {isSubmit ?  <div className="NoticeUpdate">
+        <ToastContainer
+				position="top-center"
+				autoClose={3000}
+				hideProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+        />
+        
+          
+        <form className={classes.root} onSubmit={handleSubmit}>
+          <TextField value={topic} label="Notice Topic" onChange={(e) => SetTopic(e.target.value)} style={{ backgroundColor: "white" }} variant="outlined" />
+          <TextField value={content} label="Content" onChange={(e) => SetContent(e.target.value)} style={{ backgroundColor: "white" }} multiline rows={5} variant="outlined" />
+          <button className="NoticeUpdate_submit" type="submit" >Update</button>
+        </form>
+          </div> :
       <div className="NoticeUpdate">
         <ToastContainer
 				position="top-center"
@@ -84,14 +101,14 @@ else {
 				draggable
 				pauseOnHover
         />
-        {isSubmit ? <h3 style={{ textAlign: 'center', color: 'green' }}>Sucessfully Updated !!!!</h3> :
+        
           
         <form className={classes.root} onSubmit={handleSubmit}>
           <TextField value={topic} placeholder={notice[0].topic} label="Notice Topic" onChange={(e) => SetTopic(e.target.value)} style={{ backgroundColor: "white" }} variant="outlined" />
           <TextField value={content} label="Content" onChange={(e) => SetContent(e.target.value)} style={{ backgroundColor: "white" }} multiline rows={5} variant="outlined" />
           <button className="NoticeUpdate_submit" type="submit" >Update</button>
-        </form>}
-          
+        </form>
+          </div>}
         </div>
       );
 }

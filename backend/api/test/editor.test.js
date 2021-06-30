@@ -31,7 +31,7 @@ describe("GET @ /notice endpoint", () => {
 });
 
 describe("DELETE@/Delete a notice by id ", () => {
-    it('should resond with a 400 status code (wrong id)', async () => {
+    it('should resond with a 409 status code (wrong id)', async () => {
         try {
             const res = axios.delete("http://localhost:5000/notice/3")
             expect(res.status).toEqual(409)
@@ -43,7 +43,7 @@ describe("DELETE@/Delete a notice by id ", () => {
 
 
 describe("PUT@/ Update a notice by id ", () => {
-    it('should resond with a 400 status code (wrong id)', async () => {
+    it('should resond with a 409 status code (wrong id)', async () => {
         try {
             const res = axios.put("http://localhost:5000/notice/4546")
             expect(res.status).toEqual(409)
@@ -55,7 +55,7 @@ describe("PUT@/ Update a notice by id ", () => {
 
 
 describe("GET @ /notice/approval/:isApproved endpoint", () => {
-	it("should return all notices according to approval type and return status code 200", async () => {
+	it("should return all notices according to approval type and return status code 202", async () => {
 		try {
 			const res = axios.get("http://localhost:5000/notice/Approved");
 
