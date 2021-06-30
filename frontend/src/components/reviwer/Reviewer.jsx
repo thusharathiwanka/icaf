@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Reviewer = () => {
   return (
-    <div>
+    <div className="btncontainer">
       <div>
         <Link className="button" to={`/auth/user/reviewer/research`}>
           Reasearch Paper
