@@ -32,21 +32,18 @@ const ResearchPaperDelete = () => {
     <div>
       <h3>Diclined Research Papers</h3>
       <table id="customers">
-        <tbody>
-          <tr>
-            <th>Date</th>
-            <th>Topic</th>
-          </tr>
+        <tr>
+          <th>Date</th>
+          <th>Topic</th>
+        </tr>
 
-          <tr>
-            {deletedpaper.map((deletedpaper) => (
-              <tr key={deletedpaper._id}>
-                <td>{deletedpaper.createdAt}</td>
-                <td>{deletedpaper.topic}</td>
-              </tr>
-            ))}
-          </tr>
-        </tbody>
+        {deletedpaper &&
+          deletedpaper.map((deletedpaper) => (
+            <tr key={deletedpaper._id}>
+              <td>{deletedpaper.createdAt}</td>
+              <td>{deletedpaper.topic}</td>
+            </tr>
+          ))}
       </table>
     </div>
   );

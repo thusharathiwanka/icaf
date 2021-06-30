@@ -21,7 +21,7 @@ export default function Table(props) {
 
   let tagColor
   return (
-      <div className="table">
+      <div className="table" >
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>

@@ -1,6 +1,4 @@
-import React , {useState} from 'react'
-import { BASE_URL } from "../../config/config";
-import { useState } from "react";
+import React from 'react'
 import "./style/count.css"
 import attendeeImg from "url:../../assets/images/attendee.png";
 import researcherImg from "url:../../assets/images/research1.png";

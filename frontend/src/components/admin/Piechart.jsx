@@ -51,7 +51,7 @@ const options = {
 }
 
     return (
-          <div className ="chartoutline">
+          <div className ="chartoutline" >
             <h1>Users</h1>
             <hr/>
             <div className ="piechart" >          

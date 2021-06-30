@@ -49,11 +49,11 @@ const Rejecthandle = async(id)=>{
             {Notices.map((notice)=>(
                     <div className="NoticeCard" key = {notice._id} >
                     <h3 className="topics">{notice.topic}</h3>
-                  <h3 className="date">{new Date(notice.createdAt).toDateString()}</h3>
-                  <h3 className="contents">{notice.content}</h3>
-                  <button className="approve" onClick={()=>Approvehandle(notice._id)}>Approve</button>
-                  <button className="reject" onClick={()=>Rejecthandle(notice._id)}>Reject</button>
-                  </div> )
+                    <h3 className="date">{new Date(notice.createdAt).toDateString()}</h3>
+                    <h3 className="contents">{notice.content}</h3>
+                    <button className="approve" onClick={()=>Approvehandle(notice._id)}>Approve</button>
+                    <button className="reject" onClick={()=>Rejecthandle(notice._id)}>Reject</button>
+                    </div> )
             )}
 
 
