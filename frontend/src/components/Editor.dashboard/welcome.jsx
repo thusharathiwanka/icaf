@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
 
-const Welcome = () => {
+const Welcome = React.memo(function Welcome() { 
 
 
     
 const [view, setView] = useState(true);
 const handleclick = () => {
     setView(false);
+   
 }
     return (<div>{view ? 
         <div className="welcome_div" data-testid="div-tag" >
@@ -18,6 +19,6 @@ const handleclick = () => {
         </div> : ' '}
         </div>
         );
-}
+    }) 
  
 export default Welcome;                        

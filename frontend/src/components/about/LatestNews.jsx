@@ -14,8 +14,9 @@ const LatestNews = () => {
 	useEffect(async () => {
 		const res = await fetch(`${BASE_URL}/notice/date/${date}/${month}/${year}`);
 		const data = await res.json();
+
 		setNews(data);
-		
+	
 		
 	}, []);
 	return (<div>
@@ -32,7 +33,7 @@ const LatestNews = () => {
 			
 		
 			</div>
-		}
+	}
 		</div>
 	);
 };

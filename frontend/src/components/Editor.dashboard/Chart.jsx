@@ -47,7 +47,7 @@ const NoticesChart = () => {
   
 
 
-  console.log(count[8]);
+
   
   const state = {
     labels: ['Approved', 'Pending', 'Rejected'

@@ -73,7 +73,7 @@ const getbyDateNotice = async (req, res) => {
 			return ((req.params.date == new Date(notice.tobePost).getUTCDate()) && (req.params.month == new Date(notice.tobePost).getUTCMonth()) && (req.params.year == new Date(notice.tobePost).getUTCFullYear()));
 			
 			})
-		
+			
 		res.status(200).json(foundate);
 		} catch (error) {
 			res.status(409).json({ message: error.message });
@@ -111,7 +111,7 @@ const UpdateOneNotice = async (req, res) => {
 
 const DeleteOneNotice = async (req, res) => {
 	if (req.params.id) {
-		console.log(req.params.id);
+		
 		try {
 			const delete_notice = await notice.findByIdAndDelete(req.params.id);
 			res.status(200).json({ notice: delete_notice });

@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from "react";
+import React, { useState} from "react";
 import { BASE_URL } from "../../config/config";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,7 +12,7 @@ const ViewNotice = ({Notices,id}) => {
   console.log(Notices);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+ e.preventDefault();
     setDelete(true);
     
 
@@ -25,8 +25,8 @@ const ViewNotice = ({Notices,id}) => {
        
     }).then(() => {
       toast.success("Notice Deleted");
-      
-      notice[0] == [''];
+      this.forceUpdate();
+  
     })
     .catch((error) => {
       toast.error(error);
