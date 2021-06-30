@@ -2,14 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Reviewer = () => {
   return (
-    <div className="btncontainer">
+    <div className="btncontainer" data-testid="div-tag">
       <div>
-        <Link className="button" to={`/auth/user/reviewer/research`}>
+        <Link
+          className="button"
+          data-testid="button"
+          to={`/auth/user/reviewer/research`}
+        >
           Reasearch Paper
         </Link>
       </div>
       <div>
-        <Link className="button1" to={`/auth/user/reviewer/workshop`}>
+        <Link
+          className="button1"
+          data-testid="button1-tag"
+          to={`/auth/user/reviewer/workshop`}
+        >
           Workshop
         </Link>
       </div>
