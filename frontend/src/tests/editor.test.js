@@ -14,7 +14,7 @@ describe("Testing Editor welcome div", () => {
    
     
     
-  it("should render Editor dashboard", () => {
+  it("should render welcome div", () => {
     expect(getByTestId(container, "div-tag")).toBeTruthy();
   });
 
