@@ -26,7 +26,7 @@ import EventForm from "./common/EventForm";
 import Blog from "../pages/Blog";
 import BlogForm from "./blog/BlogForm";
 import ReadBlog from "./blog/ReadBlog";
-import Noticeacception from "./admin/Noticeacception";
+import NoticeAccept from "./admin/NoticeAccept";
 import Payment from "./Payment/payment";
 import Reviewer from "../pages/Reviewer";
 import ResearchCard from "../pages/ReviewerResearchCard";
@@ -70,7 +70,7 @@ const App = () => {
           <Admin />
         </PrivateAdminRoute>
         <PrivateRoute exact path="/auth/user/admin/notices">
-          <Noticeacception />
+          <NoticeAccept />
         </PrivateRoute>
         <PrivateEditorRoute exact path="/auth/user/editor/dashboard">
           <Editor />
