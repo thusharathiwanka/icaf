@@ -1,15 +1,38 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { RegisterDataContext } from "../../context/Context";
 
 const RegisterForm = () => {
-	const { setCurrentStep, userData, setUserData } =
-		useContext(RegisterDataContext);
+	const {
+		setCurrentStep,
+		userData,
+		setUserData,
+		IsRegistered,
+		setIsRegistered,
+	} = useContext(RegisterDataContext);
+
+	IsRegistered &&
+		toast.success("Your account has been created. Please login to proceed");
+	setIsRegistered(false);
+	set;
 
 	return (
 		<div className="register-content">
+			<ToastContainer
+				position="top-center"
+				autoClose={3000}
+				hideProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 			<h1>Register</h1>
 			<motion.form
 				className="login-form"

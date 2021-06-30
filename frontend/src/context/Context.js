@@ -11,6 +11,7 @@ const RegisterFormContext = () => {
 	const [material, setMaterial] = useState({});
 	const [payment, setPayment] = useState({});
 	const [notifications, setNotifications] = useState([]);
+	const [IsRegistered, setIsRegistered] = useState(false);
 	const [isLogin, setIsLogin] = useState(localStorage.getItem("isLogin"));
 
 	return (
@@ -31,6 +32,8 @@ const RegisterFormContext = () => {
 					setIsLogin,
 					notifications,
 					setNotifications,
+					IsRegistered,
+					setIsRegistered,
 				}}
 			>
 				<App />

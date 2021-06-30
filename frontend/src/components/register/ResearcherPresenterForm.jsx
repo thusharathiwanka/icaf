@@ -8,8 +8,14 @@ import Loading from "../../helpers/Loading";
 import { BASE_URL } from "../../config/config";
 
 const PresenterForm = ({ title }) => {
-	const { setCurrentStep, material, setMaterial, userData, setUserData } =
-		useContext(RegisterDataContext);
+	const {
+		setCurrentStep,
+		material,
+		setMaterial,
+		userData,
+		setUserData,
+		setIsRegistered,
+	} = useContext(RegisterDataContext);
 	const allowedTypes = [
 		"application/pdf",
 		"application/x-zip-compressed",
@@ -53,8 +59,8 @@ const PresenterForm = ({ title }) => {
 
 		if (response.ok) {
 			setUserData({});
+			setIsRegistered(true);
 			setMaterial({});
-			toast.success("Your account has been created. Please login to proceed");
 		} else {
 			toast.error("Sorry, something went wrong.");
 		}
@@ -74,16 +80,16 @@ const PresenterForm = ({ title }) => {
 			const userId = await response.json();
 			material.createdBy = userId.id;
 
+			if (response.ok) {
+				handleMaterial();
+			}
+
 			if (response.status === 406) {
 				if (userId.message.includes("username")) {
 					toast.error("Username already exists");
 				} else if (userId.message.includes("email")) {
 					toast.error("Email already exists");
 				}
-			}
-
-			if (response.ok) {
-				handleMaterial();
 			}
 		} catch (error) {
 			console.log(error);
@@ -230,7 +236,6 @@ const PresenterForm = ({ title }) => {
 						Back
 					</motion.button>
 					<motion.button
-						type="submit"
 						className="gradient-cta"
 						initial={{ x: 10, opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}

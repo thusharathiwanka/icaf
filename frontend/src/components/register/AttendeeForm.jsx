@@ -7,11 +7,18 @@ import { RegisterDataContext } from "../../context/Context";
 import { BASE_URL } from "../../config/config";
 
 const AttendeeForm = () => {
-	const { setCurrentStep, setUserData, userData, payment, setPayment } =
-		useContext(RegisterDataContext);
+	const {
+		setCurrentStep,
+		setUserData,
+		userData,
+		payment,
+		setPayment,
+		setIsRegistered,
+	} = useContext(RegisterDataContext);
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
+
 		if (payment) {
 			delete userData.userType;
 			userData.isPaid = true;
@@ -28,7 +35,9 @@ const AttendeeForm = () => {
 			const data = await response.json();
 
 			if (response.ok) {
-				toast.success("Your account has been created");
+				setUserData({});
+				setIsRegistered(true);
+				setPayment({});
 			} else {
 				if (response.status === 406) {
 					if (data.message.includes("username")) {
