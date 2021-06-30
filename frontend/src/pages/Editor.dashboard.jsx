@@ -18,7 +18,7 @@ const Editor_dash = () => {
 	}
 	
 	return (
-		<div className="editor">
+		<div className="editor"data-testid="div-tag" >
 			{view ?
 				<div className="welcome_div">
 					<button style={{color:'whitesmoke',width:'0px',marginBottom:'5px'}} onClick={handleclick}>x</button>
