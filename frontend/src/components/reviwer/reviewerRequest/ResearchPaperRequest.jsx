@@ -36,7 +36,12 @@ const ResearchPaperRequest = () => {
           {pendingPublications &&
             pendingPublications.map((paper) => (
               <tr key={paper._id}>
-                <td>{paper.createdAt}</td>
+                <td>
+                  {" "}
+                  {new Date(paper.createdAt).toDateString() +
+                    " " +
+                    new Date(paper.createdAt).toLocaleTimeString()}
+                </td>
                 <td>{paper.topic}</td>
                 <td>
                   <div>
