@@ -27,7 +27,7 @@ const AllNotices = () => {
 
 	const handleId = (id) => {
 		setId(id);
-		console.log(id);
+		
 	}
 
 	

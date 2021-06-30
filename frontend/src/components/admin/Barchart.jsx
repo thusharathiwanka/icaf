@@ -44,7 +44,7 @@ useEffect(()=>{
 },[props.WorkshopPapers])
  
 const data = {
-  labels: ["Research Papers","Workshops"],
+  labels: ["Publications","Workshops"],
   datasets: [{
     label: 'Approved',
     data: [rApproved, wApproved],

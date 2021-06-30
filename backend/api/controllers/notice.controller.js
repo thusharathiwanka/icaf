@@ -44,8 +44,7 @@ const GetNoticeByYear = async (req, res) => {
 
 				return req.params.year == new Date(notice.createdAt).getFullYear();
 				
-				//return req.params.year == new Date(notice.createdAt).getMonth()+1;
-			});
+				});
 			for (let i = 1; i <= 12; i++) {
 				const monthycount =yearlyCount.filter((notice) => {
 					return i == new Date(notice.createdAt).getMonth() + 1;
@@ -71,13 +70,11 @@ const getbyDateNotice = async (req, res) => {
 			
 			const foundate = notices.filter((notice) => {
 			
-			return req.params.date == new Date(notice.tobePost).getUTCDate();
+			return ((req.params.date == new Date(notice.tobePost).getUTCDate()) && (req.params.month == new Date(notice.tobePost).getUTCMonth()) && (req.params.year == new Date(notice.tobePost).getUTCFullYear()));
 			
 			})
 			
-			console.log(foundate);
-			
-			res.status(200).json(foundate);
+		res.status(200).json(foundate);
 		} catch (error) {
 			res.status(409).json({ message: error.message });
 		}
@@ -114,7 +111,7 @@ const UpdateOneNotice = async (req, res) => {
 
 const DeleteOneNotice = async (req, res) => {
 	if (req.params.id) {
-		console.log(req.params.id);
+		
 		try {
 			const delete_notice = await notice.findByIdAndDelete(req.params.id);
 			res.status(200).json({ notice: delete_notice });

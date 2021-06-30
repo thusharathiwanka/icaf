@@ -41,8 +41,8 @@ const AddNotice = () => {
   const [content, setContent] = useState(" ");
  
   
-  const [selectedDate, setSelectedDate] = useState(new Date(Date.now()).getFullYear() + '-' +new Date(Date.now()).getMonth() + '-' +new Date(Date.now()).getDate());
-  console.log(selectedDate);
+  const [selectedDate, setSelectedDate] = useState(new Date(Date.now()).getFullYear() + '-' +(new Date(Date.now()).getMonth()+1) + '-' +new Date(Date.now()).getDate());
+ 
   const handleDateChange = (d) => {
     setSelectedDate(d);
   };
@@ -50,18 +50,14 @@ const AddNotice = () => {
 
   //var Post = selectedDate;
  const tobePost = selectedDate;// Post.getFullYear() + '-' + (Post.getMonth()+1) + '-' + Post.getDate();
-  console.log(tobePost);
-  const reset_Submit = () => {
-    setTopic(" ");
-    setContent(" ");
-    setSelectedDate(Date.now());
-  }
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const  createdBy = getUserId();
     const Notice = { tobePost, createdBy, topic, content};
-    console.log(Notice);
+    
 
     fetch(`${BASE_URL}/notice`, {
         method: 'POST',
@@ -107,7 +103,7 @@ const AddNotice = () => {
 				draggable
 				pauseOnHover
 			/>
-        <form className={classes.root} id="ADD_Form" onSubmit={handleSubmit} onReset={reset_Submit} >
+        <form className={classes.root} id="ADD_Form" onSubmit={handleSubmit}  >
     
         <TextField label="Notice Topic" value={topic} style={{ backgroundColor: "white" }} onChange={(e)=>setTopic(e.target.value) } variant="outlined" />
 

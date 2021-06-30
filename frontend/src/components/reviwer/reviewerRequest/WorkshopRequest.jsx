@@ -36,7 +36,12 @@ const WorkshopRequest = () => {
           {pendingWorkshop &&
             pendingWorkshop.map((workshop) => (
               <tr key={workshop._id}>
-                <td>{workshop.dueDate}</td>
+                <td>
+                  {" "}
+                  {new Date(workshop.dueDate).toDateString() +
+                    " " +
+                    new Date(workshop.dueDate).toLocaleTimeString()}
+                </td>
                 <td>{workshop.topic}</td>
                 <td>
                   <div>

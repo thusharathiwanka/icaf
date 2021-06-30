@@ -72,7 +72,11 @@ const ResearchPaperApproval = () => {
               <span className="reviewer-research-date">Created Date</span>
             </div>
             <hr></hr>
-            <span className="reviewer-research-date">{card.dueDate}</span>
+            <span className="reviewer-research-date">
+              {new Date(card.dueDate).toDateString() +
+                " " +
+                new Date(card.dueDate).toLocaleTimeString()}
+            </span>
           </div>
           <header>
             <hr></hr>

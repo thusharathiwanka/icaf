@@ -34,11 +34,11 @@ const payment = () => {
             .catch(err => console.error('There has been an error.  Here some thoughts on the error that occured:', err))
     }
 
-  	const paymentemail = () => {
+const paymentemail = () => {
         const templateId = 'template_3e10xcd';
         const serviceID = 'service_f5upd53';
         paymentconfirm(serviceID, templateId, { to_name:Researcher.researcher.firstName, from_name: "icaf.com", reply_to:Researcher.researcher.email})
-      
+
     }
 	const paymenthandle = async (e) => {
 		e.preventDefault();

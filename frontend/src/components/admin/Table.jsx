@@ -26,8 +26,8 @@ export default function Table(props) {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-          <TableCell>{props.topic}</TableCell>
           <TableCell></TableCell>
+          <TableCell  align="center" className="tabletopic">{props.topic}</TableCell>
           <TableCell></TableCell>
           </TableRow>
           <TableRow>
