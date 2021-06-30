@@ -13,7 +13,6 @@ describe('testing profileCard.js' ,()=>{
         expect(getByTestId(container, 'outer-div-tag')).toBeTruthy();
     });
 
-
     it('should render image ',()=>{
         expect(getByTestId(container,'icon')).toBeTruthy();
     });
