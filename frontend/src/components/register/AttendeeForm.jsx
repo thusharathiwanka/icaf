@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,7 +9,6 @@ import { BASE_URL } from "../../config/config";
 const AttendeeForm = () => {
 	const { setCurrentStep, setUserData, userData, payment, setPayment } =
 		useContext(RegisterDataContext);
-	const history = useHistory();
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
@@ -27,11 +25,20 @@ const AttendeeForm = () => {
 				body: JSON.stringify(userData),
 			});
 
+			const data = await response.json();
+
 			if (response.ok) {
 				toast.success("Your account has been created");
-				history.push("/auth/login");
 			} else {
-				toast.error("Sorry, something went wrong");
+				if (response.status === 406) {
+					if (data.message.includes("username")) {
+						toast.error("Username already exists");
+					} else if (data.message.includes("email")) {
+						toast.error("Email already exists");
+					}
+				} else {
+					toast.error("Sorry, something went wrong");
+				}
 			}
 		} catch (error) {
 			console.log(error);

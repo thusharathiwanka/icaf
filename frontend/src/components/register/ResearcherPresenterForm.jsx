@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,7 +18,6 @@ const PresenterForm = ({ title }) => {
 	];
 	const [file, setFile] = useState(null);
 	const [error, setError] = useState(null);
-	const history = useHistory();
 
 	const fileChangeHandler = (e) => {
 		const selectedFile = e.target.files[0];
