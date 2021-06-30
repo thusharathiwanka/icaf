@@ -1,19 +1,19 @@
 import React from "react";
-import Editor from "../pages/Editor.dashboard";
+import Welcome  from "../components/Editor.dashboard/welcome";
 import { getByTestId, render } from "@testing-library/react";
-import { BrowserRouter as Router } from "react-router-dom";
+
 
 let container = null;
 
-describe("Testing Editor dashboard", () => {
+describe("Testing Editor welcome div", () => {
   beforeEach(() => {
     container = render(
-      
-        <Editor/>
-      
+        <Welcome/>
     ).container;
   });
-
+   
+    
+    
   it("should render Editor dashboard", () => {
     expect(getByTestId(container, "div-tag")).toBeTruthy();
   });
