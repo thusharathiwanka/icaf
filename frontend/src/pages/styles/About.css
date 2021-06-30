@@ -102,19 +102,24 @@
 .ALL_newsItems{
 	display: flex;
 	justify-content: center;
+	align-items: center;
+
 }
 .Latest_newsItem{
-	display: flex;
-	justify-content: center;
+	
 	width: 100%;
     margin: 20px 20px 20px 20px;
     height: auto;
     padding-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+	
 }
 
 .Latest_newsItem_body{
-    width: 25%;
-	margin: 50px 50px 20px 50px;
+    width: 500px;
+	margin: 60px 50px 20px 50px;
     height: auto;
     background-color: #f5f5f5d0;
     box-shadow: 0 4px 8px 0px rgba(0,0,0,0.2);
@@ -123,7 +128,7 @@
 
 }
 .Latest_newsItem_body_h1 {
-	margin: 20px 50px 20px 50px;
+	margin: 50px 50px 20px 50px;
 	text-align: center;
 }
 

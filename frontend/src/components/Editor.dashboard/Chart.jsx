@@ -16,18 +16,8 @@ const NoticesChart = () => {
   const [Reject, SetReject] = useState(null);
   const [Pending, SetPending] = useState(null);
 
-  const [January, SetJanuary] = useState(null);
-  const [February, SetFebruary] = useState(null);
-  const [March, SetMarch] = useState(null);
-  const [April, SetApril] = useState(null);
-  const [May, SetMay] = useState(null);
-  const [June, SetJune] = useState(null);
-  const [July, SetJuly] = useState(null);
-  const [August, SetAugust] = useState(null);
-  const [September, SetSeptember] = useState(null);
-  const [October, SetOctober] = useState(null);
-  const [November, SetNovember] = useState(null);
-  const [December, SetDecember] = useState(null);
+  const [count, SetCount] = useState(new Array());
+ 
 
  
 
@@ -46,44 +36,18 @@ const NoticesChart = () => {
     SetPending(parseInt(pendingCount));
 
 
-    for (let i = 1; i <= 12; i++) {
-      const resMonth = await fetch(`${BASE_URL}/notice/month/${i}`);
+    let year = new Date(Date.now()).getFullYear();
+      const resMonth = await fetch(`${BASE_URL}/notice/year/${year}`);
       const MonthCount = await resMonth.text();
-      if (i == 1) {
-        SetJanuary(MonthCount);
-      } else if (i == 2) {
-        SetFebruary(MonthCount);
-      }else if (i == 3) {
-        SetMarch(MonthCount);
-      }else if (i == 4) {
-        SetApril(MonthCount);
-      }else if (i == 5) {
-        SetMay(MonthCount);
-      }else if (i == 6) {
-        SetJune(MonthCount);
-      }else if (i == 7) {
-        SetJuly(MonthCount);
-      }else if (i == 8) {
-        SetAugust(MonthCount);
-      }else if (i == 9) {
-        SetSeptember(MonthCount);
-      }else if (i == 10) {
-        SetOctober(MonthCount);
-      }else if (i == 11) {
-        SetNovember(MonthCount);
-      }else if (i == 12) {
-        SetDecember(MonthCount);
-      }
-
-    }
+      SetCount(MonthCount);
 
   }, []);
   
 
+  
 
 
-
-  console.log(June);
+  console.log(count[8]);
   
   const state = {
     labels: ['Approved', 'Pending', 'Rejected'
@@ -122,7 +86,7 @@ const NoticesChart = () => {
           "rgb(60,186,159,0.1)",
               
         ],
-        data: [January, February, March, April, May, June, July, August, September, October, November, December],
+        data: [count[6], count[8], count[10], count[12], count[14], count[16], count[18], count[20], count[22], count[24], count[26], count[28]],
         borderColor: [
           "#3cba9f",
                   
@@ -168,7 +132,7 @@ const NoticesChart = () => {
             
         </div>
         <div className="chart_head">
-        <h2 style={{fontSize:'17px',textAlign:'left',margin:'25px 20px 40px 15px',fontWeight:'lighter'}}>Notices added this Year</h2>
+        <h2 style={{fontSize:'17px',textAlign:'left',margin:'25px 20px 40px 15px',fontWeight:'lighter'}}>Notices added this Year (except deleted Notices)</h2>
         </div>
             <div>
         <Bar  className="Bar_chart"

@@ -41,15 +41,16 @@ const AddNotice = () => {
   const [content, setContent] = useState(" ");
  
   
-  const [selectedDate, setSelectedDate] = useState(Date.now());
-  
+  const [selectedDate, setSelectedDate] = useState(new Date(Date.now()).getFullYear() + '-' +new Date(Date.now()).getMonth() + '-' +new Date(Date.now()).getDate());
+  console.log(selectedDate);
   const handleDateChange = (d) => {
     setSelectedDate(d);
   };
     
 
-  const tobePost = selectedDate; //selectedDate.getFullYear() + '-' + selectedDate.getMonth() + '-' + selectedDate.getDay();
-
+  //var Post = selectedDate;
+ const tobePost = selectedDate;// Post.getFullYear() + '-' + (Post.getMonth()+1) + '-' + Post.getDate();
+  console.log(tobePost);
   const reset_Submit = () => {
     setTopic(" ");
     setContent(" ");

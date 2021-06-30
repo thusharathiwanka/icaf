@@ -14,8 +14,8 @@ const CreateNotice = async (req, res) => {
 
 	try {
 		await newNotice.save();
-		console.log(newNotice);
-		res.status(201).json(newNotice);
+		
+		res.status(200).json(newNotice);
 	} catch (error) {
 		res.status(409).json({ message: error.message });
 	}
@@ -34,35 +34,54 @@ const GetByapproval = async (req, res) => {
 		}
 	}
 };
-const GetNoticeByMonth = async (req, res) => {
-	if (req.params.month) {
+const GetNoticeByYear = async (req, res) => {
+	if (req.params.year) {
 		//console.log(req.params.month);
 		try {
 			const notices = await notice.find();
+			let count= new Array();
+			const yearlyCount = notices.filter((notice) => {
 
-			const monthlyCount = notices.filter((notice) => {
-				//console.log(new Date(notice.createdAt).getMonth()+1);
-				return req.params.month == new Date(notice.createdAt).getMonth()+1;
+				return req.params.year == new Date(notice.createdAt).getFullYear();
+				
+				//return req.params.year == new Date(notice.createdAt).getMonth()+1;
 			});
-			console.log( req.params.month +" "+ monthlyCount.length);
-			
+			for (let i = 1; i <= 12; i++) {
+				const monthycount =yearlyCount.filter((notice) => {
+					return i == new Date(notice.createdAt).getMonth() + 1;
+				})
 
-			res.status(200).json( monthlyCount.length );
+				count[i] = monthycount.length;
+			}
+		
+
+			res.status(200).json( count);
 		} catch (error) {
 			res.status(409).json({ message: error.message });
 		}
 	}
 };
 
+
 const getbyDateNotice = async (req, res) => {
-	 
+	if(req.params.date ) { 
 		try {
-			const Found_notice = await notice.find({ isApproved:'Approved'});
-			res.status(200).json({ notice: Found_notice });
+
+			const notices = await notice.find({ isApproved:'Approved'});
+			
+			const foundate = notices.filter((notice) => {
+			
+			return req.params.date == new Date(notice.tobePost).getUTCDate();
+			
+			})
+			
+			console.log(foundate);
+			
+			res.status(200).json(foundate);
 		} catch (error) {
 			res.status(409).json({ message: error.message });
 		}
-	
+	}
 }
 const getNoticeById = async (req, res) => {
 	
@@ -112,6 +131,6 @@ module.exports = {
 	getNoticeById,
 	UpdateOneNotice,
 	DeleteOneNotice,
-	GetNoticeByMonth,
+	GetNoticeByYear,
 	getbyDateNotice
 };
