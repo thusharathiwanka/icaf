@@ -44,15 +44,15 @@ useEffect (async() => {
 		});
         const Workshoppaper = await resWorkshoppapers.json();
 
-       
+
         setresearchPapers(Researchpaper.publications)
         setworkshopPapers(Workshoppaper.workshops)
         setTcontent([Researchpaper.publications,Workshoppaper.workshops])
 
         if(presenterData != null){
-         setACount(attendeeData);
-         setRCount(researcherData);
-         setPCount(presenterData);
+        setACount(attendeeData);
+        setRCount(researcherData);
+        setPCount(presenterData);
             }
     
 }, [])
