@@ -9,7 +9,7 @@ Router.delete("/delete/:id", DeleteOneNotice);
 
 Router.get("/approval/:isApproved", GetByapproval);
 Router.get("/year/:year", GetNoticeByYear);
-Router.get("/date/:date", getbyDateNotice);
+Router.get("/date/:date/:month/:year", getbyDateNotice);
 
 Router.post("/", CreateNotice);
 Router.put("/:id", UpdateOneNotice);
