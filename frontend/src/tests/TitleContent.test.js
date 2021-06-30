@@ -1,5 +1,5 @@
 import React from "react";
-import TitleContent from "../../components/home/TitleContent";
+import TitleContent from "../components/home/TitleContent";
 import { getByTestId, render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -27,5 +27,10 @@ describe("Testing TitleContent", () => {
 
 	it("should render p", () => {
 		expect(getByTestId(container, "p-tag")).toBeTruthy();
+	});
+
+	it("should render explore button", () => {
+		expect(getByTestId(container, "btn-tag")).toBeTruthy();
+		expect(getByTestId(container, "btn-tag").innerHTML).toBe("Explore");
 	});
 });

@@ -25,7 +25,7 @@ const TitleContent = () => {
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ type: "tween", duration: 0.8, delay: 0.3 }}
 			>
-				<Link to="/about" className="gradient-cta">
+				<Link to="/about" className="gradient-cta" data-testid="btn-tag">
 					Explore
 				</Link>
 			</motion.div>

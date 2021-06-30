@@ -1,5 +1,5 @@
 import React from "react";
-import SpeakerContent from "../../components/home/SpeakerContent";
+import SpeakerContent from "../components/home/SpeakerContent";
 import { getByTestId, render } from "@testing-library/react";
 
 let container = null;
