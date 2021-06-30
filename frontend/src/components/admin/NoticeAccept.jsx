@@ -4,7 +4,7 @@ import { BASE_URL } from "../../config/config";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Noticeacception = () => {
+const NoticeAccept = () => {
 
 let [Notices, setNotices] = useState([])
 const [Click,setClick] = useState("")
@@ -62,4 +62,4 @@ const Rejecthandle = async(id)=>{
     )
 }
 
-export default Noticeacception
+export default NoticeAccept
