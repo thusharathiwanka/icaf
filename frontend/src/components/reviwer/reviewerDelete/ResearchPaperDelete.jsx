@@ -40,7 +40,11 @@ const ResearchPaperDelete = () => {
         {deletedpaper &&
           deletedpaper.map((deletedpaper) => (
             <tr key={deletedpaper._id}>
-              <td>{deletedpaper.createdAt}</td>
+              <td>
+                {new Date(deletedpaper.createdAt).toDateString() +
+                  " " +
+                  new Date(deletedpaper.createdAt).toLocaleTimeString()}
+              </td>
               <td>{deletedpaper.topic}</td>
             </tr>
           ))}
