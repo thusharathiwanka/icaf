@@ -66,7 +66,7 @@ console.log(Tcontent);
             <Barchart ResearchPapers = {researchPapers} WorkshopPapers = {workshopPapers}/>
             <Piechart attendee={aCount} researcher={rCount} presenter={pCount}/>
             <div className="researchTable">
-            <Table Tablecontent = {researchPapers} topic ={"Research Papers"}/>
+            <Table Tablecontent = {researchPapers} topic ={"Publications"}/>
             </div>
             <div className="workshopsTable">
             <Table Tablecontent ={workshopPapers} topic ={"Workshops"}/>  
