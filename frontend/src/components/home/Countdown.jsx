@@ -28,9 +28,7 @@ const Countdown = () => {
 			const distance = countdownDate - now;
 
 			const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-			const hours = Math.floor(
-				(distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-			);
+			const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 			const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 			const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
@@ -55,19 +53,19 @@ const Countdown = () => {
 					<h1>Happening In,</h1>
 					<div className="countdown">
 						<div className="days">
-							<h1>{timerDays}</h1>
+							<h1>{isShow ? timerDays : "00"}</h1>
 							<p>Days</p>
 						</div>
 						<div className="hours">
-							<h1>{timerHours}</h1>
+							<h1>{isShow ? timerHours : "00"}</h1>
 							<p>Hours</p>
 						</div>
 						<div className="minutes">
-							<h1>{timerMinutes}</h1>
+							<h1>{isShow ? timerMinutes : "00"}</h1>
 							<p>Minutes</p>
 						</div>
 						<div className="seconds">
-							<h1>{timerSeconds}</h1>
+							<h1>{isShow ? timerSeconds : "00"}</h1>
 							<p>Seconds</p>
 						</div>
 					</div>
