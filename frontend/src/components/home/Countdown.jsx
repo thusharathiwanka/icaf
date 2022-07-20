@@ -48,29 +48,27 @@ const Countdown = () => {
 
 	return (
 		<>
-			{isShow && (
-				<section className="countdown-content">
-					<h1>Happening In,</h1>
-					<div className="countdown">
-						<div className="days">
-							<h1>{isShow ? timerDays : "00"}</h1>
-							<p>Days</p>
-						</div>
-						<div className="hours">
-							<h1>{isShow ? timerHours : "00"}</h1>
-							<p>Hours</p>
-						</div>
-						<div className="minutes">
-							<h1>{isShow ? timerMinutes : "00"}</h1>
-							<p>Minutes</p>
-						</div>
-						<div className="seconds">
-							<h1>{isShow ? timerSeconds : "00"}</h1>
-							<p>Seconds</p>
-						</div>
+			<section className="countdown-content">
+				<h1>Happening In,</h1>
+				<div className="countdown">
+					<div className="days">
+						<h1>{isShow ? timerDays : "00"}</h1>
+						<p>Days</p>
 					</div>
-				</section>
-			)}
+					<div className="hours">
+						<h1>{isShow ? timerHours : "00"}</h1>
+						<p>Hours</p>
+					</div>
+					<div className="minutes">
+						<h1>{isShow ? timerMinutes : "00"}</h1>
+						<p>Minutes</p>
+					</div>
+					<div className="seconds">
+						<h1>{isShow ? timerSeconds : "00"}</h1>
+						<p>Seconds</p>
+					</div>
+				</div>
+			</section>
 		</>
 	);
 };

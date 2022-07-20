@@ -18,7 +18,7 @@ const SpeakerContent = () => {
 			<MdFormatQuote className="quote-icon" />
 			<h1 data-testid="h1-tag">Meet our Keynote Speakers</h1>
 			<div className="speaker-card-content" data-testid="div-tag">
-				{speakers.map((speaker) => (
+				{speakers.map(speaker => (
 					<SpeakerCard speaker={speaker} key={speaker.id} />
 				))}
 			</div>
